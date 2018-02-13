@@ -1,0 +1,14 @@
+п{
+  "private": true,
+  "scripts": {
+    "prod": "gulp --production",
+    "dev": "gulp watch"
+  },
+  "devDependencies": {
+    "gulp-chmod": "2.*",
+    "gulp-clean-css": "3.*",
+    "gulp-rename": "1.*",
+    "gulp-sass": "3.*",
+    "gulp-uglify": "2.*"
+  }
+}
