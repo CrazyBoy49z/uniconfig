@@ -393,7 +393,7 @@ class uniConfigPackage
     /**
      * Add chunks
      */
-    protected function chunks()
+    protected function _chunks()
     {
         /** @noinspection PhpIncludeInspection */
         $chunks = include($this->config['elements'] . 'chunks.php');

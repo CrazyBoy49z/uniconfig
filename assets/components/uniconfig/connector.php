@@ -1,5 +1,7 @@
 <?php
 // For debug
++ini_set('display_errors', 1);
++ini_set('error_reporting', -1);
 if (file_exists(dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php')) {
 	/** @noinspection PhpIncludeInspection */
 	require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php';
@@ -14,10 +16,14 @@ require_once MODX_CONNECTORS_PATH . 'index.php';
 $uniConfig = $modx->getService('uniconfig', 'uniconfig', MODX_CORE_PATH . 'components/uniconfig/model/');
 $modx->lexicon->load('uniConfig:default');
 
-// handle request
 $corePath = $modx->getOption('uniconfig_core_path', null, $modx->getOption('core_path') . 'components/uniconfig/');
+require_once $corePath . 'model/uniconfig.class.php';
+
 $path = $modx->getOption('processorsPath', $uniConfig->config, $corePath . 'processors/');
 $modx->getRequest();
+
+
+// handle request
 
 /** @var modConnectorRequest $request */
 $request = $modx->request;
