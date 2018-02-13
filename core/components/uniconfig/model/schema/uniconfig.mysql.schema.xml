@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="uniconfig" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="uniconfig"
+       version="1.1">
+
+    <object class="LocationItem" table="location_item" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+    <object class="orderStatusItem" table="orderstatus_items" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+
+    <object class="orderUrgencyItem" table="orderurgecy_items" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+
+    <object class="orderThemeItem" table="ordertheme_items" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+        <composite alias="TgChat" class="orderTgchatItem" local="id" foreign="theme_id" owner="local" cardinality="one"/>
+    </object>
+    <object class="orderTgchatItem" table="ordertgchat_items" extends="xPDOSimpleObject">
+        <field key="chat_id" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="theme_id" dbtype="int" precision="10" phptype="integer" null="false" default=""/>
+
+        <index alias="chat_id" name="chat_id" primary="false" unique="false" type="BTREE">
+            <column key="chat_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="theme_id" name="theme_id" primary="false" unique="false" type="BTREE">
+            <column key="theme_id" length="" collation="A" null="false"/>
+        </index>
+
+    </object>
+
+    <object class="OrdersSheet" table="orders_sheet" extends="xPDOSimpleObject">
+        <field key="created_by" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="urgency" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="location" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="status" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="photo" dbtype="varchar" precision="255" phptype="string" null="true" />
+        <field key="theme" dbtype="varchar" precision="255" phptype="string" null="true" />
+        <field key="description" dbtype="varchar" precision="255" phptype="string" null="true" />
+        <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP" index="index" />
+
+        <index alias="date" name="date" primary="false" unique="false" type="BTREE" >
+            <column key="date" length="" collation="A" null="false" />
+            <column key="created_by" length="" collation="A" null="true" />
+        </index>
+        <index alias="created_by" name="created_by" primary="false" unique="false" type="BTREE">
+            <column key="created_by" length="" collation="A" null="false" />
+        </index>
+        <index alias="location" name="location" primary="false" unique="false" type="BTREE">
+            <column key="location" length="" collation="A" null="false" />
+        </index>
+        <index alias="urgency" name="urgency" primary="false" unique="false" type="BTREE">
+            <column key="urgency" length="" collation="A" null="false" />
+        </index>
+        <index alias="status" name="status" primary="false" unique="false" type="BTREE">
+            <column key="status" length="" collation="A" null="false" />
+        </index>
+        <index alias="theme" name="theme" primary="false" unique="false" type="BTREE">
+            <column key="theme" length="" collation="A" null="false" />
+        </index>
+
+        <aggregate alias="CreatedUser" class="modUser" local="created_by" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Locations" class="LocationItem" local="location" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Urgency" class="orderUrgencyItem" local="urgency" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Status" class="orderStatusItem" local="status" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Theme" class="orderThemeItem" local="theme" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+</model>

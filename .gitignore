@@ -1,0 +1,4 @@
+.idea
+.git
+config.core.php
+_build/node_modules/
