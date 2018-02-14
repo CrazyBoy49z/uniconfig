@@ -5,7 +5,9 @@ return [
         'file' => 'uniconfig',
         'description' => '',
         'events' => [
-            'OnManagerPageInit' => [],
+	        'OnMODXInit' => [],
+	        'OnHandleRequest' => [],
+	        'pdoToolsOnFenomInit' => [],
         ],
     ],
 ];

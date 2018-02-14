@@ -7,5 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    {($assets ~ 'css/web/main.css?v=2') | cssToHead}
+    {('<meta name="csrf-token" content="' ~ $.session['csrf-token'] ~ '">') | htmlToHead}
+    {('<meta name="assets-version" content="' ~ $.assets_version ~ '">') | htmlToHead}
+    {($assets ~ 'css/web/main.css?v=' ~ $.assets_version) | cssToHead}
 </head>

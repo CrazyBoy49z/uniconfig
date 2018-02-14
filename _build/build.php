@@ -254,26 +254,23 @@ class uniConfigPackage
         $attributes = [
             xPDOTransport::UNIQUE_KEY => 'id',
             xPDOTransport::PRESERVE_KEYS => true,
-            xPDOTransport::UPDATE_OBJECT => !empty($this->config['update']['resources']),
+            xPDOTransport::UPDATE_OBJECT => true,
             xPDOTransport::RELATED_OBJECTS => false,
         ];
         $objects = [];
         foreach ($resources as $context => $items) {
-            $menuindex = 0;
-            foreach ($items as $alias => $item) {
-                if (!isset($item['id'])) {
-                    $item['id'] = $this->_idx++;
-                }
-                $item['alias'] = $alias;
-                $item['context_key'] = $context;
-                $item['menuindex'] = $menuindex++;
-                $objects = array_merge(
-                    $objects,
-                    $this->_addResource($item, $alias)
-                );
-            }
+	        $menuindex = 0;
+	        foreach ($items as $alias => $item) {
+		        $item['id'] = $this->_idx++;
+		        $item['alias'] = $alias;
+		        $item['context_key'] = $context;
+		        $item['menuindex'] = $menuindex++;
+		        $objects = array_merge(
+			        $objects,
+			        $this->_addResource($item, $alias)
+		        );
+	        }
         }
-
         /** @var modResource $resource */
         foreach ($objects as $resource) {
             $vehicle = $this->builder->createVehicle($resource, $attributes);
@@ -430,40 +427,39 @@ class uniConfigPackage
     /**
      * Add templates
      */
-    protected function templates()
-    {
-        /** @noinspection PhpIncludeInspection */
-        $templates = include($this->config['elements'] . 'templates.php');
-        if (!is_array($templates)) {
-            $this->modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in Templates');
-
-            return;
-        }
-        $this->category_attributes[xPDOTransport::RELATED_OBJECT_ATTRIBUTES]['Templates'] = [
-            xPDOTransport::UNIQUE_KEY => 'templatename',
-            xPDOTransport::PRESERVE_KEYS => false,
-            xPDOTransport::UPDATE_OBJECT => !empty($this->config['update']['templates']),
-            xPDOTransport::RELATED_OBJECTS => false,
-        ];
-        $objects = [];
-        foreach ($templates as $name => $data) {
-            /** @var modTemplate[] $objects */
-            $objects[$name] = $this->modx->newObject('modTemplate');
-            $objects[$name]->fromArray(array_merge([
-                'templatename' => $name,
-                'description' => $data['description'],
-                'content' => $this::_getContent($this->config['core'] . 'elements/templates/' . $data['file'] . '.tpl'),
-                'static' => !empty($this->config['static']['templates']),
-                'source' => 1,
-                'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/templates/' . $data['file'] . '.tpl',
-            ], $data), '', true, true);
-        }
-        $this->category->addMany($objects);
-        $this->modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($objects) . ' Templates');
-    }
+	protected function templates()
+		{
+			/** @noinspection PhpIncludeInspection */
+			$templates = include($this->config['elements'] . 'templates.php');
+			if (!is_array($templates)) {
+				$this->modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in Templates');
+				return;
+			}
+			$attributes = [
+				xPDOTransport::UNIQUE_KEY => 'templatename',
+				xPDOTransport::PRESERVE_KEYS => false,
+				xPDOTransport::UPDATE_OBJECT => true,
+				xPDOTransport::RELATED_OBJECTS => false,
+			];
+			foreach ($templates as $name => $data) {
+				/** @var modTemplate $template */
+				$template = $this->modx->newObject('modTemplate');
+				$template->fromArray([
+					'templatename' => $name,
+					'description' => $data['description'],
+					'content' => file_exists($this->config['core'] . "elements/templates/{$data['file']}.tpl")
+						? "{include 'file:templates/{$data['file']}.tpl'}"
+						: '',
+				], '', true, true);
+				$vehicle = $this->builder->createVehicle($template, $attributes);
+				$this->builder->putVehicle($vehicle);
+			}
+			$this->modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($templates) . ' Templates');
+		}
 
 
-    /**
+
+	/**
      * @param $filename
      *
      * @return string
@@ -506,7 +502,9 @@ class uniConfigPackage
             'uri_override' => false,
             'richtext' => false,
             'searchable' => true,
-            'content' => $this::_getContent($this->config['core'] . 'elements/resources/' . $file . '.tpl'),
+	        'content' => file_exists($this->config['core'] . "elements/resources/{$file}.tpl")
+		        ? "{include 'file:resources/{$file}.tpl'}"
+		        : '',
         ], $data), '', true, true);
 
         if (!empty($data['groups'])) {
