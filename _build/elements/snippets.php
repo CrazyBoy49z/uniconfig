@@ -35,4 +35,17 @@ return [
             ],
         ],
     ],
+	'homeredirect' => [
+		'file' => 'homeredirect',
+		'description' => 'If the user is authorized, redirects to the personal account'
+	],
+	'initials' => [
+		'file' => 'initials',
+		'proprtties' => [
+			'fullname' => [
+				'type' => 'textfield',
+				'value' => '',
+			],
+		],
+	],
 ];
