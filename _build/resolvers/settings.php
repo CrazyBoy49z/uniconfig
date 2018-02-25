@@ -7,7 +7,7 @@ if ($transport->xpdo) {
 
     $ctx_settings = [
         'site_start' => 'index',
-        'error_page' => '404',
+        'error_page' => '4',
         'service_id' => 'service',
 	      'pdotools_fenom_parser' => 1,
         //'unauthorized_page' => '401',

@@ -39,6 +39,10 @@ return [
 		'file' => 'homeredirect',
 		'description' => 'If the user is authorized, redirects to the personal account'
 	],
+  'login' => [
+    'file' => 'login',
+    'description' => 'Авторизация пользователя',
+    ],
 	'initials' => [
 		'file' => 'initials',
 		'proprtties' => [

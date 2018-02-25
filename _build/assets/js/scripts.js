@@ -24,12 +24,18 @@ $(function(){
 		}
 		}
 		return false;
-		//Дописать запись в куки
-	
 
 		
 	})
-
+		$(document).on('af_complete', function(event, response) {
+				var form = response.form;
+				if (response.success) {
+						// Если у формы определённый id
+						if (form.attr('id') == 'login-form') {
+								location.reload();
+						}
+				}
+		});
 //PJax
 $(document).pjax("a", '.pjax-container', {fragment: '.pjax-container'});
 

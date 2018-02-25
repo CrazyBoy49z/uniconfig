@@ -1,5 +1,5 @@
-{$_modx->runSnippet('!Login',[
-'loginTpl' => 'tpl.login',
-'loginResourceId' => 6
+{$_modx->runSnippet('!AjaxForm',[
+'snippet' => 'login',
+'form' => '@FILE chunks/_login.tpl'
 ])}
 {$_modx->runSnippet('!homeredirect')}

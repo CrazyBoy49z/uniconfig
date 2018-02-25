@@ -261,7 +261,7 @@ class uniConfigPackage
         foreach ($resources as $context => $items) {
 	        $menuindex = 0;
 	        foreach ($items as $alias => $item) {
-		        $item['id'] = $this->_idx++;
+		        //$item['id'] = $item['id'];
 		        $item['alias'] = $alias;
 		        $item['context_key'] = $context;
 		        $item['menuindex'] = $menuindex++;
@@ -436,7 +436,7 @@ class uniConfigPackage
 				return;
 			}
 			$attributes = [
-				xPDOTransport::UNIQUE_KEY => 'templatename',
+				xPDOTransport::UNIQUE_KEY => 'id',
 				xPDOTransport::PRESERVE_KEYS => false,
 				xPDOTransport::UPDATE_OBJECT => true,
 				xPDOTransport::RELATED_OBJECTS => false,
@@ -445,6 +445,7 @@ class uniConfigPackage
 				/** @var modTemplate $template */
 				$template = $this->modx->newObject('modTemplate');
 				$template->fromArray([
+				  'id' => $data['id'],
 					'templatename' => $name,
 					'description' => $data['description'],
 					'content' => file_exists($this->config['core'] . "elements/templates/{$data['file']}.tpl")

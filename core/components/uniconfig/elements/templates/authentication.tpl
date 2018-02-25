@@ -10,7 +10,7 @@
         <!-- Start .panel -->
         <div class="panel-heading">
             <h4 class="panel-title text-center">
-                <a href="/"><img id="logo" src="{$assets ~ 'img/logo-dark.png'}" alt="Унисервис logo"></a>
+                <a href="/"><img id="logo" src="{$assets ~ 'img/logo.png'}" alt="Унисервис logo"></a>
             </h4>
             <h4 class="text-center">{$_modx->resource.pagetitle}</h4>
         </div>
@@ -41,5 +41,6 @@
     </div>
     <!-- End login container -->
 </div>
+{include 'file:chunks/_site_js.tpl'}
 </body>
 </html>

@@ -13,9 +13,13 @@ $packages = [
         'service_url' => 'modstore.pro',
     ],
     'pdoTools' => [
-        'version' => '2.10.0-pl',
+        'version' => '2.11.0-pl',
         'service_url' => 'modstore.pro',
     ],
+    'AjaxForm' => [
+        'version' => '1.1.9-pl',
+        'service_url' => 'modstore.pro'
+    ]
 ];
 
 $downloadPackage = function ($src, $dst) {
