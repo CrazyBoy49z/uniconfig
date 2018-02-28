@@ -31,4 +31,3 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		'email' => 'E-mail адрес указан не верно!'
 	));
 }
-
