@@ -29,4 +29,18 @@ return [
 		'area' => 'pdotools_main',
 		'namespace' => 'pdotools',
 	],
+  'error_page' => [
+    'key' => 'error_page',
+    'xtype' => 'textfield',
+    'value' => '4',
+    'area' => 'site',
+    'namespace' => 'core',
+  ],
+  'unauthorized_page' => [
+    'key' => 'unauthorized_page',
+    'xtype' => 'textfield',
+    'value' => '6',
+    'area' => 'site',
+    'namespace' => 'core',
+  ],
 ];

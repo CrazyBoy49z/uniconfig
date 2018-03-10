@@ -210,7 +210,7 @@ class uniConfigPackage
     /**
      * Add Dashboard Widgets
      */
-    protected function widgets()
+    protected function _widgets()
     {
         /** @noinspection PhpIncludeInspection */
         $widgets = include($this->config['elements'] . 'widgets.php');

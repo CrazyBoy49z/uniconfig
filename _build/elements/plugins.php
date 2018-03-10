@@ -10,4 +10,11 @@ return [
 	        'pdoToolsOnFenomInit' => [],
         ],
     ],
+    'office_registration' => [
+      'file' => 'office_registration',
+      'description' => 'Кастомная проверка при регистрации',
+      'events' => [
+        'OnBeforeUserFormSave' => [],
+      ],
+    ],
 ];

@@ -1,5 +1,5 @@
 <?php
 if ($modx->user->isAuthenticated()) {
-	$url = $modx->makeUrl(7);
+	$url = $modx->makeUrl(8);
 	$modx->sendRedirect($url);
 };

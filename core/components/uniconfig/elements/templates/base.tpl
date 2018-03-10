@@ -16,7 +16,7 @@
          {$_modx->runSnippet('pdoCrumbs',[
           'tplWrapper' => '	@INLINE <ul class="breadcrumb" style="background: none;">{{+output}}</ul>',
           'hideSingle' => 1])}
-            <h1 class="h3">{$pagetitle}</h1>
+            <h1 class="h3">{$_modx->resource.pagetitle}</h1>
             <p>{$_modx->resource.introtext}</p>
             {$_modx->resource.content}
             {if $_modx->hasSessionContext('mgr')}

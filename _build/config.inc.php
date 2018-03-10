@@ -13,7 +13,7 @@ return [
     'install' => true,
     // Which elements should be updated on package upgrade
     'update' => [
-        'chunks' => true,
+        'chunks' => false,
         'menus' => true,
         'plugins' => true,
         'resources' => true,
@@ -21,6 +21,7 @@ return [
         'snippets' => true,
         'templates' => true,
         'widgets' => false,
+      ''
     ],
     // Which elements should be static by default
     'static' => [

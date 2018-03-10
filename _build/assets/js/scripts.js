@@ -31,7 +31,7 @@ $(function(){
 				var form = response.form;
 				if (response.success) {
 						// Если у формы определённый id
-						if (form.attr('id') == 'login-form') {
+						if (form.attr('id') == 'auth') {
 								location.reload();
 						}
 				}
