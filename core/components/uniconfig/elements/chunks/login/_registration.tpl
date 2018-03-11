@@ -8,7 +8,27 @@
           <span class="input-group-addon">
             <i class="fa fa-user-circle"></i>
           </span>
-          <input type="text" name="fullname" id="fullname" class="form-control" value="" placeholder="Ф.И.О.*">
+          <input type="text" name="surname" id="surname" class="form-control" value="" placeholder="Фамилия *">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-12">
+        <div class="input-group input-icon">
+          <span class="input-group-addon">
+            <i class="fa fa-user-circle"></i>
+          </span>
+          <input type="text" name="name" id="name" class="form-control" value="" placeholder="Имя *">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-12">
+        <div class="input-group input-icon">
+          <span class="input-group-addon">
+            <i class="fa fa-user-circle"></i>
+          </span>
+          <input type="text" name="patronymic" id="patronymic" class="form-control" value="" placeholder="Отчество">
         </div>
       </div>
     </div>
@@ -18,7 +38,7 @@
           <span class="input-group-addon">
             <i class="fa fa-phone"></i>
           </span>
-          <input type="text" name="phone" id="phone" class="form-control" value="" placeholder="Телефон">
+          <input type="text" name="phone" id="phone" class="form-control" value="" placeholder="Телефон *">
         </div>
       </div>
     </div>
@@ -49,9 +69,12 @@
       </div>
     </div>
     <div class="form-group mb0">
-      <div class="col-sm-6 col-sm-offset-6 col-xs-4 col-xs-offset-4">
-        <button type="submit" class="btn btn-primary pull-right">{'office_auth_register_btn' | lexicon}</button>
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary">{'office_auth_register_btn' | lexicon}</button>
       </div>
+    </div>
+    <div class="form-group b-link">
+      <a href="{$_modx->makeUrl('6')}">Уже зарегистрированы? Войти тут</a>
     </div>
     {if $error?}
       <div class="alert alert-block alert-danger alert-error">{$error}</div>

@@ -35,32 +35,25 @@ return [
       ],
     ],
   ],
-  'homeredirect' => [
-    'file' => 'homeredirect',
-    'description' => 'If the user is authorized, redirects to the personal account'
-  ],
-  'login' => [
-    'file' => 'login',
-    'description' => 'Авторизация пользователя',
-  ],
-  'registration' => [
-    'file' => 'registration',
-    'description' => 'Регистрация пользователя',
-    'properties' => [
-      'tplActivate' => [
-        'type' => 'textfield',
-        'value' => '@FILE chunks/login/_activateEmail.tpl',
-      ],
-      'activationResourceId' => [
-        'type' => 'textfield',
-        'value' => '',
-      ]
-    ],
-  ],
   'initials' => [
     'file' => 'initials',
+    'description' => 'Инициалы пользователя',
     'properties' => [
       'fullname' => [
+        'type' => 'textfield',
+        'value' => '',
+      ],
+    ],
+  ],
+  'avatar' => [
+    'file' => 'avatar',
+    'description' => 'Аватарка пользователя',
+    'properties' => [
+      'size' => [
+        'type' => 'textfield',
+        'value' => '100',
+      ],
+      'no_pic' => [
         'type' => 'textfield',
         'value' => '',
       ],
