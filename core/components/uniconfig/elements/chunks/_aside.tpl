@@ -1,6 +1,6 @@
 {var $assets = ('assets_url' | config) ~ 'components/uniconfig/'}
 <aside id="sidebar" {$.cookie.sidebar_sm == 'true' ? 'class="sidebar-sm"' : ''}>
-    <a href="{$_modx->makeUrl('1')}" class="navbar-brand">
+    <a href="{$_modx->makeUrl('9')}" class="navbar-brand">
         <img src="{$assets ~ 'img/logo.png'}" class="logo hidden-xs hidden-sm" alt="">
         <img src="{$assets ~ 'img/logosm.png'}" class="logo-sm hidden-md hidden-lg" alt="">
     </a>
@@ -8,8 +8,8 @@
         <h5 class="sidebar-panel-title">Профиль пользователя</h5>
     </div>
     <div class="user-info">
-        <img src=""{$assets ~ 'img/nopic.png'}" alt="" class="img-circle thumb-md">
-        <span class="username">{$_modx->runSnippet('!initials',['fullname' => $_modx->user.fullname])}
+        <img src="{$_modx->runSnippet('!avatar',['no_pic' => 'https://uni.igamov.ru/assets/tpl/img/nopic.png'])}" alt="Аватарка" class="img-circle thumb-md">
+        <span class="username">{$_modx->runSnippet('!initials')}
 			</span>
     </div>
     <div class="sidebar-panel">
@@ -21,8 +21,7 @@
         'parents'          => 0,
         'level'            => 1,
         'outerClass'       => 'nav',
-        'includeTVs'       => 'menu_icon',
-        'tpl'              => '@INLINE <li{{+classes}}><a href="{{+link}}" title="{{+menutitle}}" {{+attributes}}><i class="{{+menu_icon}}"></i> <span>{{+menutitle}}</span></a>{{+wrapper}}</li>'
+        'tpl'              => '@INLINE <li{{+classes}}><a href="{{+link}}" title="{{+pagetitle}}" {{+attributes}}>{{+menutitle}}</a>{{+wrapper}}</li>'
         ])}
     </div>
 </aside>

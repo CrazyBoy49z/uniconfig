@@ -1,5 +1,7 @@
 <?php
-$fullname = $modx->getOption('fullname', $scriptProperties, '');
+/** @var modUserProfile $profile */
+$profile = $modx->user->getOne('Profile');
+$fullname = $profile->get('fullname');
 $arr = explode(" ", $fullname);
 if (count($arr) == 3){
 	for ($i = 1; $i<=2; $i++){

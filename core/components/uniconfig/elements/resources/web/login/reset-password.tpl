@@ -3,8 +3,8 @@
   {$_modx->sendRedirect($url)}
 {/if}
 {$_modx->runSnippet('!officeAuth',[
-  'groups' => 'Users',
-  'HybridAuth' => 0,
-  'tplLogin' => '@FILE chunks/login/_login.tpl',
-  'loginResourceId' => 9,
+'groups' => 'Users',
+'HybridAuth' => 0,
+'tplLogin' => '@FILE chunks/login/_reset-password.tpl',
+'loginResourceId' => 9,
 ])}

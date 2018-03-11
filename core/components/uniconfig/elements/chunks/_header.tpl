@@ -23,19 +23,19 @@
         </li>
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img alt="" src="{$assets ~ 'img/nopic.png'}" class="img-circle thumb-sm">
-                <span class="username">{$_modx->runSnippet('!initials',['fullname' => $_modx->user.fullname])}</span>
+                <img alt="" src="{$_modx->runSnippet('!avatar',['no_pic' => 'https://uni.igamov.ru/assets/tpl/img/nopic.png'])}" class="img-circle thumb-sm">
+                <span class="username">{$_modx->runSnippet('!initials')}</span>
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="{$_modx->makeUrl(6)}"><i class="fa fa-briefcase"></i> Профиль</a>
+                    <a href="{$_modx->makeUrl(9)}"><i class="fa fa-briefcase"></i> Профиль</a>
                 </li>
                 <li>
-                    <a href="{$_modx->makeUrl(9)}"><i class="fa fa-cogs"></i> Настройки</a>
+                    <a href="{$_modx->makeUrl(10)}"><i class="fa fa-cogs"></i> Настройки</a>
                 </li>
                 <li>
-                    <a href="/?service=logout&logoutResourceId=2"><i class="fa fa-sign-out"></i> Выйти</a>
+                    <a href="/?action=auth/logout"><i class="fa fa-sign-out"></i> Выйти</a>
                 </li>
             </ul>
         </li>
