@@ -2,8 +2,8 @@
 
 class uniConfigThemeGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'orderThemeItem';
-    public $classKey = 'orderThemeItem';
+    public $objectType = 'uniOrderTheme';
+    public $classKey = 'uniOrderTheme';
     public $languageTopics = ['uniconfig:default'];
     //public $permission = 'view';
 

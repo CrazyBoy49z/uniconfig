@@ -15,7 +15,7 @@
     <div class="sidebar-panel">
         <h5 class="sidebar-panel-title">Меню</h5>
     </div>
-    <div class="sidebar-nav">
+    <div data-pjax class="sidebar-nav">
         {$_modx->runSnippet('!pdoMenu',[
         'checkPermissions' => 'list',
         'parents'          => 0,

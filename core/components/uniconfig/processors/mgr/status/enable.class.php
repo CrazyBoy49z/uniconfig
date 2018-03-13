@@ -2,8 +2,8 @@
 
 class uniConfigStatusEnableProcessor extends modObjectProcessor
 {
-    public $objectType = 'orderStatusItem';
-    public $classKey = 'orderStatusItem';
+    public $objectType = 'uniOrderStatus';
+    public $classKey = 'uniOrderStatus';
     public $languageTopics = ['uniconfig'];
     //public $permission = 'save';
 

@@ -27,17 +27,9 @@ $(function(){
 
 		
 	})
-		$(document).on('af_complete', function(event, response) {
-				var form = response.form;
-				if (response.success) {
-						// Если у формы определённый id
-						if (form.attr('id') == 'auth') {
-								location.reload();
-						}
-				}
-		});
+
 //PJax
-$(document).pjax("a", '.pjax-container', {fragment: '.pjax-container'});
+$(document).pjax('a[data-pjax],[data-pjax] a', '.pjax-container', {fragment: '.pjax-container'});
 
 $('.pjax-container').on('pjax:beforeReplace', function(){
 	$.pjax({

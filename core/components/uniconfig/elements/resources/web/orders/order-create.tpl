@@ -11,8 +11,8 @@
               <select class="form-control" name="theme" id="theme">
                <option value="" selected disabled hidden>Выберите тему</option>
                 {$_modx->runSnippet('!pdoResources',[
-                  'class' => 'orderThemeItem',
-                  'select' => '{"orderThemeItem":"id,name"}',
+                  'class' => 'uniOrderTheme',
+                  'select' => '{"uniOrderTheme":"id,name"}',
                   'tpl' => '@INLINE <option value="{{+id}}" >{{+name}}</option>',
                   'where' => '{"active": "1"}',
                   'sortby' => 'name',
@@ -34,8 +34,8 @@
               <select id="location" name="location" class="form-control">
                 <option value="" selected disabled hidden>Выберите локацию</option>
                 {$_modx->runSnippet('!pdoResources',[
-                'class' => 'LocationItem',
-                'select' => '{"LocationItem":"id,name"}',
+                'class' => 'uniLocation',
+                'select' => '{"uniLocation":"id,name"}',
                 'tpl' => '@INLINE <option value="{{+id}}" >{{+name}}</option>',
                 'where' => '{"active": "1"}',
                 'sortby' => 'name',

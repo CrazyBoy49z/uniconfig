@@ -3,8 +3,8 @@
 class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
 {
 
-  public $objectType = 'OrdersSheet';
-  public $classKey = 'OrdersSheet';
+  public $objectType = 'uniOrder';
+  public $classKey = 'uniOrder';
 
 
   public function beforeSet()

@@ -56,17 +56,12 @@ class uniConfigHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/uniconfig.js');
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/misc/utils.js');
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/misc/combo.js');
-	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/misc/tgchat.combo.js');
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/locations.grid.js');
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/locations.windows.js');
-		    $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/urgency.grid.js');
-		    $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/urgency.windows.js');
 	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/status.grid.js');
 	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/status.windows.js');
 	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/theme.grid.js');
 	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/theme.windows.js');
-	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/tgchat.grid.js');
-	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/tgchat.windows.js');
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/home.panel.js');
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/sections/home.js');
 

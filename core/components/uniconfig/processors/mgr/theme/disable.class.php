@@ -2,8 +2,8 @@
 
 class uniConfigThemeDisableProcessor extends modObjectProcessor
 {
-    public $objectType = 'orderThemeItem';
-    public $classKey = 'orderThemeItem';
+    public $objectType = 'uniOrderTheme';
+    public $classKey = 'uniOrderTheme';
     public $languageTopics = ['uniconfig'];
     //public $permission = 'save';
 

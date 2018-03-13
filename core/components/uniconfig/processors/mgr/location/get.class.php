@@ -2,8 +2,8 @@
 
 class uniConfigLocationGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'LocationItem';
-    public $classKey = 'LocationItem';
+    public $objectType = 'uniLocation';
+    public $classKey = 'uniLocation';
     public $languageTopics = ['uniconfig:default'];
     //public $permission = 'view';
 

@@ -2,8 +2,8 @@
 
 class uniConfigStatusGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'orderStatusItem';
-    public $classKey = 'orderStatusItem';
+    public $objectType = 'uniOrderStatus';
+    public $classKey = 'uniOrderStatus';
     public $languageTopics = ['uniconfig:default'];
     //public $permission = 'view';
 

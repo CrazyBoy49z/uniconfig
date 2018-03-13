@@ -1,8 +1,8 @@
 <?php
 class uniConfigOrdersUpdateProcessor extends modObjectUpdateProcessor {
 
-	public $objectType = 'OrdersSheet';
-	public $classKey = 'OrdersSheet';
+	public $objectType = 'uniOrder';
+	public $classKey = 'uniOrder';
 
 	public function beforeSet() {
 		if (!$this->modx->user->id) return 'Вам нужно авторизоваться';
