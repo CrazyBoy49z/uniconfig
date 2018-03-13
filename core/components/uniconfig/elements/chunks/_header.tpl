@@ -12,7 +12,7 @@
     <!-- top right nav -->
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <a href="{$_modx->makeUrl(7)}" class="btn new-order hidden-xs">
+            <a href="{$_modx->makeUrl(12)}" class="btn new-order hidden-xs">
                 <i class="fa fa-plus"></i> Новая заявка</a>
         </li>
         <li>

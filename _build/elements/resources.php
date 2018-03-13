@@ -96,7 +96,28 @@ return [
       'menutitle' => '<i class="fa fa-cogs"></i> <span>Настройки</span>',
       'groups' => [
         'Users', 'Dispatchers',
+        ],
       ],
-    ],
+      'orders' => [
+        'id' => 11,
+        'pagetitle' => 'Orders',
+        'template' => 0,
+        'hidemenu' => true,
+        'published' => false,
+        'resources' => [
+          'order-create' => [
+            'id' => 12,
+            'pagetitle' => 'Создание заявки',
+            'longtitle' => 'Создание заявки',
+            'template' => 2,
+            'hidemenu' => false,
+            'uri' => 'order-create',
+            'uri_override' => true,
+            'groups' => [
+              'Users', 'Dispatchers',
+            ],
+          ],
+        ],
+      ],
   ],
 ];
