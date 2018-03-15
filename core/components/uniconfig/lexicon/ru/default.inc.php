@@ -52,24 +52,24 @@ $_lang['uniconfig_status_err_remove'] = 'Ошибка при удалении С
 $_lang['uniconfig_status_err_save'] = 'Ошибка при сохранении Статуса.';
 
 
-$_lang['uniconfig_theme_items'] = 'Темы';
-$_lang['uniconfig_theme_create'] = 'Создать Тему';
-$_lang['uniconfig_theme_update'] = 'Изменить Тему';
-$_lang['uniconfig_theme_enable'] = 'Включить Тему';
-$_lang['uniconfig_themes_enable'] = 'Включить Темы';
-$_lang['uniconfig_theme_disable'] = 'Отключить Тему';
-$_lang['uniconfig_themes_disable'] = 'Отключить Темы';
-$_lang['uniconfig_theme_remove'] = 'Удалить Тему';
-$_lang['uniconfig_themes_remove'] = 'Удалить Темы';
-$_lang['uniconfig_theme_remove_confirm'] = 'Вы уверены, что хотите удалить этот Тему?';
-$_lang['uniconfig_themes_remove_confirm'] = 'Вы уверены, что хотите удалить эти Темы?';
+$_lang['uniconfig_specialization_items'] = 'Специализации';
+$_lang['uniconfig_specialization_create'] = 'Создать Специализацию';
+$_lang['uniconfig_specialization_update'] = 'Изменить Специализацию';
+$_lang['uniconfig_specialization_enable'] = 'Включить Специализацию';
+$_lang['uniconfig_specializations_enable'] = 'Включить Специализации';
+$_lang['uniconfig_specialization_disable'] = 'Отключить Специализацию';
+$_lang['uniconfig_specializations_disable'] = 'Отключить Специализации';
+$_lang['uniconfig_specialization_remove'] = 'Удалить Специализацию';
+$_lang['uniconfig_specializations_remove'] = 'Удалить Специализации';
+$_lang['uniconfig_specialization_remove_confirm'] = 'Вы уверены, что хотите удалить эту Специализацию?';
+$_lang['uniconfig_specializations_remove_confirm'] = 'Вы уверены, что хотите удалить эти Специализации?';
 
-$_lang['uniconfig_theme_err_name'] = 'Вы должны указать имя Темы.';
-$_lang['uniconfig_theme_err_ae'] = 'Тема с таким именем уже существует.';
-$_lang['uniconfig_theme_err_nf'] = 'Тема не найден.';
-$_lang['uniconfig_theme_err_ns'] = 'Тема не указан.';
-$_lang['uniconfig_theme_err_remove'] = 'Ошибка при удалении Темы.';
-$_lang['uniconfig_theme_err_save'] = 'Ошибка при сохранении Темы.';
+$_lang['uniconfig_specialization_err_name'] = 'Вы должны указать имя Специализации.';
+$_lang['uniconfig_specialization_err_ae'] = 'Специализация с таким именем уже существует.';
+$_lang['uniconfig_specialization_err_nf'] = 'Специализация не найдена.';
+$_lang['uniconfig_specialization_err_ns'] = 'Специализация не указана.';
+$_lang['uniconfig_specialization_err_remove'] = 'Ошибка при удалении Специализации.';
+$_lang['uniconfig_specialization_err_save'] = 'Ошибка при сохранении Специализации.';
 
 
 

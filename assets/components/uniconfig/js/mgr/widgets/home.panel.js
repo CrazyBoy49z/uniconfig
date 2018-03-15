@@ -43,13 +43,13 @@ uniConfig.panel.Home = function (config) {
 
                 },
                 {
-                    title: _('uniconfig_theme_items'),
+                    title: _('uniconfig_specialization_items'),
                     layout: 'anchor',
                     items: [{
                         html: _('uniconfig_intro_msg'),
                         cls: 'panel-desc',
                     }, {
-                        xtype: 'uniconfig-grid-themes',
+                        xtype: 'uniconfig-grid-specializations',
                         cls: 'main-wrapper',
                     }]
 

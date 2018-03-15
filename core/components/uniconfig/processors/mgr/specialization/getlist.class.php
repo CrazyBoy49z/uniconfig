@@ -1,9 +1,9 @@
 <?php
 
-class uniConfigThemeGetListProcessor extends modObjectGetListProcessor
+class uniConfigSpecializationGetListProcessor extends modObjectGetListProcessor
 {
-    public $objectType = 'uniOrderTheme';
-    public $classKey = 'uniOrderTheme';
+    public $objectType = 'uniSpecialization';
+    public $classKey = 'uniSpecialization';
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     //public $permission = 'list';
@@ -57,7 +57,7 @@ class uniConfigThemeGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-edit',
-            'title' => $this->modx->lexicon('uniconfig_theme_update'),
+            'title' => $this->modx->lexicon('uniconfig_specialization_update'),
             //'multiple' => $this->modx->lexicon('uniconfig_items_update'),
             'action' => 'updateItem',
             'button' => true,
@@ -68,8 +68,8 @@ class uniConfigThemeGetListProcessor extends modObjectGetListProcessor
             $array['actions'][] = [
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-green',
-                'title' => $this->modx->lexicon('uniconfig_theme_enable'),
-                'multiple' => $this->modx->lexicon('uniconfig_themes_enable'),
+                'title' => $this->modx->lexicon('uniconfig_specialization_enable'),
+                'multiple' => $this->modx->lexicon('uniconfig_specializations_enable'),
                 'action' => 'enableItem',
                 'button' => true,
                 'menu' => true,
@@ -78,8 +78,8 @@ class uniConfigThemeGetListProcessor extends modObjectGetListProcessor
             $array['actions'][] = [
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-gray',
-                'title' => $this->modx->lexicon('uniconfig_theme_disable'),
-                'multiple' => $this->modx->lexicon('uniconfig_themes_disable'),
+                'title' => $this->modx->lexicon('uniconfig_specialization_disable'),
+                'multiple' => $this->modx->lexicon('uniconfig_specializations_disable'),
                 'action' => 'disableItem',
                 'button' => true,
                 'menu' => true,
@@ -90,8 +90,8 @@ class uniConfigThemeGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-trash-o action-red',
-            'title' => $this->modx->lexicon('uniconfig_theme_remove'),
-            'multiple' => $this->modx->lexicon('uniconfig_themes_remove'),
+            'title' => $this->modx->lexicon('uniconfig_specialization_remove'),
+            'multiple' => $this->modx->lexicon('uniconfig_specializations_remove'),
             'action' => 'removeItem',
             'button' => true,
             'menu' => true,
@@ -102,4 +102,4 @@ class uniConfigThemeGetListProcessor extends modObjectGetListProcessor
 
 }
 
-return 'uniConfigThemeGetListProcessor';
+return 'uniConfigSpecializationGetListProcessor';

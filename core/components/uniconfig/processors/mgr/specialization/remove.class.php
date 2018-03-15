@@ -1,11 +1,11 @@
 <?php
 
-class uniConfigThemeDisableProcessor extends modObjectProcessor
+class uniConfigSpecializationRemoveProcessor extends modObjectProcessor
 {
-    public $objectType = 'uniOrderTheme';
-    public $classKey = 'uniOrderTheme';
+    public $objectType = 'uniSpecialization';
+    public $classKey = 'uniSpecialization';
     public $languageTopics = ['uniconfig'];
-    //public $permission = 'save';
+    //public $permission = 'remove';
 
 
     /**
@@ -19,17 +19,16 @@ class uniConfigThemeDisableProcessor extends modObjectProcessor
 
         $ids = $this->modx->fromJSON($this->getProperty('ids'));
         if (empty($ids)) {
-            return $this->failure($this->modx->lexicon('uniconfig_theme_err_ns'));
+            return $this->failure($this->modx->lexicon('uniconfig_specialization_err_ns'));
         }
 
         foreach ($ids as $id) {
             /** @var uniConfigItem $object */
             if (!$object = $this->modx->getObject($this->classKey, $id)) {
-                return $this->failure($this->modx->lexicon('uniconfig_theme_err_nf'));
+                return $this->failure($this->modx->lexicon('uniconfig_specialization_err_nf'));
             }
 
-            $object->set('active', false);
-            $object->save();
+            $object->remove();
         }
 
         return $this->success();
@@ -37,4 +36,4 @@ class uniConfigThemeDisableProcessor extends modObjectProcessor
 
 }
 
-return 'uniConfigThemeDisableProcessor';
+return 'uniConfigSpecializationRemoveProcessor';

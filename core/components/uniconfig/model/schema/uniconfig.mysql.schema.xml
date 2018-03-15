@@ -24,7 +24,7 @@
             <column key="active" length="" collation="A" null="false"/>
         </index>
     </object>
-    <object class="uniOrderTheme" table="uni_order_themes" extends="xPDOSimpleObject">
+    <object class="uniSpecialization" table="uni_specialization" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
 
@@ -35,12 +35,19 @@
             <column key="active" length="" collation="A" null="false"/>
         </index>
     </object>
+    <object class="uniOrderHistory" table="uni_order_history" extends="xPDOSimpleObject">
+        <field key="order_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="message" dbtype="varchar" precision="255" phptype="string" null="true" />
+        <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP" index="index" />
+        <aggregate alias="Order" class="uniOrder" local="order_id" foreign="id" cardinality="one" owner="foreign" />
+    </object>
     <object class="uniOrder" table="uni_orders" extends="xPDOSimpleObject">
         <field key="created_by" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="executor" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
         <field key="location" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
         <field key="status" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
         <field key="photo" dbtype="varchar" precision="255" phptype="string" null="true" />
-        <field key="theme" dbtype="varchar" precision="255" phptype="string" null="true" />
+        <field key="specialization" dbtype="int" precision="10" phptype="unsigned" null="true" />
         <field key="description" dbtype="varchar" precision="255" phptype="string" null="true" />
         <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP" index="index" />
 
@@ -51,6 +58,9 @@
         <index alias="created_by" name="created_by" primary="false" unique="false" type="BTREE">
             <column key="created_by" length="" collation="A" null="false" />
         </index>
+        <index alias="executor" name="executor" primary="false" unique="false" type="BTREE">
+            <column key="executor" length="" collation="A" null="false" />
+        </index>
         <index alias="location" name="location" primary="false" unique="false" type="BTREE">
             <column key="location" length="" collation="A" null="false" />
         </index>
@@ -60,13 +70,15 @@
         <index alias="status" name="status" primary="false" unique="false" type="BTREE">
             <column key="status" length="" collation="A" null="false" />
         </index>
-        <index alias="theme" name="theme" primary="false" unique="false" type="BTREE">
-            <column key="theme" length="" collation="A" null="false" />
+        <index alias="specialization" name="specialization" primary="false" unique="false" type="BTREE">
+            <column key="specialization" length="" collation="A" null="false" />
         </index>
 
         <aggregate alias="CreatedUser" class="modUser" local="created_by" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Executor" class="modUser" local="executor" foreign="id" cardinality="one" owner="foreign" />
         <aggregate alias="Locations" class="uniLocation" local="location" foreign="id" cardinality="one" owner="foreign" />
         <aggregate alias="Status" class="uniOrderStatus" local="status" foreign="id" cardinality="one" owner="foreign" />
-        <aggregate alias="Theme" class="uniOrderTheme" local="theme" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Specialization" class="uniSpecialization" local="specialization" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="History" class="uniOrderHistory" local="id" foreign="order_id" cardinality="many" owner="local"/>
     </object>
 </model>

@@ -1,9 +1,9 @@
 <?php
 
-class uniConfigThemeUpdateProcessor extends modObjectUpdateProcessor
+class uniConfigSpecializationUpdateProcessor extends modObjectUpdateProcessor
 {
-    public $objectType = 'uniOrderTheme';
-    public $classKey = 'uniOrderTheme';
+    public $objectType = 'uniSpecialization';
+    public $classKey = 'uniSpecialization';
     public $languageTopics = ['uniconfig'];
     //public $permission = 'save';
 
@@ -32,17 +32,17 @@ class uniConfigThemeUpdateProcessor extends modObjectUpdateProcessor
         $id = (int)$this->getProperty('id');
         $name = trim($this->getProperty('name'));
         if (empty($id)) {
-            return $this->modx->lexicon('uniconfig_theme_err_ns');
+            return $this->modx->lexicon('uniconfig_specialization_err_ns');
         }
 
         if (empty($name)) {
-            $this->modx->error->addField('name', $this->modx->lexicon('uniconfig_theme_err_name'));
+            $this->modx->error->addField('name', $this->modx->lexicon('uniconfig_specialization_err_name'));
         } elseif ($this->modx->getCount($this->classKey, ['name' => $name, 'id:!=' => $id])) {
-            $this->modx->error->addField('name', $this->modx->lexicon('uniconfig_theme_err_ae'));
+            $this->modx->error->addField('name', $this->modx->lexicon('uniconfig_specialization_err_ae'));
         }
 
         return parent::beforeSet();
     }
 }
 
-return 'uniConfigThemeUpdateProcessor';
+return 'uniConfigSpecializationUpdateProcessor';

@@ -6,13 +6,13 @@
         <input type="hidden" value="order/create" name="action"/>
         <fieldset>
           <div class="form-group">
-            <label class="col-md-3 control-label" for="theme">Тема <span class="required">*</span></label>
+            <label class="col-md-3 control-label" for="specialization">Тема <span class="required">*</span></label>
             <div class="col-md-9">
-              <select class="form-control" name="theme" id="theme">
+              <select class="form-control" name="specialization" id="specialization">
                <option value="" selected disabled hidden>Выберите тему</option>
                 {$_modx->runSnippet('!pdoResources',[
-                  'class' => 'uniOrderTheme',
-                  'select' => '{"uniOrderTheme":"id,name"}',
+                  'class' => 'uniSpecialization',
+                  'select' => '{"uniSpecialization":"id,name"}',
                   'tpl' => '@INLINE <option value="{{+id}}" >{{+name}}</option>',
                   'where' => '{"active": "1"}',
                   'sortby' => 'name',

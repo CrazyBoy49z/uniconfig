@@ -1,14 +1,14 @@
 uniConfig.window.CreateItem = function (config) {
     config = config || {};
     if (!config.id) {
-        config.id = 'uniconfig-theme-window-create';
+        config.id = 'uniconfig-specialization-window-create';
     }
     Ext.applyIf(config, {
-        title: _('uniconfig_theme_create'),
+        title: _('uniconfig_specialization_create'),
         width: 550,
         autoHeight: true,
         url: uniConfig.config.connector_url,
-        action: 'mgr/theme/create',
+        action: 'mgr/specialization/create',
         fields: this.getFields(config),
         keys: [{
             key: Ext.EventObject.ENTER, shift: true, fn: function () {
@@ -41,20 +41,20 @@ Ext.extend(uniConfig.window.CreateItem, MODx.Window, {
     }
 
 });
-Ext.reg('uniconfig-theme-window-create', uniConfig.window.CreateItem);
+Ext.reg('uniconfig-specialization-window-create', uniConfig.window.CreateItem);
 
 
 uniConfig.window.UpdateItem = function (config) {
     config = config || {};
     if (!config.id) {
-        config.id = 'uniconfig-theme-window-update';
+        config.id = 'uniconfig-specialization-window-update';
     }
     Ext.applyIf(config, {
-        title: _('uniconfig_theme_update'),
+        title: _('uniconfig_specialization_update'),
         width: 550,
         autoHeight: true,
         url: uniConfig.config.connector_url,
-        action: 'mgr/theme/update',
+        action: 'mgr/specialization/update',
         fields: this.getFields(config),
         keys: [{
             key: Ext.EventObject.ENTER, shift: true, fn: function () {
@@ -90,4 +90,4 @@ Ext.extend(uniConfig.window.UpdateItem, MODx.Window, {
     }
 
 });
-Ext.reg('uniconfig-theme-window-update', uniConfig.window.UpdateItem);
+Ext.reg('uniconfig-specialization-window-update', uniConfig.window.UpdateItem);

@@ -1,7 +1,7 @@
-uniConfig.grid.Themes = function (config) {
+uniConfig.grid.Specializations = function (config) {
     config = config || {};
     if (!config.id) {
-        config.id = 'uniconfig-grid-theme';
+        config.id = 'uniconfig-grid-specialization';
     }
     Ext.applyIf(config, {
         url: uniConfig.config.connector_url,
@@ -10,12 +10,12 @@ uniConfig.grid.Themes = function (config) {
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
         baseParams: {
-            action: 'mgr/theme/getlist'
+            action: 'mgr/specialization/getlist'
         },
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
                 var row = grid.store.getAt(rowIndex);
-                this.updateTheme(grid, e, row);
+                this.updateSpecialization(grid, e, row);
             }
         },
         viewConfig: {
@@ -34,7 +34,7 @@ uniConfig.grid.Themes = function (config) {
         remoteSort: true,
         autoHeight: true,
     });
-    uniConfig.grid.Themes.superclass.constructor.call(this, config);
+    uniConfig.grid.Specializations.superclass.constructor.call(this, config);
 
     // Clear selection on grid refresh
     this.store.on('load', function () {
@@ -43,7 +43,7 @@ uniConfig.grid.Themes = function (config) {
         }
     }, this);
 };
-Ext.extend(uniConfig.grid.Themes, MODx.grid.Grid, {
+Ext.extend(uniConfig.grid.Specializations, MODx.grid.Grid, {
     windows: {},
 
     getMenu: function (grid, rowIndex) {
@@ -57,7 +57,7 @@ Ext.extend(uniConfig.grid.Themes, MODx.grid.Grid, {
 
     createItem: function (btn, e) {
         var w = MODx.load({
-            xtype: 'uniconfig-theme-window-create',
+            xtype: 'uniconfig-specialization-window-create',
             id: Ext.id(),
             listeners: {
                 success: {
@@ -84,14 +84,14 @@ Ext.extend(uniConfig.grid.Themes, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'mgr/theme/get',
+                action: 'mgr/specialization/get',
                 id: id
             },
             listeners: {
                 success: {
                     fn: function (r) {
                         var w = MODx.load({
-                            xtype: 'uniconfig-theme-window-update',
+                            xtype: 'uniconfig-specialization-window-update',
                             id: Ext.id(),
                             record: r,
                             listeners: {
@@ -118,14 +118,14 @@ Ext.extend(uniConfig.grid.Themes, MODx.grid.Grid, {
         }
         MODx.msg.confirm({
             title: ids.length > 1
-                ? _('uniconfig_themes_remove')
-                : _('uniconfig_theme_remove'),
+                ? _('uniconfig_specializations_remove')
+                : _('uniconfig_specialization_remove'),
             text: ids.length > 1
-                ? _('uniconfig_themees_remove_confirm')
-                : _('uniconfig_theme_remove_confirm'),
+                ? _('uniconfig_specializations_remove_confirm')
+                : _('uniconfig_specialization_remove_confirm'),
             url: this.config.url,
             params: {
-                action: 'mgr/theme/remove',
+                action: 'mgr/specialization/remove',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -147,7 +147,7 @@ Ext.extend(uniConfig.grid.Themes, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'mgr/theme/disable',
+                action: 'mgr/specialization/disable',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -168,7 +168,7 @@ Ext.extend(uniConfig.grid.Themes, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'mgr/theme/enable',
+                action: 'mgr/specialization/enable',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -214,7 +214,7 @@ Ext.extend(uniConfig.grid.Themes, MODx.grid.Grid, {
 
     getTopBar: function () {
         return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('uniconfig_theme_create'),
+            text: '<i class="icon icon-plus"></i>&nbsp;' + _('uniconfig_specialization_create'),
             handler: this.createItem,
             scope: this
         }, '->', {
@@ -279,4 +279,4 @@ Ext.extend(uniConfig.grid.Themes, MODx.grid.Grid, {
         this.getBottomToolbar().changePage(1);
     },
 });
-Ext.reg('uniconfig-grid-themes', uniConfig.grid.Themes);
+Ext.reg('uniconfig-grid-specializations', uniConfig.grid.Specializations);

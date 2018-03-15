@@ -60,8 +60,8 @@ class uniConfigHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/locations.windows.js');
 	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/status.grid.js');
 	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/status.windows.js');
-	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/theme.grid.js');
-	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/theme.windows.js');
+	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/specialization.grid.js');
+	      $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/specialization.windows.js');
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/widgets/home.panel.js');
         $this->addJavascript($this->uniConfig->config['jsUrl'] . 'mgr/sections/home.js');
 

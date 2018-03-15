@@ -1,9 +1,9 @@
 <?php
 
-class uniConfigThemeGetProcessor extends modObjectGetProcessor
+class uniConfigSpecializationGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'uniOrderTheme';
-    public $classKey = 'uniOrderTheme';
+    public $objectType = 'uniSpecialization';
+    public $classKey = 'uniSpecialization';
     public $languageTopics = ['uniconfig:default'];
     //public $permission = 'view';
 
@@ -25,4 +25,4 @@ class uniConfigThemeGetProcessor extends modObjectGetProcessor
 
 }
 
-return 'uniConfigThemeGetProcessor';
+return 'uniConfigSpecializationGetProcessor';

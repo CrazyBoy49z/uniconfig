@@ -16,25 +16,26 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
     if (!$this->modx->user->id) {
       return $out['message']='Вы должны авторизоваться';
     }
-    $theme = trim(htmlspecialchars($this->getProperty('theme')));
+    $specialization = trim(htmlspecialchars($this->getProperty('specialization')));
     $description = trim(htmlspecialchars($this->getProperty('description')));
     $location = trim(htmlspecialchars($this->getProperty('location')));
 
 
-    if(!$theme || !$description || !$location){
+    if(!$specialization || !$description || !$location){
       return $out['message']='Заполните все обязательные поля';
     }
     $this->unsetProperty('action');
     $this->setProperties([
       'created_by' => $this->modx->user->id,
       'status' => 1,
-      'theme' => $theme,
+      'specialization' => $specialization,
       'description' => $description,
       'location' => $location,
     ]);
     return true;
   }
   public function afterSave(){
+
     return $this->success('Заявка успешно создана!');
   }
 }
