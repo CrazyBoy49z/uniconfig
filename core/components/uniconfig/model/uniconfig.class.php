@@ -30,9 +30,9 @@ class uniConfig
             'jsUrl' => $assetsUrl . 'js/',
         ], $config);
 
-       /* $this->modx->addPackage('uniconfig', $this->config['modelPath']);
+        $this->modx->addPackage('uniconfig', $this->config['modelPath']);
         $this->modx->addExtensionPackage('uniconfig', $this->config['modelPath']);
-        $this->modx->lexicon->load('uniconfig:default');*/
+        $this->modx->lexicon->load('uniconfig:default');
     }
 
 	/**

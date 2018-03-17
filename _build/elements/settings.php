@@ -43,4 +43,26 @@ return [
     'area' => 'site',
     'namespace' => 'core',
   ],
+  'uniconfig_assets_path' =>[
+    'key' => 'uniconfig_assets_path',
+    'xtype' => 'textfield',
+    'value' => '{base_path}uniConfig/assets/components/uniconfig/',
+    'area' => 'uni_setting',
+    'namespace' => 'uniconfig',
+  ],
+  'uniconfig_assets_url' => [
+    'key' => 'uniconfig_assets_url',
+    'xtype' => 'textfield',
+    'value' => 'uniConfig/assets/components/uniconfig/',
+    'area' => 'uni_setting',
+    'namespace' => 'uniconfig',
+  ],
+  'uniconfig_core_path' => [
+    'key' => 'uniconfig_core_path',
+    'xtype' => 'textfield',
+    'value' => '{base_path}uniConfig/core/components/uniconfig/',
+    'area' => 'uni_setting',
+    'namespace' => 'uniconfig',
+  ],
+
 ];

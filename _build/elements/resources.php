@@ -9,7 +9,7 @@ return [
       'hidemenu' => false,
       'menutitle' => '<i class="fa fa-tachometer"></i> <span>Главная</span>',
       'groups' => [
-        'Dispatchers',
+        'Dispatchers'
       ],
     ],
     'service' => [

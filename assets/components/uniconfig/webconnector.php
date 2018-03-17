@@ -8,6 +8,7 @@ if (file_exists(dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php
 }
 
 require_once MODX_CORE_PATH.'model/modx/modx.class.php';
+/** @var modX $modx */
 $modx = new modX();
 $modx->initialize('web');
 
@@ -17,11 +18,9 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
 }
 $uniConfig = $modx->getService('uniconfig', 'uniconfig', MODX_CORE_PATH . 'components/uniconfig/model/');
 $modx->lexicon->load('uniConfig:default');
-$corePath = $modx->getOption('uniconfig_core_path', null, $modx->getOption('core_path') . 'components/uniconfig/');
-require_once $corePath . 'model/uniconfig.class.php';
+$corePath = $modx->getOption('uniconfig_core_path', null, MODX_CORE_PATH . 'components/uniconfig/');
 
 
-$modx->getService('error','error.modError', '', '');
 
 $path = $corePath . 'processors/web/';
 
