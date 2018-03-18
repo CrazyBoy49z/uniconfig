@@ -16,20 +16,10 @@ $modx->initialize('web');
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
   $modx->sendRedirect($modx->makeUrl($modx->getOption('site_start'),'','','full'));
 }
+/** @var uniConfig $uniConfig */
 $uniConfig = $modx->getService('uniconfig', 'uniconfig', MODX_CORE_PATH . 'components/uniconfig/model/');
 $modx->lexicon->load('uniConfig:default');
-$corePath = $modx->getOption('uniconfig_core_path', null, MODX_CORE_PATH . 'components/uniconfig/');
 
 
+$response = $uniConfig->runProcessor($_POST('action'),$_POST);
 
-$path = $corePath . 'processors/web/';
-
-/** @var modProcessorResponse $response */
-$response = $modx->runProcessor($_POST['action'], $_POST, [
-  'processors_path' => $path,
-]);
-
-$json = $modx->toJSON($response->response);
-echo $json;
-
-exit();
