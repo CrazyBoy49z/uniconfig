@@ -29,12 +29,57 @@ Ext.extend(uniConfig.window.CreateItem, MODx.Window, {
             anchor: '99%',
             allowBlank: false,
         }, {
-            xtype: 'xcheckbox',
-            boxLabel: _('uniconfig_item_active'),
-            name: 'active',
-            id: config.id + '-active',
-            checked: true,
-        }];
+            xtype: 'checkboxgroup',
+            hideLabel: true,
+            columns: 2,
+            items: [{
+                xtype: 'xcheckbox',
+                boxLabel: _('uniconfig_status_email_customer'),
+                name: 'email_customer',
+                id: config.id + '-email_customer',
+                checked: false,
+            },
+                {
+                    xtype: 'xcheckbox',
+                    boxLabel: _('uniconfig_status_email_dispatcher'),
+                    name: 'email_dispatcher',
+                    id: config.id + '-email_dispatcher',
+                    checked: false,
+                }],
+        },{
+            xtype: 'checkboxgroup',
+            hideLabel: true,
+            columns: 2,
+            items: [{
+                xtype: 'xcheckbox',
+                boxLabel: _('uniconfig_status_email_location_manager'),
+                name: 'email_location_manager',
+                id: config.id + '-email_location_manager',
+                checked: false,
+            },
+                {
+                    xtype: 'xcheckbox',
+                    boxLabel: _('uniconfig_status_email_chief'),
+                    name: 'email_chief',
+                    id: config.id + '-email_chief',
+                    checked: false,
+                }],
+        }, {
+                xtype: 'textarea',
+                fieldLabel: _('uniconfig_status_message'),
+                name: 'message',
+                id: config.id + '-message',
+                anchor: '99%',
+                allowBlank: false,
+            },
+            {
+                xtype: 'xcheckbox',
+                boxLabel: _('uniconfig_item_active'),
+                name: 'active',
+                id: config.id + '-active',
+                checked: true,
+            },
+        ];
     },
 
     loadDropZones: function () {
@@ -68,22 +113,64 @@ Ext.extend(uniConfig.window.UpdateItem, MODx.Window, {
 
     getFields: function (config) {
         return [{
-            xtype: 'hidden',
-            name: 'id',
-            id: config.id + '-id',
-        }, {
             xtype: 'textfield',
             fieldLabel: _('uniconfig_item_name'),
             name: 'name',
             id: config.id + '-name',
             anchor: '99%',
             allowBlank: false,
-        },  {
-            xtype: 'xcheckbox',
-            boxLabel: _('uniconfig_item_active'),
-            name: 'active',
-            id: config.id + '-active',
-        }];
+        }, {
+            xtype: 'checkboxgroup',
+            hideLabel: true,
+            columns: 2,
+            items: [{
+                xtype: 'xcheckbox',
+                boxLabel: _('uniconfig_status_email_customer'),
+                name: 'email_customer',
+                id: config.id + '-email_customer',
+                checked: false,
+            },
+                {
+                    xtype: 'xcheckbox',
+                    boxLabel: _('uniconfig_status_email_dispatcher'),
+                    name: 'email_dispatcher',
+                    id: config.id + '-email_dispatcher',
+                    checked: false,
+                }],
+        },{
+            xtype: 'checkboxgroup',
+            hideLabel: true,
+            columns: 2,
+            items: [{
+                xtype: 'xcheckbox',
+                boxLabel: _('uniconfig_status_email_location_manager'),
+                name: 'email_location_manager',
+                id: config.id + '-email_location_manager',
+                checked: false,
+            },
+                {
+                    xtype: 'xcheckbox',
+                    boxLabel: _('uniconfig_status_email_chief'),
+                    name: 'email_chief',
+                    id: config.id + '-email_chief',
+                    checked: false,
+                }],
+        }, {
+            xtype: 'textarea',
+            fieldLabel: _('uniconfig_status_message'),
+            name: 'message',
+            id: config.id + '-message',
+            anchor: '99%',
+            allowBlank: false,
+        },
+            {
+                xtype: 'xcheckbox',
+                boxLabel: _('uniconfig_item_active'),
+                name: 'active',
+                id: config.id + '-active',
+                checked: true,
+            },
+        ];
     },
 
     loadDropZones: function () {

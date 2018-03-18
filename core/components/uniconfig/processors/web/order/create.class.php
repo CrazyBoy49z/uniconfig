@@ -9,6 +9,7 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
 
   public function beforeSet()
   {
+
     $out = array(
       'success' => false,
       'message' => 'Неизвестная ошибка',

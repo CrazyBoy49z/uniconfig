@@ -33,22 +33,27 @@ $_lang['uniconfig_location_err_save'] = 'Ошибка при сохранени�
 
 $_lang['uniconfig_status_items'] = 'Статусы';
 $_lang['uniconfig_status_create'] = 'Создать статус';
-$_lang['uniconfig_status_update'] = 'Изменить Статус';
-$_lang['uniconfig_status_enable'] = 'Включить Статус';
-$_lang['uniconfig_statuss_enable'] = 'Включить Статусы';
-$_lang['uniconfig_status_disable'] = 'Отключить Статус';
-$_lang['uniconfig_statuss_disable'] = 'Отключить Статусы';
-$_lang['uniconfig_status_remove'] = 'Удалить Статус';
-$_lang['uniconfig_statuss_remove'] = 'Удалить Статусы';
-$_lang['uniconfig_status_remove_confirm'] = 'Вы уверены, что хотите удалить этот Статус?';
-$_lang['uniconfig_statuss_remove_confirm'] = 'Вы уверены, что хотите удалить эти Статусы?';
+$_lang['uniconfig_status_update'] = 'Изменить статус';
+$_lang['uniconfig_status_enable'] = 'Включить статус';
+$_lang['uniconfig_statuss_enable'] = 'Включить статусы';
+$_lang['uniconfig_status_disable'] = 'Отключить статус';
+$_lang['uniconfig_statuss_disable'] = 'Отключить статусы';
+$_lang['uniconfig_status_remove'] = 'Удалить статус';
+$_lang['uniconfig_statuss_remove'] = 'Удалить статусы';
+$_lang['uniconfig_status_remove_confirm'] = 'Вы уверены, что хотите удалить этот статус?';
+$_lang['uniconfig_statuss_remove_confirm'] = 'Вы уверены, что хотите удалить эти статусы?';
+$_lang['uniconfig_status_email_customer'] = 'Email заявителю';
+$_lang['uniconfig_status_email_dispatcher'] = 'Email диспетчеру';
+$_lang['uniconfig_status_email_location_manager'] = 'Email упр. локацией';
+$_lang['uniconfig_status_email_chief'] = 'Email начальнику';
+$_lang['uniconfig_status_message'] = 'Сообщение';
 
-$_lang['uniconfig_status_err_name'] = 'Вы должны указать имя Статуса.';
+$_lang['uniconfig_status_err_name'] = 'Вы должны указать имя статуса.';
 $_lang['uniconfig_status_err_ae'] = 'Статус с таким именем уже существует.';
 $_lang['uniconfig_status_err_nf'] = 'Статус не найден.';
 $_lang['uniconfig_status_err_ns'] = 'Статус не указан.';
-$_lang['uniconfig_status_err_remove'] = 'Ошибка при удалении Статуса.';
-$_lang['uniconfig_status_err_save'] = 'Ошибка при сохранении Статуса.';
+$_lang['uniconfig_status_err_remove'] = 'Ошибка при удалении статуса.';
+$_lang['uniconfig_status_err_save'] = 'Ошибка при сохранении статуса.';
 
 
 $_lang['uniconfig_specialization_items'] = 'Специализации';
