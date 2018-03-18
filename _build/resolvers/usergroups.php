@@ -46,7 +46,7 @@ if ($transport->xpdo) {
         [
           'name' => 'Users',
           'authority' => 9999,
-          'policy' => 3,
+          'policy' => 4,
         ],
       ],
     ],

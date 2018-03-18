@@ -16,14 +16,13 @@ class uniConfig
     function __construct(modX &$modx, array $config = [])
     {
         $this->modx =& $modx;
-        $corePath = MODX_CORE_PATH . 'components/uniconfig/';
+        $corePath =  MODX_CORE_PATH . 'components/uniconfig/';
         $assetsUrl = MODX_ASSETS_URL . 'components/uniconfig/';
 
         $this->config = array_merge([
             'corePath' => $corePath,
             'modelPath' => $corePath . 'model/',
             'processorsPath' => $corePath . 'processors/',
-
             'connectorUrl' => $assetsUrl . 'connector.php',
             'assetsUrl' => $assetsUrl,
             'cssUrl' => $assetsUrl . 'css/',
@@ -61,6 +60,7 @@ class uniConfig
 		$response = $this->modx->runProcessor($action, $data, ['processors_path' => $this->config['processorsPath']]);
 		if ($response) {
 			$data = $response->getResponse();
+			$this->modx->log(1, $data);
 			if (is_string($data)) {
 				$data = json_decode($data, true);
 			}
@@ -121,7 +121,8 @@ class uniConfig
 				}
 				*/
 				break;
-			case 'OnLoadWebDocument':
+			case 'OnWebPageInit':
+			    $this->modx->regClientScript($this->config['jsUrl'] . 'web/default.js');
 				break;
 			case 'OnPageNotFound':
 				break;

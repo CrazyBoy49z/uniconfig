@@ -4,7 +4,7 @@ $(document).ready(function($) {
         var data = form.serialize();
         form.find('input,textarea,select,button').attr('disabled', true);
         $.ajax({
-            url: '/assets/components/uniconfig/webconnector.php',
+            url: '/uniConfig/assets/components/uniconfig/webconnector.php',
             type: 'POST',
             dataType: 'json',
             data: data,
@@ -16,7 +16,10 @@ $(document).ready(function($) {
                 } else {
                     modPNotify.Message.error('',response.message);
                 }
-            }
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText + '|\n' + status + '|\n' +error);
+            },
         })
 
         return false;

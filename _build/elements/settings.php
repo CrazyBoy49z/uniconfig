@@ -18,7 +18,7 @@ return [
 	'pdotools_elements_path' => [
 		'key' => 'pdotools_elements_path',
 		'xtype' => 'textfield',
-		'value' => '{core_path}components/uniconfig/elements/',
+		'value' => '{base_path}uniConfig/core/components/uniconfig/elements/',
 		'area' => 'pdotools_main',
 		'namespace' => 'pdotools',
 	],
