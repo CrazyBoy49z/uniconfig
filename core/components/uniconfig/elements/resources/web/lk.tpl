@@ -6,7 +6,7 @@
     <div class="row">
         <div class="panel panel-default mr10">
             <div class="panel-body">
-                <img src="{$_modx->runSnippet('!avatar',['no_pic' => 'https://uni.igamov.ru/assets/tpl/img/nopic.png'])}" alt="" style="width: 100%; height: 100%;">
+                <img src="{$_modx->runSnippet('@FILE snippets/avatar.php')}" alt="" style="width: 100%; height: 100%;">
             </div>
         </div>
     </div>

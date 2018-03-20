@@ -23,8 +23,8 @@
         </li>
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img alt="" src="{$_modx->runSnippet('!avatar',['no_pic' => 'https://uni.igamov.ru/assets/tpl/img/nopic.png'])}" class="img-circle thumb-sm">
-                <span class="username">{$_modx->runSnippet('!initials')}</span>
+                <img alt="" src="{$_modx->runSnippet('@FILE snippets/avatar.php')}" class="img-circle thumb-sm">
+                <span class="username">{$_modx->runSnippet('@FILE snippets/initials.php')}</span>
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -37,7 +37,7 @@
                 <li>
                     <a data-pjax href="/?action=auth/logout"><i class="fa fa-sign-out"></i> Выйти</a>
                 </li>
-            </uldata-pjax>
+            </ul>
         </li>
     </ul>
     <!-- /top right nav -->

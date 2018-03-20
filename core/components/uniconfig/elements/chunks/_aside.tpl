@@ -8,9 +8,8 @@
         <h5 class="sidebar-panel-title">Профиль пользователя</h5>
     </div>
     <div class="user-info">
-        <img src="{$_modx->runSnippet('!avatar',['no_pic' => 'https://uni.igamov.ru/assets/tpl/img/nopic.png'])}" alt="Аватарка" class="img-circle thumb-md">
-        <span class="username">{$_modx->runSnippet('!initials')}
-			</span>
+        <img src="{$_modx->runSnippet('@FILE snippets/avatar.php')}" alt="Аватарка" class="img-circle thumb-md">
+        <span class="username">{$_modx->runSnippet('@FILE snippets/initials.php')}</span>
     </div>
     <div class="sidebar-panel">
         <h5 class="sidebar-panel-title">Меню</h5>
