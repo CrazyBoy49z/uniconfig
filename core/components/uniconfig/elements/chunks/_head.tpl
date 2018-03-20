@@ -1,6 +1,6 @@
 {var $assets = ('assets_url' | config) ~ 'components/uniconfig/'}
 <head>
-    <title>{$_modx->resource.longtitle}</title>
+    <title>{$_modx->resource.longtitle == '' ? $_modx->resource.pagetitle : $_modx->resource.longtitle}</title>
     <meta charset="UTF-8">
     <base href="{$_modx->config.site_url}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
