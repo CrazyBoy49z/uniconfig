@@ -117,6 +117,18 @@ return [
               'Users', 'Dispatchers',
             ],
           ],
+            'order-window' => [
+                'id' => 13,
+                'pagetitle' => 'Просмотр заявки',
+                'longtitle' => 'Просмотр заявки',
+                'template' => 2,
+                'hidemenu' => false,
+                'uri' => 'order-window',
+                'uri_override' => true,
+                'groups' => [
+                    'Users', 'Dispatchers',
+                ],
+            ]
         ],
       ],
   ],
