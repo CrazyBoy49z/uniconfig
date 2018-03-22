@@ -7,7 +7,7 @@
     <div class="form-group avatar">
       <label class="col-sm-2 control-label">{'office_profile_avatar' | lexicon}</label>
       <div class="col-sm-10">
-        <img src="{$_modx->runSnippet('!avatar',['no_pic' => 'https://uni.igamov.ru/assets/tpl/img/nopic.png'])}" id="profile-user-photo" width="100"/>
+        <img src="{$_modx->runSnippet('@FILE snippets/avatar.php')}" id="profile-user-photo" width="100"/>
         <a href="#" id="office-user-photo-remove"{if !$photo} style="display:none;"{/if}>
           {'office_profile_avatar_remove' | lexicon}
           <i class="glyphicon glyphicon-remove"></i>

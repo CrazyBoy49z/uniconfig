@@ -1,4 +1,4 @@
-<tr onclick="location.href='{$_modx->makeUrl(14)}?order={$id}'" onMouseOver="this.style.cursor='pointer';">
+<tr onclick="location.href='{$_modx->makeUrl(13)}?order={$id}'" onMouseOver="this.style.cursor='pointer';">
     <th scope="row">{$id}</th>
     <td nowrap>{$date | date_format : '%d.%m.%Y'}</td>
     <td nowrap>{$specialization_name}</td>
