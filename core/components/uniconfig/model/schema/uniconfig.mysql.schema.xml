@@ -16,10 +16,10 @@
     <object class="uniOrderStatus" table="uni_order_statuses" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
-        <field key="email_customer" dbtype="tinyint" precision="1" phptype="integer" null="true" default="0"/>
-        <field key="email_dispatcher" dbtype="tinyint" precision="1" phptype="integer" null="true" default="0"/>
-        <field key="email_location_manager" dbtype="tinyint" precision="1" phptype="integer" null="true" default="0"/>
-        <field key="email_chief" dbtype="tinyint" precision="1" phptype="integer" null="true" default="0"/>
+        <field key="email_customer" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="0"/>
+        <field key="email_dispatcher" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="0"/>
+        <field key="email_location_manager" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="0"/>
+        <field key="email_chief" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="0"/>
         <field key="message" dbtype="varchar" precision="255" phptype="string" null="true"/>
 
         <index alias="name" name="name" primary="false" unique="false" type="BTREE">
@@ -43,13 +43,23 @@
         <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP" index="index" />
         <aggregate alias="Order" class="uniOrder" local="order_id" foreign="id" cardinality="one" owner="foreign" />
     </object>
+    <object class="uniExecutor" table="uni_executors" extends="xPDOSimpleObject" >
+        <field key="user" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="location" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="specialization" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+
+        <aggregate alias="Locations" class="uniLocation" local="location" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Specialization" class="uniSpecialization" local="specialization" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="User" class="modUser" local="id" foreign="id" cardinality="one" owner="foreign"/>
+
+    </object>
     <object class="uniOrder" table="uni_orders" extends="xPDOSimpleObject">
         <field key="created_by" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
         <field key="executor" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
         <field key="location" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
         <field key="status" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
         <field key="photo" dbtype="varchar" precision="255" phptype="string" null="true" />
-        <field key="specialization" dbtype="int" precision="10" phptype="unsigned" null="true" />
+        <field key="specialization" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
         <field key="description" dbtype="varchar" precision="255" phptype="string" null="true" />
         <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP" index="index" />
 

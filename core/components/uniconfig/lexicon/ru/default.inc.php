@@ -5,6 +5,9 @@ $_lang['uniconfig'] = 'Настройки Унисервиса';
 $_lang['uniconfig_menu_desc'] = 'Управление сайтом';
 $_lang['uniconfig_intro_msg'] = 'Вы можете выделять сразу несколько предметов при помощи Shift или Ctrl.';
 
+$_lang['uniconfig_order_nf'] = 'Заявка не найдена';
+
+
 $_lang['uniconfig_items'] = 'Предметы';
 $_lang['uniconfig_location_items'] = 'Локации';
 $_lang['uniconfig_item_id'] = 'id';
@@ -49,6 +52,7 @@ $_lang['uniconfig_status_email_chief'] = 'Email начальнику';
 $_lang['uniconfig_status_message'] = 'Сообщение';
 
 $_lang['uniconfig_status_err_name'] = 'Вы должны указать имя статуса.';
+$_lang['uniconfig_status_err_same'] = 'Этот статус уже установлен.';
 $_lang['uniconfig_status_err_ae'] = 'Статус с таким именем уже существует.';
 $_lang['uniconfig_status_err_nf'] = 'Статус не найден.';
 $_lang['uniconfig_status_err_ns'] = 'Статус не указан.';
@@ -75,7 +79,23 @@ $_lang['uniconfig_specialization_err_ns'] = 'Специализация не у�
 $_lang['uniconfig_specialization_err_remove'] = 'Ошибка при удалении Специализации.';
 $_lang['uniconfig_specialization_err_save'] = 'Ошибка при сохранении Специализации.';
 
+$_lang['uniconfig_executor_items'] = 'Исполнители';
+$_lang['uniconfig_executor_create'] = 'Создать исполнителя';
+$_lang['uniconfig_executor_update'] = 'Изменить исполнителя';
+$_lang['uniconfig_executor_remove'] = 'Удалить исполнителя';
+$_lang['uniconfig_executors_remove'] = 'Удалить исполнителей';
+$_lang['uniconfig_executor_remove_confirm'] = 'Вы уверены, что хотите удалить этого исполнителя?';
+$_lang['uniconfig_executors_remove_confirm'] = 'Вы уверены, что хотите удалить этих исполнителей?';
+$_lang['uniconfig_executor_user'] = 'Исполнитель';
+$_lang['uniconfig_executor_location'] = 'Локация';
+$_lang['uniconfig_executor_specialization'] = 'Специализация';
 
+$_lang['uniconfig_executor_err_user'] = 'Вы должны указать исполнителя.';
+$_lang['uniconfig_executor_err_ae'] = 'Исполнитель уже существует.';
+$_lang['uniconfig_executor_err_nf'] = 'Исполнитель не найден.';
+$_lang['uniconfig_executor_err_ns'] = 'Исполнитель не указан.';
+$_lang['uniconfig_executor_err_remove'] = 'Ошибка при удалении исполнителя.';
+$_lang['uniconfig_executor_err_save'] = 'Ошибка при сохранении исполнителя.';
 
 $_lang['uniconfig_grid_search'] = 'Поиск';
 $_lang['uniconfig_grid_actions'] = 'Действия';

@@ -54,6 +54,18 @@ uniConfig.panel.Home = function (config) {
                     }]
 
                 },
+              {
+                title: _('uniconfig_executor_items'),
+                layout: 'anchor',
+                items: [{
+                  html: _('uniconfig_intro_msg'),
+                  cls: 'panel-desc',
+                }, {
+                  xtype: 'uniconfig-grid-executors',
+                  cls: 'main-wrapper',
+                }]
+
+              },
             ]
         }]
     });
