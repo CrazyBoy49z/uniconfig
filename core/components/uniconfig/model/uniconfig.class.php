@@ -159,16 +159,35 @@ class uniConfig
       return $this->modx->lexicon($error);
     }
     $order->set('status', $status_id);
+
     if($order->save()){
+      /** @var modUser $created_by */
+      $created_by = $order->getOne('CreatedUser');
       //Добавить в историю заявки
 
+      if(!$this->modx->newObject('uniOrderHistory', [
+        'order_id' => $order_id,
+        'message' => 'Изменен статус заказа на '.$status->get('name'),
+      ])){
+        $error = 'uniconfig_order_history_err_ns';
+      }
+
+      $subject = 'Заявка #'.$order_id.' была отправлена';
+      if (!$this->sendEmail($created_by->get('email'), $subject, $status->get('message'))){
+        return 'Ошибка при отправки на почту';
+      };
+      if (!empty($error)){
+        return $this->modx->lexicon($error);
+      }
     }
 
   }
+
   /**
    * @param string $email  The owner
    * @param string $subject The subject
    * @param string $body The body letter
+   * @return boolean
    */
   public function sendEmail($email, $subject, $body = ''){
     $email = str_replace(' ', '', $email);
@@ -192,5 +211,6 @@ class uniConfig
       $this->modx->log(modX::LOG_LEVEL_ERROR,'An error occurred while trying to send the email: '.$this->modx->mail->mailer->ErrorInfo);
     }
     $this->modx->mail->reset();
+    return 'true';
   }
 }
