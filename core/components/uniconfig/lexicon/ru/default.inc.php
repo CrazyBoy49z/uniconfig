@@ -7,6 +7,7 @@ $_lang['uniconfig_intro_msg'] = 'Вы можете выделять сразу �
 
 $_lang['uniconfig_order_nf'] = 'Заявка не найдена';
 
+$_lang['uniconfig_order_history_err_ns'] = 'Не удалось добавить запись в историю заявки'
 
 $_lang['uniconfig_items'] = 'Предметы';
 $_lang['uniconfig_location_items'] = 'Локации';
@@ -96,6 +97,28 @@ $_lang['uniconfig_executor_err_nf'] = 'Исполнитель не найден.
 $_lang['uniconfig_executor_err_ns'] = 'Исполнитель не указан.';
 $_lang['uniconfig_executor_err_remove'] = 'Ошибка при удалении исполнителя.';
 $_lang['uniconfig_executor_err_save'] = 'Ошибка при сохранении исполнителя.';
+
+
+
+
+
+$_lang['uniconfig_managerLocation_items'] = 'Управляющие локациями';
+$_lang['uniconfig_managerLocation_create'] = 'Создать управляющего локацией';
+$_lang['uniconfig_managerLocation_update'] = 'Изменить управляющего локацией';
+$_lang['uniconfig_managerLocation_remove'] = 'Удалить управляющего локацией';
+$_lang['uniconfig_managerLocations_remove'] = 'Удалить управляющих локацией';
+$_lang['uniconfig_managerLocation_remove_confirm'] = 'Вы уверены, что хотите удалить этого управляющего локацией?';
+$_lang['uniconfig_managerLocations_remove_confirm'] = 'Вы уверены, что хотите удалить этих исполнителей?';
+$_lang['uniconfig_managerLocation_user'] = 'Управляющий локацией';
+$_lang['uniconfig_managerLocation_location'] = 'Локация';
+$_lang['uniconfig_managerLocation_specialization'] = 'Специализация';
+
+$_lang['uniconfig_managerLocation_err_user'] = 'Вы должны указать Управляющего локацией.';
+$_lang['uniconfig_managerLocation_err_ae'] = 'Управляющий локацией уже существует.';
+$_lang['uniconfig_managerLocation_err_nf'] = 'Управляющий локацией не найден.';
+$_lang['uniconfig_managerLocation_err_ns'] = 'Управляющий локацией не указан.';
+$_lang['uniconfig_managerLocation_err_remove'] = 'Ошибка при удалении Управляющего локацией.';
+$_lang['uniconfig_managerLocation_err_save'] = 'Ошибка при сохранении Управляющего локацией.';
 
 $_lang['uniconfig_grid_search'] = 'Поиск';
 $_lang['uniconfig_grid_actions'] = 'Действия';
