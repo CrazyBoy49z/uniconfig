@@ -3,11 +3,10 @@
 $xpdo_meta_map = array (
   'xPDOSimpleObject' => 
   array (
-    0 => 'LocationItem',
-    1 => 'orderStatusItem',
-    2 => 'orderUrgencyItem',
-    3 => 'orderThemeItem',
-    4 => 'orderTgchatItem',
-    5 => 'OrdersSheet',
+    0 => 'uniLocation',
+    1 => 'uniOrderStatus',
+    2 => 'uniSpecialization',
+    3 => 'uniOrderHistory',
+    4 => 'uniOrder',
   ),
 );

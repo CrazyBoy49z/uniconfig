@@ -2,8 +2,8 @@
 
 class uniConfigLocationGetListProcessor extends modObjectGetListProcessor
 {
-    public $objectType = 'LocationItem';
-    public $classKey = 'LocationItem';
+    public $objectType = 'uniLocation';
+    public $classKey = 'uniLocation';
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     //public $permission = 'list';

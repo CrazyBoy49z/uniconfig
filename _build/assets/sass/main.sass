@@ -5,423 +5,475 @@
 //def
 
 .mt0
-	margin-top: 0
+  margin-top: 0
+
 .mr0
-	margin-right: 0
+  margin-right: 0
+
 .ml0
-	margin-left: 0
+  margin-left: 0
+
 .mb0
-	margin-bottom: 0
+  margin-bottom: 0
+
 .mr10
-	margin-right: 10px
+  margin-right: 10px
+
 .ml10
-	margin-left: 10px
+  margin-left: 10px
+
 a
-	color: #0bacd3
-	text-decoration: none
+  color: #0bacd3
+  text-decoration: none
 
 .required
-	color: red
+  color: red
 
 html, body
-	height: 100%
+  height: 100%
 
 body
-	font-size: 16px
-	min-width: 320px
-	position: relative
-	line-height: 1.75
-	font-family: $default-font
-	overflow-x: hidden
-	opacity: 1
-	color: $default-color
-	background-color: #edf0f0
+  font-size: 16px
+  min-width: 320px
+  position: relative
+  line-height: 1.75
+  font-family: $default-font
+  overflow-x: hidden
+  opacity: 1
+  color: $default-color
+  background-color: #edf0f0
+
 .login-page
-	background: $login-bg
-	.login-container
-		width: 360px
-	.login-panel
-		margin-top: 150px
-		.panel-heading
-			background: #ffffff
-			color: #333333
-			border-bottom: none
-			.panel-title
-				font-weight: normal
-				margin-right: 10px
-				padding: 12px 0
-				min-height: 42px
-	#login-form
-		.input-group
-			width: 100%
-			table-layout: fixed
-			&-addon
-				position: relative
-				padding: 0
-				border: 0 none
-				width: 0
-			.form-control
-				padding:
-					left: 35px
-					right: 12px
-	.help-block
-		margin-bottom: 0
-		font-size: 13px
-		padding-left: 3px
+  background: $login-bg
+  .login-container
+    width: 410px
+    color: #fff
+  .help-block
+    color: #cacaca
+  .login-panel
+    margin-top: 150px
+    background-color: rgba(255, 255, 255, 0.1)
+    margin-bottom: 20px
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05)
+    border-color: rgba(255, 250, 250, 0)
+    border-radius: 8px
+    .panel-heading
+      color: #fff
+      border-bottom: none
+      padding: 25px 15px
+      background: none
+      .panel-title
+        font-weight: normal
+        margin-right: 10px
+        padding: 12px 0
+        min-height: 42px
+  .login-form
+    .input-group
+      width: 100%
+      table-layout: fixed
+      &-addon
+        position: relative
+        padding: 0
+        border: 0 none
+        width: 0
+      .form-control
+        padding:
+          left: 35px
+          right: 12px
+        background: none
+        border: none
+        box-shadow: none
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3)
+        font-weight: 400
+        letter-spacing: 1px
+        color: #fff
+        width: 100%
+    .btn-primary
+      display: block
+      padding: 10px 40px
+      margin: 20px auto
+      border: 0
+      background: #ffffff
+      border-radius: 100px
+      font-size: 16px
+      color: #000
+      &:hover, &:focus
+        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5)
+    .b-link
+      a
+        color: #fff
+        display: block
+        text-align: center
+        opacity: 0.5
+        font-size: 14px
+  .help-block
+    margin-bottom: 0
+    font-size: 13px
+    padding-left: 3px
 
 %transition-sidebar
-	white-space: nowrap
-	pointer-events: auto
-	-webkit-transition: opacity .15s ease-out
-	transition: opacity .15s ease-out
+  white-space: nowrap
+  pointer-events: auto
+  -webkit-transition: opacity .15s ease-out
+  transition: opacity .15s ease-out
 
 #sidebar
-	width: 230px
-	position: fixed
-	height: auto
-	left: 0
-	bottom: 0
-	top: 0
-	z-index: 10
-	overflow-y: auto
-	background-color: $aside-bg
-	-webkit-transition: width .15s ease-out
-	transition: width .15s ease-out
-	&.sidebar-sm
-		width: 60px
-		.navbar-brand
-			width: 60px
-		.logo
-			display: none
-		.logo-sm
-			display: block !important
-			margin-top: 5px
-		.sidebar-panel, .user-info, .sidebar-nav .nav li a span
-			opacity: 0
-			pointer-events: none
-	&.sidebar-show
-		width: 230px
-		.navbar-brand
-			width: 230px
-		.logo
-			display: block !important
-		.logo-sm
-			display: none !important
-		.sidebar-panel, .user-info, .sidebar-nav .nav li a span
-			opacity: 1
-		&:after
-			width: 230px
-		//transition: width .5s cubic-bezier(.55, 0, .1, 1)
-	.user-info
-		margin: 10px 0
-		@extend %transition-sidebar
-		.username
-			color: #ffffff
-			width: 100px
-			font-weight: normal
-			padding: 5px 0
-			font-size: 14px
-			margin-left: 3px
-	.sidebar-panel
-		margin: 0
-		width: 100%
-		height: auto
-		display: inline-block
-		@extend %transition-sidebar
-		&-title
-			padding: 8px 15px 8px 17px
-			margin: 0
-			background-color: #455264
-			color: #ffffff
-			border-top: 1px solid #2e3743
-			border-bottom: 1px solid #2e3743
-	.sidebar-nav
-		width: 100%
-		float: left
-		.nav
-			li
-				a
-					padding: 10px 20px 9px
-					color: #8b929a
-					display: inline-block
-					width: 100%
-					position: relative
-					line-height: 20px
-					letter-spacing: 0.3px
-					transition: background
-					transition-duration: 0.4s
-					font-size: 14px
-					margin-bottom: -8px
-					span
-						position: absolute
-						@extend %transition-sidebar
-						
-					i
-						font-size: 20px
-						margin-right: 15px
-						color: #8b929a
-						float: left
-						transition: color
-						transition-duration: 0.4s
-					&:hover, &:focus
-						background-color: #1c2128
-						color: #ffffff
-						i
-							color: #ffffff
-				&.active
-					a
-						background-color: #1c2128
-						color: #ffffff
-						i
-							color: #ffffff
+  width: 230px
+  position: fixed
+  height: auto
+  left: 0
+  bottom: 0
+  top: 0
+  z-index: 10
+  overflow-y: auto
+  background-color: $aside-bg
+  -webkit-transition: width .15s ease-out
+  transition: width .15s ease-out
+  &.sidebar-sm
+    width: 60px
+    .navbar-brand
+      width: 60px
+    .logo
+      display: none
+    .logo-sm
+      display: block !important
+      margin-top: 5px
+    .sidebar-panel, .user-info, .sidebar-nav .nav li a span
+      opacity: 0
+      pointer-events: none
+  &.sidebar-show
+    width: 230px
+    .navbar-brand
+      width: 230px
+    .logo
+      display: block !important
+    .logo-sm
+      display: none !important
+    .sidebar-panel, .user-info, .sidebar-nav .nav li a span
+      opacity: 1
+    &:after
+      width: 230px
+  //transition: width .5s cubic-bezier(.55, 0, .1, 1)
+  .user-info
+    margin: 10px 0
+    @extend %transition-sidebar
+    .username
+      color: #ffffff
+      width: 100px
+      font-weight: normal
+      padding: 5px 0
+      font-size: 14px
+      margin-left: 3px
+  .sidebar-panel
+    margin: 0
+    width: 100%
+    height: auto
+    display: inline-block
+    @extend %transition-sidebar
+    &-title
+      padding: 8px 15px 8px 17px
+      margin: 0
+      background-color: #455264
+      color: #ffffff
+      border-top: 1px solid #2e3743
+      border-bottom: 1px solid #2e3743
+  .sidebar-nav
+    width: 100%
+    float: left
+    .nav
+      li
+        a
+          padding: 10px 20px 9px
+          color: #8b929a
+          display: inline-block
+          width: 100%
+          position: relative
+          line-height: 20px
+          letter-spacing: 0.3px
+          transition: background
+          transition-duration: 0.4s
+          font-size: 14px
+          margin-bottom: -8px
+          span
+            position: absolute
+            @extend %transition-sidebar
+
+          i
+            font-size: 20px
+            margin-right: 15px
+            color: #8b929a
+            float: left
+            transition: color
+            transition-duration: 0.4s
+          &:hover, &:focus
+            background-color: #1c2128
+            color: #ffffff
+            i
+              color: #ffffff
+        &.active
+          a
+            background-color: #1c2128
+            color: #ffffff
+            i
+              color: #ffffff
 
 #content
-	margin-left: 230px
-	position: relative
-	z-index: 5
-	//transition: margin .5s cubic-bezier(.55, 0, .1, 1)
-	&.content-sm
-		margin-left: 60px
+  margin-left: 230px
+  position: relative
+  z-index: 5
+  //transition: margin .5s cubic-bezier(.55, 0, .1, 1)
+  &.content-sm
+    margin-left: 60px
+
 #header
-	width: 100%
-	float: left
-	position: absolute
-	left: 0
-	top: 0
-	z-index: 10
-	background-color: #ffffff
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05)
-	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05)
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05)
-	border-bottom: 1px solid #ececee
-	height: 50px
-	.fixed
-		position: fixed
-	.nav
-		padding-left: 0
-		list-style: none
-		.caret
-			display: inline-block
-			width: 0
-			height: 0
-			margin-left: 2px
-			vertical-align: middle
-			border-top: 4px dashed
-			border-top: 4px solid\9
-			border-right: 4px solid transparent
-			border-left: 4px solid transparent
+  width: 100%
+  float: left
+  position: absolute
+  left: 0
+  top: 0
+  z-index: 10
+  background-color: #ffffff
+  -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,.1)
+  -moz-box-shadow: 0 0 15px 0 rgba(0,0,0,.1)
+  box-shadow: 0 0 15px 0 rgba(0,0,0,.1)
+  border-bottom: 1px solid #ececee
+  height: 50px
+  .fixed
+    position: fixed
+  .nav
+    padding-left: 0
+    list-style: none
+    .caret
+      display: inline-block
+      width: 0
+      height: 0
+      margin-left: 2px
+      vertical-align: middle
+      border-top: 4px dashed
+      border-top: 4px solid
+      \9
+      border-right: 4px solid transparent
+      border-left: 4px solid transparent
+
 .navbar
-	&-right
-		float: right !important
-	&-brand
-		width: 230px
-		padding: 1px 15px
-		line-height: 20px
-		height: 50px
-		display: block
-	&-nav
-		float: left
-		margin: 0
-		li
-			display: inline-block
-			float: left
-			a
-				color: #b3b3be
-				padding: 8px 20px
-				transition: all
-				transition-duration: 0.4s
-				position: relative
-				height: 50px
-				&:hover
-					background-color: #edf1f2
-				i
-					font-size: 20px
-					padding-top: 5px
-				.badge
-					padding: 2px 5px
-					position: absolute
-					top: 6px
-					right: 13px
-				.username
-					font-size: 14px
-					vertical-align: middle
-					margin-left: 3px
-				&.new-order
-					color: #fff !important
-					background: #00cc33
-					height: 30px !important
-					display: block
-					padding: 4px 15px !important
-					margin-top: 7px
-					border-radius: 20px
-					margin-right: 10px
-					i
-						font-size: 14px
-						padding-top: 0
-					&:hover
-						background: #01b32d
-		.dropdown-menu
-			padding: 0
-			-webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.1)
-			box-shadow: 0 2px 6px rgba(0,0,0,0.1)
-			border: none
-			max-height: 330px
-			li
-				border-bottom: 1px solid #f0f0f0
-				line-height: 20px
-				width: 100%
-				a
-					font-size: 14px
-					text-align: left
-					padding: 10px 20px
-					height: auto
-					&:hover, &:focus
-						background: #edf1f2!important
-						color: #141719
-						text-decoration: none
-						outline: none
-					i
-						float: left
-						margin-right: 10px
-						text-align: center
-						margin-top: 3px
-						font-size: 16px
+  &-right
+    float: right !important
+  &-brand
+    width: 230px
+    padding: 1px 15px
+    line-height: 20px
+    height: 50px
+    display: block
+  &-nav
+    float: left
+    margin: 0
+    li
+      display: inline-block
+      float: left
+      a
+        color: #b3b3be
+        padding: 8px 20px
+        transition: all
+        transition-duration: 0.4s
+        position: relative
+        height: 50px
+        &:hover
+          background-color: #edf1f2
+        i
+          font-size: 20px
+          padding-top: 5px
+        .badge
+          padding: 2px 5px
+          position: absolute
+          top: 6px
+          right: 13px
+        .username
+          font-size: 14px
+          vertical-align: middle
+          margin-left: 3px
+        &.new-order
+          color: #fff !important
+          background: #00cc33
+          height: 30px !important
+          display: block
+          padding: 4px 15px !important
+          margin-top: 7px
+          border-radius: 20px
+          margin-right: 10px
+          i
+            font-size: 14px
+            padding-top: 0
+          &:hover
+            background: #01b32d
+    .dropdown-menu
+      padding: 0
+      -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1)
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1)
+      border: none
+      max-height: 330px
+      li
+        border-bottom: 1px solid #f0f0f0
+        line-height: 20px
+        width: 100%
+        a
+          font-size: 14px
+          text-align: left
+          padding: 10px 20px
+          height: auto
+          &:hover, &:focus
+            background: #edf1f2 !important
+            color: #141719
+            text-decoration: none
+            outline: none
+          i
+            float: left
+            margin-right: 10px
+            text-align: center
+            font-size: 16px
+
 .thumb-sm
-	height: 32px
-	width: 32px
+  height: 32px
+  width: 32px
+
 .thumb-md
-	width: 50px
-	height: 50px
+  width: 50px
+  height: 50px
+
 .badge
-	display: inline-block
-	min-width: 10px
-	padding: 3px 6px
-	font-size: 11px !important
-	font-weight: normal
-	color: #ffffff
-	line-height: 1
-	vertical-align: baseline
-	white-space: nowrap
-	text-align: center
-	background-color: #777777
-	border-color: #777777
-	border-radius: 12px
-	&-danger
-		background-color: #db5565
-	&-pink
-		background-color: rgba(241, 60, 110, 0.8)
+  display: inline-block
+  min-width: 10px
+  padding: 3px 6px
+  font-size: 11px !important
+  font-weight: normal
+  color: #ffffff
+  line-height: 1
+  vertical-align: baseline
+  white-space: nowrap
+  text-align: center
+  background-color: #777777
+  border-color: #777777
+  border-radius: 12px
+  &-danger
+    background-color: #db5565
+  &-pink
+    background-color: rgba(241, 60, 110, 0.8)
 
 #wrapper
-	padding-top: 50px
-	position: relative
-	.panel
-		&-heading
-			background: #FFFFFF
-			border-color: #DDDDDD
-			color: #797979
-			padding: 20px 15px
-		&-title
-			font-size: 18px
-.table>tbody>tr>td,.table>tbody>tr>th
-	vertical-align: middle
+  padding-top: 50px
+  position: relative
+  .panel
+    -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,.1)
+    -moz-box-shadow: 0 0 15px 0 rgba(0,0,0,.1)
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.1)
+    border: none
+    &-heading
+      background: #FFFFFF
+      border-color: #DDDDDD
+      color: #797979
+      padding: 20px 15px
+    &-title
+      font-size: 18px
 
-
+.table > tbody > tr > td, .table > tbody > tr > th
+  vertical-align: middle
 
 .form-horizontal .form-group .input-icon .input-group-addon i, .form-inline .form-group .input-icon .input-group-addon i, .form-horizontal .form-group .input-serach .input-group-addon i, .form-inline .form-group .input-serach .input-group-addon i
-	position: absolute
-	top: 0
-	left: 0
-	bottom: 0
-	border: 0
-	z-index: 5
-	width: auto
-	display: inline-block
-	vertical-align: middle
-	text-align: center
-	padding: 6px 12px
-	background: transparent
-	line-height: 1.42857143
-	box-sizing: content-box
-	pointer-events: none
-	color: #cacaca
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  border: 0
+  z-index: 5
+  width: auto
+  display: inline-block
+  vertical-align: middle
+  text-align: center
+  padding: 6px 12px
+  background: transparent
+  line-height: 1.42857143
+  box-sizing: content-box
+  pointer-events: none
+  color: #cacaca
 
 /* Custom skin */
 .checkbox-custom
-	position: relative
-	margin-top: 8px
-	label
-		font-size: 13px
-		cursor: pointer
-		text-align: left
-		font-weight: normal
-		padding-left: 30px
-		-webkit-user-select: none
-		-moz-user-select: none
-		-ms-user-select: none
-		user-select: none
-	input[type=checkbox], input[type=radio]
-		opacity: 0
-		position: absolute
-		top: 50%
-		left: 3px
-		margin: -6px 0 0 0
-		z-index: 2
-		cursor: pointer
-	input[type=checkbox]:checked, input[type=radio]:checked,input[type=checkbox]:focus, input[type=radio]:focus
-		outline: none !important
-	input[type=checkbox] + label:before, input[type=radio] + label:before
-		cursor: pointer
-		transition: all
-		transition-duration: 0.4s
-		content: ''
-		position: absolute
-		top: 50%
-		left: 0
-		margin-top: -10px
-		width: 19px
-		height: 18px
-		display: inline-block
-		background-color: #ffffff
-		border: 1px solid #cacaca
-		border-radius: 3px
-		color: #333333
-	input[type=checkbox]:checked + label:after, input[type=radio]:checked + label:after
-		font-family: fontAwesome
-		display: inline-block
-		content: '\f00c'
-		position: absolute
-		top: 50%
-		left: 4px
-		margin-top: -6px
-		font-size: 11px
-		line-height: 1
-		width: 16px
-		height: 16px
-		color: #333333
-	input[type=checkbox]:hover + label:before, input[type=radio]:hover + label:before
-		border-color: #b0b0b0
-	input[type=checkbox]:disabled + label:before, input[type=radio]:disabled + label:before
-		background-color: #eeeeee !important
-		border-color: #e2e2e2 !important
-		box-shadow: none !important
-		color: #c8c8c8
-	&.checkbox-inline
-		padding-top: 0
-		margin-top: 8px
+  position: relative
+  margin-top: 8px
+  label
+    font-size: 13px
+    cursor: pointer
+    text-align: left
+    font-weight: normal
+    padding-left: 30px
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+  input[type=checkbox], input[type=radio]
+    opacity: 0
+    position: absolute
+    top: 50%
+    left: 3px
+    margin: -6px 0 0 0
+    z-index: 2
+    cursor: pointer
+  input[type=checkbox]:checked, input[type=radio]:checked, input[type=checkbox]:focus, input[type=radio]:focus
+    outline: none !important
+  input[type=checkbox] + label:before, input[type=radio] + label:before
+    cursor: pointer
+    transition: all
+    transition-duration: 0.4s
+    content: ''
+    position: absolute
+    top: 50%
+    left: 0
+    margin-top: -10px
+    width: 19px
+    height: 18px
+    display: inline-block
+    background-color: #ffffff
+    border: 1px solid #cacaca
+    border-radius: 3px
+    color: #333333
+  input[type=checkbox]:checked + label:after, input[type=radio]:checked + label:after
+    font-family: fontAwesome
+    display: inline-block
+    content: '\f00c'
+    position: absolute
+    top: 50%
+    left: 4px
+    margin-top: -6px
+    font-size: 11px
+    line-height: 1
+    width: 16px
+    height: 16px
+    color: #333333
+  input[type=checkbox]:hover + label:before, input[type=radio]:hover + label:before
+    border-color: #b0b0b0
+  input[type=checkbox]:disabled + label:before, input[type=radio]:disabled + label:before
+    background-color: #eeeeee !important
+    border-color: #e2e2e2 !important
+    box-shadow: none !important
+    color: #c8c8c8
+  &.checkbox-inline
+    padding-top: 0
+    margin-top: 8px
+
 .btn-default
-		color: #333333
-		background: #e8e8e8
-		border-color: #e8e8e8
-		&:hover, &:focus
-			background: #dbdbdb
-			border-color: #e8e8e8
+  color: #333333
+  background: #e8e8e8
+  border-color: #e8e8e8
+  &:hover, &:focus
+    background: #dbdbdb
+    border-color: #e8e8e8
 
 .btn-primary
-	color: #ffffff
-	background: #0bacd3
-	border-color: #0bacd3
-	&:hover, &:focus
-		color: #ffffff
-		background: #0884a3
-		border-color: #087d99
-@import "media" // Всегда в конце
+  color: #ffffff
+  background: #0bacd3
+  border-color: #0bacd3
+  &:hover, &:focus
+    color: #ffffff
+    background: #0884a3
+    border-color: #087d99
+@import "media"
+// Всегда в конце

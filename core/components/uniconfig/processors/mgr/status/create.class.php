@@ -2,8 +2,8 @@
 
 class uniConfigStatusCreateProcessor extends modObjectCreateProcessor
 {
-    public $objectType = 'orderStatusItem';
-    public $classKey = 'orderStatusItem';
+    public $objectType = 'uniOrderStatus';
+    public $classKey = 'uniOrderStatus';
     public $languageTopics = ['uniconfig'];
     //public $permission = 'create';
 

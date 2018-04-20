@@ -2,8 +2,8 @@
 
 class uniConfigStatusGetListProcessor extends modObjectGetListProcessor
 {
-    public $objectType = 'orderStatusItem';
-    public $classKey = 'orderStatusItem';
+    public $objectType = 'uniOrderStatus';
+    public $classKey = 'uniOrderStatus';
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     //public $permission = 'list';
