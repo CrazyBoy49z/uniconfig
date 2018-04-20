@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
-      {include 'file:chunks/_head.tpl'}
-  </head>
+    {include 'file:chunks/_head.tpl'}
   <body>
   {block 'aside'}
     {include 'file:chunks/_aside.tpl'}

@@ -31,18 +31,6 @@ uniConfig.panel.Home = function (config) {
                 }]
             },
                 {
-                    title: _('uniconfig_urgency_items'),
-                    layout: 'anchor',
-                    items: [{
-                        html: _('uniconfig_intro_msg'),
-                        cls: 'panel-desc',
-                    }, {
-                        xtype: 'uniconfig-grid-urgencies',
-                        cls: 'main-wrapper',
-                    }]
-
-                },
-                {
                     title: _('uniconfig_status_items'),
                     layout: 'anchor',
                     items: [{
@@ -55,29 +43,30 @@ uniConfig.panel.Home = function (config) {
 
                 },
                 {
-                    title: _('uniconfig_theme_items'),
+                    title: _('uniconfig_specialization_items'),
                     layout: 'anchor',
                     items: [{
                         html: _('uniconfig_intro_msg'),
                         cls: 'panel-desc',
                     }, {
-                        xtype: 'uniconfig-grid-themes',
+                        xtype: 'uniconfig-grid-specializations',
                         cls: 'main-wrapper',
                     }]
 
                 },
-                {
-                    title: _('uniconfig_tgchat_items'),
-                    layout: 'anchor',
-                    items: [{
-                        html: _('uniconfig_intro_msg'),
-                        cls: 'panel-desc',
-                    }, {
-                        xtype: 'uniconfig-grid-tgchats',
-                        cls: 'main-wrapper',
-                    }]
-
+              {
+                title: _('uniconfig_executor_items'),
+                layout: 'anchor',
+                items: [{
+                  html: _('uniconfig_intro_msg'),
+                  cls: 'panel-desc',
+                }, {
+                  xtype: 'uniconfig-grid-executors',
+                  cls: 'main-wrapper',
                 }]
+
+              },
+            ]
         }]
     });
     uniConfig.panel.Home.superclass.constructor.call(this, config);

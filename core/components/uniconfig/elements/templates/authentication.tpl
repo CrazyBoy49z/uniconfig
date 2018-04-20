@@ -4,6 +4,7 @@
 <html lang="en">
 {include 'file:chunks/_head.tpl'}
 <body class="login-page">
+{block 'container'}
 <!-- Start login container -->
 <div class="container login-container">
     <div class="login-panel panel panel-default plain">
@@ -26,6 +27,7 @@
     </div>
     <!-- End login container -->
 </div>
+{/block}
 {include 'file:chunks/_site_js.tpl'}
 </body>
 </html>

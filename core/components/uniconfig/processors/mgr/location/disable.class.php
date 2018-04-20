@@ -2,8 +2,8 @@
 
 class uniConfigLocationDisableProcessor extends modObjectProcessor
 {
-    public $objectType = 'LocationItem';
-    public $classKey = 'LocationItem';
+    public $objectType = 'uniLocation';
+    public $classKey = 'uniLocation';
     public $languageTopics = ['uniconfig'];
     //public $permission = 'save';
 

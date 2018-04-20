@@ -19,7 +19,12 @@ $packages = [
     'AjaxForm' => [
         'version' => '1.1.9-pl',
         'service_url' => 'modstore.pro'
-    ]
+    ],
+    'msPNnotify' => [
+        'version' => '1.1.1-beta',
+        'service_url' => 'modstore.pro',
+    ],
+
 ];
 
 $downloadPackage = function ($src, $dst) {

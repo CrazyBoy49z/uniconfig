@@ -12,7 +12,7 @@
     <!-- top right nav -->
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <a href="{$_modx->makeUrl(7)}" class="btn new-order hidden-xs">
+            <a href="{$_modx->makeUrl(12)}" class="btn new-order hidden-xs">
                 <i class="fa fa-plus"></i> Новая заявка</a>
         </li>
         <li>
@@ -23,19 +23,19 @@
         </li>
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img alt="" src="{$_modx->runSnippet('!avatar',['no_pic' => 'https://uni.igamov.ru/assets/tpl/img/nopic.png'])}" class="img-circle thumb-sm">
-                <span class="username">{$_modx->runSnippet('!initials')}</span>
+                <img alt="" src="{$_modx->runSnippet('@FILE snippets/avatar.php')}" class="img-circle thumb-sm">
+                <span class="username">{$_modx->runSnippet('@FILE snippets/initials.php')}</span>
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="{$_modx->makeUrl(9)}"><i class="fa fa-briefcase"></i> Профиль</a>
+                    <a data-pjax href="{$_modx->makeUrl(9)}"><i class="fa fa-briefcase"></i> Профиль</a>
                 </li>
                 <li>
-                    <a href="{$_modx->makeUrl(10)}"><i class="fa fa-cogs"></i> Настройки</a>
+                    <a data-pjax href="{$_modx->makeUrl(10)}"><i class="fa fa-cogs"></i> Настройки</a>
                 </li>
                 <li>
-                    <a href="/?action=auth/logout"><i class="fa fa-sign-out"></i> Выйти</a>
+                    <a data-pjax href="/?action=auth/logout"><i class="fa fa-sign-out"></i> Выйти</a>
                 </li>
             </ul>
         </li>
