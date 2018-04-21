@@ -29,8 +29,10 @@
                             <td>{$specialization->name}</td>
                         </tr>
                         <tr>
-                            <td>Описание</td>
-                            <td>{$description}</td>
+                            <td colspan="2">
+                                <p>Описание</p>
+                                <p>{$description}</p>
+                            </td>
                         </tr>
                         <tr>
                             <td>Локация</td>

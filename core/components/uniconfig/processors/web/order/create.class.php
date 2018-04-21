@@ -5,7 +5,17 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
 
   public $objectType = 'uniOrder';
   public $classKey = 'uniOrder';
+  /** @var  uniConfig $uniConfig */
+  protected $uniConfig;
 
+  public function initialize()
+  {
+    $this->uniConfig = $this->modx->getService('uniConfig');
+    if (!$this->modx->hasPermission($this->permission)) {
+      return $this->modx->lexicon('access_denied');
+    }
+    return parent::initialize();
+  }
 
   public function beforeSet()
   {
@@ -28,7 +38,7 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
     $this->unsetProperty('action');
     $this->setProperties([
       'created_by' => $this->modx->user->id,
-      'status' => 1,
+      'status' => '',
       'specialization' => $specialization,
       'description' => $description,
       'location' => $location,
@@ -36,7 +46,10 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
     return true;
   }
   public function afterSave(){
-
+    $change_status = $this->uniConfig->changeOrderStatus($this->object->get('id'), 1);
+    if (!$change_status) {
+      return $this->failure('Не удалось изменить статус заказа');
+    }
     return $this->success('Заявка успешно создана!');
   }
 }

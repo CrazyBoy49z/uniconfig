@@ -150,7 +150,7 @@ Ext.extend(uniConfig.grid.ManagerLocation, MODx.grid.Grid, {
         dataIndex: 'user',
         sortable: true,
         width: 200,
-        editor: {xtype: 'uniconfig-combo-user', renderer: true}
+        editor: {xtype: 'uniconfig-combo-manager-location', renderer: true}
       },
       {
         header: _('uniconfig_managerLocation_location'),

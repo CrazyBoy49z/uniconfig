@@ -1,4 +1,4 @@
-<?php
++<?php
 
 /** @var uniOrder $order */
 if ($_GET['order'] && $order = $modx->getObject('uniOrder', $_GET['order'])) {

@@ -42,6 +42,7 @@
     <field key="message" dbtype="varchar" precision="255" phptype="string" null="true"/>
     <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP"
            index="index"/>
+    <field key="action" dbtype="varchar" precision="255" phptype="string" null="true" />
     <aggregate alias="Order" class="uniOrder" local="order_id" foreign="id" cardinality="one" owner="foreign"/>
   </object>
   <object class="uniExecutor" table="uni_executors" extends="xPDOSimpleObject">

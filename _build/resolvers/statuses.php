@@ -7,26 +7,16 @@ if ($transport->xpdo) {
   $statuses = [
     [
       'id' => 1,
-      'name' => 'Новая',
-      'active' => true,
-      'email_customer' => true,
-      'email_dispatcher' => true,
-      'email_location_manager' => true,
-      'email_chief' => true,
-      'message' => 'Сообщение',
-    ],
-    [
-      'id' => 2,
-      'name' => 'Отправлена',
+      'name' => 'Отправлен',
       'active' => true,
       'email_customer' => true,
       'email_dispatcher' => false,
       'email_location_manager' => false,
       'email_chief' => false,
-      'message' => 'Сообщение',
+      'message' => 'Ваша заявка #{$id} успешно отправлена на работу.',
     ],
     [
-      'id' => 3,
+      'id' => 2,
       'name' => 'Выполнение',
       'active' => true,
       'email_customer' => true,
@@ -36,7 +26,7 @@ if ($transport->xpdo) {
       'message' => 'Сообщение',
     ],
     [
-      'id' => 4,
+      'id' => 3,
       'name' => 'Проверка',
       'active' => true,
       'email_customer' => true,
@@ -46,7 +36,7 @@ if ($transport->xpdo) {
       'message' => 'Сообщение',
     ],
     [
-      'id' => 5,
+      'id' => 4,
       'name' => 'Закрыто',
       'active' => true,
       'email_customer' => true,
@@ -56,7 +46,7 @@ if ($transport->xpdo) {
       'message' => 'Сообщение',
     ],
     [
-      'id' => 6,
+      'id' => 5,
       'name' => 'Отложена',
       'active' => true,
       'email_customer' => true,
@@ -66,7 +56,7 @@ if ($transport->xpdo) {
       'message' => 'Сообщение',
     ],
     [
-      'id' => 7,
+      'id' => 6,
       'name' => 'Согласование',
       'active' => true,
       'email_customer' => true,
