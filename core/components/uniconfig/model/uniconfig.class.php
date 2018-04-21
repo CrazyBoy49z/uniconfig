@@ -174,7 +174,7 @@ class uniConfig
 
       $subject = 'Заявка #'.$order_id.' была отправлена';
       if (!$this->sendEmail($created_by->get('email'), $subject, $status->get('message'))){
-        return 'Ошибка при отправки на почту';
+        $error = 'uniconfig_send_email_err';
       };
       if (!empty($error)){
         return $this->modx->lexicon($error);
@@ -184,10 +184,11 @@ class uniConfig
   }
 
   /**
+   * Send email
    * @param string $email  The owner
    * @param string $subject The subject
    * @param string $body The body letter
-   * @return boolean
+   * @return boolean|string
    */
   public function sendEmail($email, $subject, $body = ''){
     $email = str_replace(' ', '', $email);

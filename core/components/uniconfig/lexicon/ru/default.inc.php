@@ -8,6 +8,7 @@ $_lang['uniconfig_intro_msg'] = 'Вы можете выделять сразу �
 $_lang['uniconfig_order_nf'] = 'Заявка не найдена';
 
 $_lang['uniconfig_order_history_err_ns'] = 'Не удалось добавить запись в историю заявки';
+$_lang['uniconfig_send_email_err'] = 'Не удалось отправить на почту';
 
 $_lang['uniconfig_items'] = 'Предметы';
 $_lang['uniconfig_location_items'] = 'Локации';
