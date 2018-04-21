@@ -25,8 +25,8 @@
 ------
 
 ## Команда проекта
- - Игамов Игорь[https://t.me/igamov](https://t.me/igamov/) 
- - Коломейцев Алексей[https://t.me/kolokesha](https://t.me/kolokesha) 
+ - Игамов Игорь [https://t.me/igamov](https://t.me/igamov/) 
+ - Коломейцев Алексей [https://t.me/kolokesha](https://t.me/kolokesha) 
  
 
 ©2018
