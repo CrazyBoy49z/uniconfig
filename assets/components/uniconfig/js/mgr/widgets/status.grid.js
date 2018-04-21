@@ -24,11 +24,6 @@ uniConfig.grid.Statuses = function (config) {
             autoFill: true,
             showPreview: true,
             scrollOffset: 0,
-            getRowClass: function (rec) {
-                return !rec.data.active
-                    ? 'uniconfig-grid-row-disabled'
-                    : '';
-            }
         },
         paging: true,
         remoteSort: true,
@@ -68,7 +63,6 @@ Ext.extend(uniConfig.grid.Statuses, MODx.grid.Grid, {
             }
         });
         w.reset();
-        w.setValues({active: true});
         w.show(e.target);
     },
 
@@ -139,50 +133,9 @@ Ext.extend(uniConfig.grid.Statuses, MODx.grid.Grid, {
         return true;
     },
 
-    disableItem: function () {
-        var ids = this._getSelectedIds();
-        if (!ids.length) {
-            return false;
-        }
-        MODx.Ajax.request({
-            url: this.config.url,
-            params: {
-                action: 'mgr/status/disable',
-                ids: Ext.util.JSON.encode(ids),
-            },
-            listeners: {
-                success: {
-                    fn: function () {
-                        this.refresh();
-                    }, scope: this
-                }
-            }
-        })
-    },
-
-    enableItem: function () {
-        var ids = this._getSelectedIds();
-        if (!ids.length) {
-            return false;
-        }
-        MODx.Ajax.request({
-            url: this.config.url,
-            params: {
-                action: 'mgr/status/enable',
-                ids: Ext.util.JSON.encode(ids),
-            },
-            listeners: {
-                success: {
-                    fn: function () {
-                        this.refresh();
-                    }, scope: this
-                }
-            }
-        })
-    },
 
     getFields: function () {
-        return ['id', 'name', 'active', 'actions'];
+        return ['id', 'name', 'actions'];
     },
 
     getColumns: function () {
@@ -196,13 +149,7 @@ Ext.extend(uniConfig.grid.Statuses, MODx.grid.Grid, {
             dataIndex: 'name',
             sortable: true,
             width: 200,
-        }, {
-            header: _('uniconfig_item_active'),
-            dataIndex: 'active',
-            renderer: uniConfig.utils.renderBoolean,
-            sortable: true,
-            width: 100,
-        }, {
+        },{
             header: _('uniconfig_grid_actions'),
             dataIndex: 'actions',
             renderer: uniConfig.utils.renderActions,

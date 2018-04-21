@@ -13,7 +13,6 @@ if ($transport->xpdo) {
       'email_dispatcher' => false,
       'email_location_manager' => false,
       'email_chief' => false,
-      'message' => 'Ваша заявка #{$id} успешно отправлена на работу.',
     ],
     [
       'id' => 2,
@@ -23,7 +22,6 @@ if ($transport->xpdo) {
       'email_dispatcher' => false,
       'email_location_manager' => false,
       'email_chief' => false,
-      'message' => 'Сообщение',
     ],
     [
       'id' => 3,
@@ -33,7 +31,6 @@ if ($transport->xpdo) {
       'email_dispatcher' => false,
       'email_location_manager' => false,
       'email_chief' => false,
-      'message' => 'Сообщение',
     ],
     [
       'id' => 4,
@@ -43,7 +40,6 @@ if ($transport->xpdo) {
       'email_dispatcher' => false,
       'email_location_manager' => false,
       'email_chief' => false,
-      'message' => 'Сообщение',
     ],
     [
       'id' => 5,
@@ -53,7 +49,6 @@ if ($transport->xpdo) {
       'email_dispatcher' => false,
       'email_location_manager' => true,
       'email_chief' => true,
-      'message' => 'Сообщение',
     ],
     [
       'id' => 6,
@@ -63,7 +58,6 @@ if ($transport->xpdo) {
       'email_dispatcher' => true,
       'email_location_manager' => false,
       'email_chief' => false,
-      'message' => 'Сообщение',
     ]
   ];
 

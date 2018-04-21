@@ -56,21 +56,6 @@ Ext.extend(uniConfig.window.CreateItem, MODx.Window, {
         id: config.id + '-email_chief',
         checked: false,
       },
-      {
-        xtype: 'textarea',
-        fieldLabel: _('uniconfig_status_message'),
-        name: 'message',
-        id: config.id + '-message',
-        anchor: '99%',
-        allowBlank: false,
-      },
-      {
-        xtype: 'xcheckbox',
-        boxLabel: _('uniconfig_item_active'),
-        name: 'active',
-        id: config.id + '-active',
-        checked: true,
-      },
     ];
   },
 
@@ -143,21 +128,6 @@ Ext.extend(uniConfig.window.UpdateItem, MODx.Window, {
         name: 'email_chief',
         id: config.id + '-email_chief',
         checked: false,
-      },
-      {
-        xtype: 'textarea',
-        fieldLabel: _('uniconfig_status_message'),
-        name: 'message',
-        id: config.id + '-message',
-        anchor: '99%',
-        allowBlank: false,
-      },
-      {
-        xtype: 'xcheckbox',
-        boxLabel: _('uniconfig_item_active'),
-        name: 'active',
-        id: config.id + '-active',
-        checked: true,
       },
     ];
   },

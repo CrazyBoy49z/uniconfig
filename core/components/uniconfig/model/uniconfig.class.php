@@ -166,15 +166,12 @@ class uniConfig
       /** @var modUser $created_by */
       $created_by = $order->getOne('CreatedUser');
       $pls = $order->toArray();
-
-
-      $body = $this->pdoTools->getChunk('@INLINE ' . $status->get('message'), $pls);
-
       //Add to OrderHistory
       if (!$this->orderHistory($order_id, 'status', $status->get('name'))) {
         $error = 'uniconfig_order_history_err_ns';
       }
-
+      //Message
+      $body = $this->pdoTools->getChunk('@FILE chunks/email/_email_sent_user.tpl', ['order' => $pls]);
       $subject = 'Статус заявки #' . $order_id . ' был изменен';
 
       if ($status->get('email_customer')) {
@@ -234,9 +231,7 @@ class uniConfig
       $this->modx->mail->address('to', $item);
     }
     $this->modx->mail->set(modMail::MAIL_SUBJECT, $subject);
-    $this->modx->mail->set(modMail::MAIL_BODY, $this->pdoTools->getChunk('@FILE chunks/email/email.tpl', array(
-      'body' => $body,
-    )));
+    $this->modx->mail->set(modMail::MAIL_BODY, $this->pdoTools->getChunk('@FILE chunks/email/email.tpl', ['body' => $body]));
     $this->modx->mail->setHTML(true);
     if (!$this->modx->mail->send()) {
       $this->modx->log(modX::LOG_LEVEL_ERROR, 'An error occurred while trying to send the email: ' . $this->modx->mail->mailer->ErrorInfo);

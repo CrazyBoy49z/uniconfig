@@ -20,7 +20,6 @@
     <field key="email_dispatcher" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="0"/>
     <field key="email_location_manager" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="0"/>
     <field key="email_chief" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="0"/>
-    <field key="message" dbtype="varchar" precision="255" phptype="string" null="true"/>
 
     <index alias="name" name="name" primary="false" unique="false" type="BTREE">
       <column key="name" length="" collation="A" null="false"/>

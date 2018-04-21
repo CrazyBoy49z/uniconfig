@@ -63,30 +63,7 @@ class uniConfigStatusGetListProcessor extends modObjectGetListProcessor
             'button' => true,
             'menu' => true,
         ];
-
-        if (!$array['active']) {
-            $array['actions'][] = [
-                'cls' => '',
-                'icon' => 'icon icon-power-off action-green',
-                'title' => $this->modx->lexicon('uniconfig_status_enable'),
-                'multiple' => $this->modx->lexicon('uniconfig_statuss_enable'),
-                'action' => 'enableItem',
-                'button' => true,
-                'menu' => true,
-            ];
-        } else {
-            $array['actions'][] = [
-                'cls' => '',
-                'icon' => 'icon icon-power-off action-gray',
-                'title' => $this->modx->lexicon('uniconfig_status_disable'),
-                'multiple' => $this->modx->lexicon('uniconfig_statuss_disable'),
-                'action' => 'disableItem',
-                'button' => true,
-                'menu' => true,
-            ];
-        }
-
-        // Remove
+       // Remove
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-trash-o action-red',

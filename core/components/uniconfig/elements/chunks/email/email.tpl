@@ -40,11 +40,11 @@
               <td>
                 <h3 style="{$style.h}{$style.h3}">
                   {block 'title'}
-                    Унисервис
+                    Статус заявки был изменен
                   {/block}
                 </h3>
                 {block 'body'}
-                  <p style="{$style.p}">{$body}</p>
+                  {$body}
                 {/block}
               </td>
             </tr>
