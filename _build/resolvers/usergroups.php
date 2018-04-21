@@ -35,6 +35,11 @@ if ($transport->xpdo) {
           'authority' => 9999,
           'policy' => 3,
         ],
+        [
+          'name' => 'ManagerLocation',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
       ],
     ],
     'Dispatchers' => [
@@ -58,6 +63,16 @@ if ($transport->xpdo) {
           'authority' => 9999,
           'policy' => 4,
         ],
+        [
+          'name' => 'ManagerLocation',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+        [
+          'name' => 'ManagerSpecialization',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
       ],
     ],
     'Executors' => [
@@ -70,6 +85,82 @@ if ($transport->xpdo) {
           'name' => 'Executors',
           'authority' => 9999,
           'policy' => 4,
+        ],
+        [
+          'name' => 'Dispatchers',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+        [
+          'name' => 'Users',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+        [
+          'name' => 'ManagerLocation',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+        [
+          'name' => 'ManagerSpecialization',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+      ],
+    ],
+    'ManagerLocation' => [
+      'description' => 'Управляющие локациями',
+      'parent' => 0,
+      'rank' => 0,
+      'dashboard' => 1,
+      'rgroups' => [
+        [
+          'name' => 'ManagerLocation',
+          'authority' => 9999,
+          'policy' => 4,
+        ],
+        [
+          'name' => 'ManagerSpecialization',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+        [
+          'name' => 'Executors',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+        [
+          'name' => 'Dispatchers',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+        [
+          'name' => 'Users',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+      ],
+    ],
+    'ManagerSpecialization' => [
+      'description' => 'Управляющие специализациями',
+      'parent' => 0,
+      'rank' => 0,
+      'dashboard' => 1,
+      'rgroups' => [
+        [
+          'name' => 'ManagerSpecialization',
+          'authority' => 9999,
+          'policy' => 4,
+        ],
+        [
+          'name' => 'ManagerLocation',
+          'authority' => 9999,
+          'policy' => 3,
+        ],
+        [
+          'name' => 'Executors',
+          'authority' => 9999,
+          'policy' => 3,
         ],
         [
           'name' => 'Dispatchers',
