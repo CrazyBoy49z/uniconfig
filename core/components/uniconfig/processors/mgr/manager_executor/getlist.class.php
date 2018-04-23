@@ -1,9 +1,9 @@
 <?php
 
-class uniConfigExecutorGetListProcessor extends modObjectGetListProcessor
+class uniConfigManagerExecutorGetListProcessor extends modObjectGetListProcessor
 {
-    public $objectType = 'uniExecutor';
-    public $classKey = 'uniExecutor';
+    public $objectType = 'uniManagerExecutor';
+    public $classKey = 'uniManagerExecutor';
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     //public $permission = 'list';
@@ -80,4 +80,4 @@ class uniConfigExecutorGetListProcessor extends modObjectGetListProcessor
 
 }
 
-return 'uniConfigExecutorGetListProcessor';
+return 'uniConfigManagerExecutorGetListProcessor';

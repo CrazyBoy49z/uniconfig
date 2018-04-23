@@ -16,15 +16,14 @@ $_lang['uniconfig_item_id'] = 'id';
 $_lang['uniconfig_item_name'] = 'Название';
 $_lang['uniconfig_item_description'] = 'Описание';
 $_lang['uniconfig_item_active'] = 'Активно';
+$_lang['uniconfig_item_update'] = 'Изменить';
+$_lang['uniconfig_item_remove'] = 'Удалить';
+$_lang['uniconfig_item_enable'] = 'Включить';
+$_lang['uniconfig_item_disable'] = 'Отключить';
+$_lang['uniconfig_items_enable'] = 'Включить';
+$_lang['uniconfig_items_disable'] = 'Отключить';
 
 $_lang['uniconfig_location_create'] = 'Создать локацию';
-$_lang['uniconfig_location_update'] = 'Изменить локацию';
-$_lang['uniconfig_location_enable'] = 'Включить локацию';
-$_lang['uniconfig_locations_enable'] = 'Включить локации';
-$_lang['uniconfig_location_disable'] = 'Отключить локацию';
-$_lang['uniconfig_locations_disable'] = 'Отключить локации';
-$_lang['uniconfig_location_remove'] = 'Удалить локацию';
-$_lang['uniconfig_locations_remove'] = 'Удалить локации';
 $_lang['uniconfig_location_remove_confirm'] = 'Вы уверены, что хотите удалить этот локацию?';
 $_lang['uniconfig_locations_remove_confirm'] = 'Вы уверены, что хотите удалить эти локации?';
 
@@ -38,13 +37,6 @@ $_lang['uniconfig_location_err_save'] = 'Ошибка при сохранени�
 
 $_lang['uniconfig_status_items'] = 'Статусы';
 $_lang['uniconfig_status_create'] = 'Создать статус';
-$_lang['uniconfig_status_update'] = 'Изменить статус';
-$_lang['uniconfig_status_enable'] = 'Включить статус';
-$_lang['uniconfig_statuss_enable'] = 'Включить статусы';
-$_lang['uniconfig_status_disable'] = 'Отключить статус';
-$_lang['uniconfig_statuss_disable'] = 'Отключить статусы';
-$_lang['uniconfig_status_remove'] = 'Удалить статус';
-$_lang['uniconfig_statuss_remove'] = 'Удалить статусы';
 $_lang['uniconfig_status_remove_confirm'] = 'Вы уверены, что хотите удалить этот статус?';
 $_lang['uniconfig_statuss_remove_confirm'] = 'Вы уверены, что хотите удалить эти статусы?';
 $_lang['uniconfig_status_email_customer'] = 'Email заявителю';
@@ -64,13 +56,6 @@ $_lang['uniconfig_status_err_save'] = 'Ошибка при сохранении 
 
 $_lang['uniconfig_specialization_items'] = 'Специализации';
 $_lang['uniconfig_specialization_create'] = 'Создать Специализацию';
-$_lang['uniconfig_specialization_update'] = 'Изменить Специализацию';
-$_lang['uniconfig_specialization_enable'] = 'Включить Специализацию';
-$_lang['uniconfig_specializations_enable'] = 'Включить Специализации';
-$_lang['uniconfig_specialization_disable'] = 'Отключить Специализацию';
-$_lang['uniconfig_specializations_disable'] = 'Отключить Специализации';
-$_lang['uniconfig_specialization_remove'] = 'Удалить Специализацию';
-$_lang['uniconfig_specializations_remove'] = 'Удалить Специализации';
 $_lang['uniconfig_specialization_remove_confirm'] = 'Вы уверены, что хотите удалить эту Специализацию?';
 $_lang['uniconfig_specializations_remove_confirm'] = 'Вы уверены, что хотите удалить эти Специализации?';
 
@@ -83,9 +68,6 @@ $_lang['uniconfig_specialization_err_save'] = 'Ошибка при сохран�
 
 $_lang['uniconfig_executor_items'] = 'Исполнители';
 $_lang['uniconfig_executor_create'] = 'Создать исполнителя';
-$_lang['uniconfig_executor_update'] = 'Изменить исполнителя';
-$_lang['uniconfig_executor_remove'] = 'Удалить исполнителя';
-$_lang['uniconfig_executors_remove'] = 'Удалить исполнителей';
 $_lang['uniconfig_executor_remove_confirm'] = 'Вы уверены, что хотите удалить этого исполнителя?';
 $_lang['uniconfig_executors_remove_confirm'] = 'Вы уверены, что хотите удалить этих исполнителей?';
 $_lang['uniconfig_executor_user'] = 'Исполнитель';
@@ -105,9 +87,6 @@ $_lang['uniconfig_executor_err_save'] = 'Ошибка при сохранени�
 
 $_lang['uniconfig_managerLocation_items'] = 'Управляющие локациями';
 $_lang['uniconfig_managerLocation_create'] = 'Создать управляющего локацией';
-$_lang['uniconfig_managerLocation_update'] = 'Изменить управляющего локацией';
-$_lang['uniconfig_managerLocation_remove'] = 'Удалить управляющего локацией';
-$_lang['uniconfig_managerLocations_remove'] = 'Удалить управляющих локацией';
 $_lang['uniconfig_managerLocation_remove_confirm'] = 'Вы уверены, что хотите удалить этого управляющего локацией?';
 $_lang['uniconfig_managerLocations_remove_confirm'] = 'Вы уверены, что хотите удалить этих исполнителей?';
 $_lang['uniconfig_managerLocation_user'] = 'Управляющий локацией';
@@ -120,6 +99,27 @@ $_lang['uniconfig_managerLocation_err_nf'] = 'Управляющий локац�
 $_lang['uniconfig_managerLocation_err_ns'] = 'Управляющий локацией не указан.';
 $_lang['uniconfig_managerLocation_err_remove'] = 'Ошибка при удалении Управляющего локацией.';
 $_lang['uniconfig_managerLocation_err_save'] = 'Ошибка при сохранении Управляющего локацией.';
+
+
+
+$_lang['uniconfig_managerExecutor_items'] = 'Управяляющие исполнителями';
+$_lang['uniconfig_managerExecutor_create'] = 'Создать управяляющего исполнителями';
+$_lang['uniconfig_managerExecutor_remove_confirm'] = 'Вы уверены, что хотите удалить этого управяляющего исполнителями?';
+$_lang['uniconfig_managerExecutors_remove_confirm'] = 'Вы уверены, что хотите удалить этих управляющих исполнителями?';
+$_lang['uniconfig_managerExecutor_user'] = 'Исполнитель';
+$_lang['uniconfig_managerExecutor_location'] = 'Локация';
+$_lang['uniconfig_managerExecutor_specialization'] = 'Специализация';
+
+$_lang['uniconfig_managerExecutor_err_user'] = 'Вы должны указать управяляющего исполнителями.';
+$_lang['uniconfig_managerExecutor_err_ae'] = 'Управляющий исполнителями уже существует.';
+$_lang['uniconfig_managerExecutor_err_nf'] = 'Управляющий исполнителями не найден.';
+$_lang['uniconfig_managerExecutor_err_ns'] = 'Управляющий исполнителями не указан.';
+$_lang['uniconfig_managerExecutor_err_remove'] = 'Ошибка при удалении управяляющего исполнителями.';
+$_lang['uniconfig_managerExecutor_err_save'] = 'Ошибка при сохранении управяляющего исполнителями.';
+
+
+
+
 
 $_lang['uniconfig_grid_search'] = 'Поиск';
 $_lang['uniconfig_grid_actions'] = 'Действия';

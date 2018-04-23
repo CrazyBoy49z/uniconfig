@@ -64,13 +64,16 @@
                owner="foreign"/>
     <composite alias="User" class="modUser" local="id" foreign="id" cardinality="one" owner="foreign"/>
   </object>
-  <object class="uniManagerSpecialization" table="uni_managers_specialization" extends="xPDOSimpleObject">
+  <object class="uniManagerExecutor" table="uni_managers_executor" extends="xPDOSimpleObject">
     <field key="user" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="specialization" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
+
     <aggregate alias="Specialization" class="uniSpecialization" local="specialization" foreign="id"
                cardinality="one" owner="foreign"/>
     <composite alias="User" class="modUser" local="id" foreign="id" cardinality="one" owner="foreign"/>
   </object>
+
+
   <object class="uniOrder" table="uni_orders" extends="xPDOSimpleObject">
     <field key="created_by" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="executor" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>

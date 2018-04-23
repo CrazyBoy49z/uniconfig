@@ -57,7 +57,7 @@ class uniConfigManagerLocationGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-edit',
-            'title' => $this->modx->lexicon('uniconfig_ManagerLocation_update'),
+            'title' => $this->modx->lexicon('uniconfig_item_update'),
             //'multiple' => $this->modx->lexicon('uniconfig_items_update'),
             'action' => 'updateItem',
             'button' => true,
@@ -68,8 +68,8 @@ class uniConfigManagerLocationGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-trash-o action-red',
-            'title' => $this->modx->lexicon('uniconfig_ManagerLocation_remove'),
-            'multiple' => $this->modx->lexicon('uniconfig_ManagerLocation_remove'),
+            'title' => $this->modx->lexicon('uniconfig_item_remove'),
+            'multiple' => $this->modx->lexicon('uniconfig_items_remove'),
             'action' => 'removeItem',
             'button' => true,
             'menu' => true,
