@@ -41,8 +41,7 @@ $(document).ready(function($) {
         $('#files').append('<input name="files[]" id="files" type="hidden" value="'+response.url+'">');
       });
       Dropzones[i].on("error", function(e, response) {
-        response = JSON.parse(response);
-        console.log(response.message);
+        modPNotify.Message.error('', response);
       });
     }
   }

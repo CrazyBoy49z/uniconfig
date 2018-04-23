@@ -23,18 +23,14 @@ $out = array();
 
 $ds = DIRECTORY_SEPARATOR;
 $uploadPath = MODX_ASSETS_PATH . 'uploads';
-$storeFolder = 'uploads';
-if (isset($_POST['id'])) {
-  unlink($uploadPath . $ds . $storeFolder . $ds . $_POST['id']);
-}
 
 if (!empty($_FILES)) {
 
   $fileTempName = $_FILES['file']['tmp_name'];
   $imageinfo = getimagesize($fileTempName);
-  if ($imageinfo['mime'] != 'image/png' && $imageinfo['mime'] != 'image/jpeg') {
+  if ($imageinfo['mime'] != 'image/gif' && $imageinfo['mime'] != 'image/jpeg') {
     http_response_code(401);
-    echo $out['message'] = "К сожалению, принимаем только изображения PNG и JPEG";
+    echo $out['message'] = "Изображение имеет неверный формат. Поддерживаются изображения только JPEG и PNG.";
     exit();
   }
   $fileName = $_FILES['file']['name'];
@@ -50,7 +46,7 @@ if (!empty($_FILES)) {
       exit();
     } else {
       http_response_code(401);
-      echo $out['message'] = "Не удалось осуществить сохранение файла";
+      echo $out['message'] = "Не удалось осуществить сохранение файла!";
       exit();
     }
   }
