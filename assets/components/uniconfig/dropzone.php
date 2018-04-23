@@ -28,7 +28,7 @@ if (!empty($_FILES)) {
 
   $fileTempName = $_FILES['file']['tmp_name'];
   $imageinfo = getimagesize($fileTempName);
-  if ($imageinfo['mime'] != 'image/gif' && $imageinfo['mime'] != 'image/jpeg') {
+  if ($imageinfo['mime'] != 'image/png' && $imageinfo['mime'] != 'image/jpeg') {
     http_response_code(401);
     echo $out['message'] = "Изображение имеет неверный формат. Поддерживаются изображения только JPEG и PNG.";
     exit();
