@@ -1,3 +1,28 @@
+{$_modx->regClientHTMLBlock('<script>
+  Dropzone.options.myDropzone = {
+    url: "/uniConfig/assets/components/uniconfig/dropzone.php",
+    parallelUploads: 100,
+    maxFiles: 100,
+    addRemoveLinks: true,
+
+    init: function() {
+      thisDropzone = this;
+      this.on("success", function(file, responseText) {
+        alert("HELLO ?" + file.name);
+      });
+      this.on("removedfile", function(file) {
+        var name = file.name;
+        $.ajax({
+          type: "POST",
+          url: "/uniConfig/assets/components/uniconfig/dropzone.php",
+          data: "id="+name,
+          dataType: "html"
+        });
+      });
+    }
+  };
+</script>')}
+<form action="" class="dropzone" id="my-dropzone" method="post"></form>
 <div class="col-sm-12 col-lg-8" style="margin-left: auto; margin-right: auto; float: none;">
   <div class="panel panel-default">
     <div class="panel-heading"><h3 class="panel-title">Создание заявки</h3></div>
