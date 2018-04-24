@@ -23,6 +23,7 @@ $out = array();
 
 $ds = DIRECTORY_SEPARATOR;
 $uploadPath = MODX_ASSETS_PATH . 'uploads';
+$uploadUrl = MODX_ASSETS_URL . 'uploads';
 
 if (!empty($_FILES)) {
 
@@ -30,16 +31,23 @@ if (!empty($_FILES)) {
   $imageinfo = getimagesize($fileTempName);
   if ($imageinfo['mime'] != 'image/png' && $imageinfo['mime'] != 'image/jpeg') {
     http_response_code(401);
-    echo $out['message'] = "Изображение имеет неверный формат. Поддерживаются изображения только JPEG и PNG.";
+    echo $out['message'] = "Файл имеет неверный формат. Поддерживаются изображения только JPEG и PNG.";
+    exit();
+  }
+  define('KB', 1024);
+  define('MB', 1048576);
+  if($_FILES['file']['size'] > 2*MB){
+    http_response_code(401);
+    echo $out['message'] = "Файл слишком большой. Максимальный размер файла: 2 МБ.";
     exit();
   }
   $fileName = $_FILES['file']['name'];
-  $newFileName = newFilename(substr($fileName, 0, strpos($fileName, '.')));
-  $newFileName = $uploadPath . $ds . $newFileName . '.' . substr($fileName, strpos($fileName, '.') + 1, strlen($fileName));
+  $newFileName = newFilename($fileName);
+  $destination = $uploadPath . $ds . $newFileName;
   if (is_uploaded_file($fileTempName)) {
     //Перемещаем файл из временной папки в указанную
-    if (move_uploaded_file($fileTempName, $newFileName)) {
-      $out['url'] = $newFileName;
+    if (move_uploaded_file($fileTempName, $destination)) {
+      $out['url'] = $uploadUrl . $ds . $newFileName;
       http_response_code(200);
       echo json_encode($out);
       exit();
@@ -62,6 +70,10 @@ if (!empty($_FILES)) {
  */
 function newFileName($file)
 {
+  $type = substr($file, strpos($file, '.') + 1, strlen($file));
+  $file = substr($file, 0, strpos($file, '.'));
   $newname = $file . time();
-  return md5($newname);
+  $newname = md5($newname);
+  $newname = $newname . '.'.$type;
+  return $newname;
 }

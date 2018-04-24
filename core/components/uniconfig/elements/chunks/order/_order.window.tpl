@@ -44,6 +44,13 @@
                         </tr>
                         </tbody>
                     </table>
+                    <h3>Изображения</h3>
+                    {set $files = json_decode($photo)}
+                    {if $files}
+                    {foreach $files as $file}
+                        <img src="{$file}" alt="">
+                    {/foreach}
+                    {/if}
                     <!--<div class="col-sm-6 col-sm-offset-6">
                         <a href="[[-~15]]?order=[[-+id]]" class="btn btn-primary pull-right">Редактировать заявку</a>
                     </div>-->

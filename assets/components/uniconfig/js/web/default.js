@@ -12,7 +12,12 @@ $(document).ready(function($) {
                 form.find('input,textarea,select,button').attr('disabled', false);
                 if (response.success) {
                     form[0].reset();
-                    modPNotify.Message.success('',response.message)
+                    modPNotify.Message.success('',response.message);
+                    var dzPreview = $('.dz-preview');
+                    if(dzPreview.length > 0){
+                      dzPreview.remove();
+                      $('.uploader').removeClass('dz-started');
+                    }
                 } else {
                     modPNotify.Message.error('',response.message);
                 }
@@ -35,6 +40,10 @@ $(document).ready(function($) {
         paramName: uploaders[i].dataset.name,
         parallelUploads: 10,
         maxFiles: 4,
+        maxFilesize: 2,
+        acceptedFiles: 'image/png,image/jpeg',
+        dictFileTooBig: 'Файл слишком большой ({{filesize}}) МБ. Максимальный размер файла: {{maxFilesize}} МБ.',
+        dictInvalidFileType: 'Файл имеет неверный формат. Поддерживаются изображения только JPEG и PNG.',
       });
       Dropzones[i].on('success', function(e, response) {
         response = JSON.parse(response);

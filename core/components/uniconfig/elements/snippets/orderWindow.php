@@ -25,6 +25,7 @@ if ($order_id && $order = $modx->getObject('uniOrder', $order_id)) {
       "date" => $order->get('date'),
       "profile" => $profile,
       "specialization" => $specialization,
+      "photo" => $order->get('photo'),
       "description" => $order->get('description'),
       "location" => $location,
       "status" => $status,
