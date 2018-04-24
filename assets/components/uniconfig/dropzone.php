@@ -34,9 +34,8 @@ if (!empty($_FILES)) {
     exit();
   }
   $fileName = $_FILES['file']['name'];
-  $newFileName = newFilename($fileName);
-  $newFileName = $uploadPath . $ds . $newFileName . substr($fileName, strpos($fileName, '=') + 1, strlen($fileName));
-  $modx->log(1, $newFileName);
+  $newFileName = newFilename(substr($fileName, 0, strpos($fileName, '.')));
+  $newFileName = $uploadPath . $ds . $newFileName . '.' . substr($fileName, strpos($fileName, '.') + 1, strlen($fileName));
   if (is_uploaded_file($fileTempName)) {
     //Перемещаем файл из временной папки в указанную
     if (move_uploaded_file($fileTempName, $newFileName)) {
@@ -50,6 +49,10 @@ if (!empty($_FILES)) {
       exit();
     }
   }
+}else{
+  http_response_code(401);
+  echo $out['message'] = "Нет файла!";
+  exit();
 }
 
 /**
