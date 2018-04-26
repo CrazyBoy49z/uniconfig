@@ -126,6 +126,7 @@ body
   top: 0
   z-index: 10
   overflow-y: auto
+  overflow-x: hidden
   background-color: $aside-bg
   -webkit-transition: width .15s ease-out
   transition: width .15s ease-out
@@ -481,5 +482,40 @@ body
     width: 100%
     margin-top: 10px
     margin-bottom: 10px
+.ident
+  margin:
+    left: 5px
+    right: 5px
+.comment
+  position: relative
+  &-date
+    display: inline-block
+    font-size: 0.8em
+  &-author
+    display: inline-block
+    font-weight: bold
+  &-message
+    padding: 10px 15px
+    background: #edf0f0
+    margin-bottom: 20px
+    position: relative
+    &:before
+      position: absolute
+      width: 10px
+      height: 10px
+      background-color: #edf0f0
+      -webkit-transform: rotate(45deg)
+      -o-transform: rotate(45deg)
+      transform: rotate(45deg)
+      top: 20px
+      left: -5px
+      content: ""
+  &-meta
+    border-bottom: 1px dashed #ddd
+    margin-bottom: 5px
+  &-avatar
+    img
+      display: block
+      margin: 0 auto
 @import "media"
 // Всегда в конце

@@ -9,7 +9,7 @@ $no_pic = $modx->getOption('no_pic', $scriptProperties, $no_pic_url);
 $user_id = $modx->getOption('user_id', $scriptProperties, '');
 if ($user_id){
   /** @var modUser $user */
-  $user = $modx->getObject('modUser');
+  $user = $modx->getObject('modUser', $user_id);
   /** @var modUserProfile $profile */
   $profile = $user->Profile;
 }else{

@@ -59,15 +59,7 @@ class uniConfig
     $action = 'web/' . trim($action, '/');
     /** @var modProcessorResponse $response */
     $response = $this->modx->runProcessor($action, $data, ['processors_path' => $this->config['processorsPath']]);
-    if ($response) {
-      $data = $response->getResponse();
-      $this->modx->log(1, $data);
-      if (is_string($data)) {
-        $data = json_decode($data, true);
-      }
-      return $data;
-    }
-    return false;
+    return $response;
   }
 
   /**
@@ -255,18 +247,26 @@ class uniConfig
     if (!$order = $this->modx->getObject('uniOrder', $order_id)) {
       return false;
     }
-    $message = '';
+    $message = [];
     switch ($action) {
       case 'status':
-        $message = 'Изменен статус заказа на ' . $entry;
+        switch ($entry) {
+          case 'Отправлен':
+            $message[] = 'Создана заявка';
+            $message[] = 'Статус заявки ' . $entry;
+            break;
+          default:
+            $message[] = 'Изменен статус заявки на ' . $entry;
+        }
         break;
     }
 
     $log = $this->modx->newObject('uniOrderHistory', array(
       'order_id' => $order_id,
       'date' => time(),
-      'message' => $message,
+      'message' => json_encode($message),
       'action' => $action,
+      'user_id' => $this->modx->user->id,
     ));
     return $log->save();
   }
@@ -296,26 +296,99 @@ class uniConfig
     return $emails;
   }
 
-  public function encode($unencoded,$key){//Шифруем
-    $string=base64_encode($unencoded);//Переводим в base64
 
-    $arr= [];//Это массив
-    $x=0;
+  /**
+   * Sanitize any text through Jevix snippet
+   *
+   * @param string $text Text for sanitization
+   * @param string $setName Name of property set for get parameters from
+   * @param boolean $replaceTags Replace MODX tags?
+   *
+   * @return string
+   */
+  public function Jevix($text = null, $setName = 'Comment', $replaceTags = true)
+  {
+    if (empty($text)) {
+      return ' ';
+    }
+    if (!$snippet = $this->modx->getObject('modSnippet', array('name' => 'Jevix'))) {
+      return 'Could not load snippet Jevix';
+    }
+    // Loading parser if needed - it is for mgr context
+    if (!is_object($this->modx->parser)) {
+      $this->modx->getParser();
+    }
+    $params = array();
+    if ($setName) {
+      $params = $snippet->getPropertySet($setName);
+    }
+    $text = html_entity_decode($text, ENT_COMPAT, 'UTF-8');
+    $params['input'] = str_replace(
+      array('[', ']', '{', '}'),
+      array('*(*(*(*(*(*', '*)*)*)*)*)*', '~(~(~(~(~(~', '~)~)~)~)~)~'),
+      $text
+    );
+    $snippet->setCacheable(false);
+    $filtered = $snippet->process($params);
+    if ($replaceTags) {
+      $filtered = str_replace(
+        array('*(*(*(*(*(*', '*)*)*)*)*)*', '`', '~(~(~(~(~(~', '~)~)~)~)~)~'),
+        array('&#91;', '&#93;', '&#96;', '&#123;', '&#125;'),
+        $filtered
+      );
+    } else {
+      $filtered = str_replace(
+        array('*(*(*(*(*(*', '*)*)*)*)*)*', '~(~(~(~(~(~', '~)~)~)~)~)~'),
+        array('[', ']', '{', '}'),
+        $filtered
+      );
+    }
+    return $filtered;
+  }
+
+  public function encode($unencoded, $key)
+  {//Шифруем
+    $string = base64_encode($unencoded);//Переводим в base64
+
+    $arr = [];//Это массив
+    $x = 0;
     $newstr = '';
-    while ($x++< strlen($string)) {//Цикл
-      $arr[$x-1] = md5(md5($key.$string[$x-1]).$key);//Почти чистый md5
-      $newstr .= $arr[$x-1][3].$arr[$x-1][6].$arr[$x-1][1].$arr[$x-1][2];//Склеиваем символы
+    while ($x++ < strlen($string)) {//Цикл
+      $arr[$x - 1] = md5(md5($key . $string[$x - 1]) . $key);//Почти чистый md5
+      $newstr .= $arr[$x - 1][3] . $arr[$x - 1][6] . $arr[$x - 1][1] . $arr[$x - 1][2];//Склеиваем символы
     }
     return $newstr;//Вертаем строку
   }
 
-  public function decode($encoded, $key){//расшифровываем
+  public function decode($encoded, $key)
+  {//расшифровываем
     $strofsym = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM=";//Символы, с которых состоит base64-ключ
-    $x=0;
-    while ($x++<= strlen($strofsym)) {//Цикл
-      $tmp = md5(md5($key.$strofsym[$x-1]).$key);//Хеш, который соответствует символу, на который его заменят.
-      $encoded = str_replace($tmp[3].$tmp[6].$tmp[1].$tmp[2], $strofsym[$x-1], $encoded);//Заменяем №3,6,1,2 из хеша на символ
+    $x = 0;
+    while ($x++ <= strlen($strofsym)) {//Цикл
+      $tmp = md5(md5($key . $strofsym[$x - 1]) . $key);//Хеш, который соответствует символу, на который его заменят.
+      $encoded = str_replace($tmp[3] . $tmp[6] . $tmp[1] . $tmp[2], $strofsym[$x - 1], $encoded);//Заменяем №3,6,1,2 из хеша на символ
     }
     return base64_decode($encoded);//Вертаем расшифрованную строку
+  }
+
+
+  //Comments
+  /**
+   * Create Comment
+   *
+   * @param array $data section, pagetitle, comment, etc
+   *
+   * @return array
+   */
+  public function createComment($data)
+  {
+    $response = $this->runProcessor('comment/create', $data);
+    $response = $response->response;
+    if ($response['success'] == true) {
+      $comment = $response['object'];
+      $commentTpl = $this->pdoTools->runSnippet('@FILE snippets/comment.php', ['comment_id' => $comment['id'], 'tpl' => '@FILE chunks/comments/_comment.tpl']);
+      $response['comment'] = $commentTpl;
+    }
+    return $response;
   }
 }

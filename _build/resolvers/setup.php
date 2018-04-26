@@ -28,6 +28,14 @@ $packages = [
     'version' => '1.3.3-beta',
     'service_url' => 'modstore.pro',
     ],
+  'DateAgo' => [
+    'version' => '1.0.4-pl',
+    'service_url' => 'modstore.pro',
+  ],
+  'Jevix' => [
+    'version' => '1.2.2-pl',
+    'service_url' => 'modstore.pro',
+  ],
 
 ];
 

@@ -5,12 +5,11 @@ $tpl = $modx->getOption('tpl', $scriptProperties, 'tpl', true);
 if ($order_id && $order = $modx->getObject('uniOrder', $order_id)) {
 
     if ($modx->user->isMember('Users')) {
-      if ($order->get('created_by') != $modx->user->get('id')) {
+      if ($order->get('created_by') != $modx->user->id) {
         $url = $modx->makeUrl(3);
         $modx->sendRedirect($url);
       }
     }
-
     /** @var modUser $user */
     $user = $order->getOne('CreatedUser');
     /** @var modUserProfile $profile */
@@ -21,7 +20,11 @@ if ($order_id && $order = $modx->getObject('uniOrder', $order_id)) {
     $location = $order->getOne('Locations');
     /** @var uniOrderStatus $status */
     $status = $order->getOne('Status');
-
+    /** @var uniOrderHistory $history */
+    $histories = $order->getMany('History');
+    foreach ($histories as $k => $v) {
+      $histories[$k] = $v->toArray();
+    }
     #Создаем массив
     $arr = array(
       "id" => $order->get('id'),
@@ -32,6 +35,7 @@ if ($order_id && $order = $modx->getObject('uniOrder', $order_id)) {
       "description" => $order->get('description'),
       "location" => $location->toArray(),
       "status" => $status->toArray(),
+      "histories" => $histories,
     );
 
     $pdoTools = $modx->getService('pdoTools');

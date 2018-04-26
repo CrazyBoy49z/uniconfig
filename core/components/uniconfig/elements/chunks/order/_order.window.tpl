@@ -1,6 +1,6 @@
 <div class="col-sm-12">
   <div class="row">
-    <div class="panel panel-default">
+    <div class="panel panel-default ident">
       <div class="panel-heading">
         <h3 class="panel-title">Заявка #{$id}</h3>
       </div>
@@ -49,21 +49,96 @@
               <a href="[[-~15]]?order=[[-+id]]" class="btn btn-primary pull-right">Редактировать заявку</a>
           </div>-->
         </div>
-        <h4>Фото</h4>
         {set $files = json_decode($photo)}
-        {foreach $files as $file}
-          <div class="col-sm-4 col-md-4 col-lg-2">
-            <div class="picture" itemscope itemtype="http://schema.org/ImageGallery">
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                <a href="{$file}" itemprop="contentUrl"
-                   data-size="{$_modx->runSnippet('@FILE snippets/getImageSize.php',['img' => $file])}">
-                  <img src="{$_modx->runSnippet('!phpThumbOn',['input' => $file, 'options' => 'w=200&h=160&zc=C'])}"
-                       itemprop="thumbnail" alt=""/>
-                </a>
-              </figure>
+        {if $files}
+          <h4>Фото</h4>
+          {foreach $files as $file}
+            <div class="col-sm-4 col-md-4 col-lg-2">
+              <div class="picture" itemscope itemtype="http://schema.org/ImageGallery">
+                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                  <a href="{$file}" itemprop="contentUrl"
+                     data-size="{$_modx->runSnippet('@FILE snippets/getImageSize.php',['img' => $file])}">
+                    <img src="{$_modx->runSnippet('!phpThumbOn',['input' => $file, 'options' => 'w=200&h=160&zc=C'])}"
+                         itemprop="thumbnail" alt=""/>
+                  </a>
+                </figure>
+              </div>
+            </div>
+          {/foreach}
+        {/if}
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-4">
+      <div class="row">
+        <div class="panel panel-default ident">
+          <div class="panel-heading">
+            <h3 class="panel-title">История заявки</h3>
+          </div>
+          <div class="panel-body">
+            {foreach $histories as $history}
+              {set $fullname = $_modx->runSnippet('pdoUsers', ['users'=> $history.user_id, 'tpl' => '@INLINE {$fullname}'])}
+              <p style="border-bottom: dotted 1px #c0c0c0;">Обновлено {$fullname} {$history.date | dateago}</p>
+              {set $messages = json_decode($history.message)}
+              <ul>
+                {foreach $messages as $message}
+                  <li>{$message}</li>
+                {/foreach}
+              </ul>
+            {/foreach}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-8">
+      <div class="row">
+        <div class="panel panel-default ident">
+          <div class="panel-heading">
+            <h3 class="panel-title">Комментарии</h3>
+          </div>
+          <div class="panel-body">
+            <div class="col-sm-12">
+              <div class="row">
+                <div id="comments">
+                  {$_modx->runSnippet('@FILE snippets/comment.php', ['order_id' => $id, 'tpl' => '@FILE chunks/comments/_comment.tpl'])}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="row">
+                <form class="uniformcomment form-horizontal" action="" method="post">
+                  <input type="hidden" value="comment/create" name="action"/>
+                  <input type="hidden" value="{$id}" name="order_id"/>
+                  <fieldset>
+                    <div class="col-sm-1">
+                      <div class="row">
+                        <div class="comment-avatar">
+                          <img src="{$_modx->runSnippet('@FILE snippets/avatar.php')}" alt="Аватарка"
+                               class="img-circle thumb-md">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-11">
+                      <div class="form-group">
+                        <textarea name="comment" class="form-control" rows="3" placeholder="Написать комментарий"
+                                  style="resize: none;"></textarea>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <button type="submit" class="btn btn-default pull-right">
+                          <i class="fa fa-paper-plane"></i> написать
+                        </button>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                </form>
+              </div>
             </div>
           </div>
-        {/foreach}
+        </div>
       </div>
     </div>
   </div>

@@ -19,6 +19,7 @@ if ($modx->context->key != 'mgr') {
         $fullname = trim($fullname);
         $user->Profile->set('fullname', $fullname);
       }
+      //При обновлении профиля
       if ($_POST['action'] == 'Profile/Update'){
         $surname = trim(htmlspecialchars($_POST['surname']));
         $name = trim(htmlspecialchars($_POST['name']));

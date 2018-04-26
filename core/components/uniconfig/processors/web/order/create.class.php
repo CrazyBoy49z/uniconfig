@@ -28,13 +28,19 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
       return $out['message']='Вы должны авторизоваться';
     }
     $specialization = trim(htmlspecialchars($this->getProperty('specialization')));
+
     $description = trim(htmlspecialchars($this->getProperty('description')));
+
     $location = trim(htmlspecialchars($this->getProperty('location')));
+
     $files = $this->getProperty('files');
 
     if(!$specialization || !$description || !$location){
       return $out['message']='Заполните все обязательные поля';
     }
+    $specialization = $this->uniConfig->Jevix($specialization);
+    $description = $this->uniConfig->Jevix($description);
+    $location = $this->uniConfig->Jevix($location);
     $this->unsetProperty('action');
     $this->setProperties([
       'created_by' => $this->modx->user->id,
