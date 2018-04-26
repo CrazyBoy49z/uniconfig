@@ -15,20 +15,23 @@ if ($order_id && $order = $modx->getObject('uniOrder', $order_id)) {
     $user = $order->getOne('CreatedUser');
     /** @var modUserProfile $profile */
     $profile = $user->getOne('Profile');
+    /** @var uniSpecialization $specialization */
     $specialization = $order->getOne('Specialization');
+    /** @var uniLocation $location */
     $location = $order->getOne('Locations');
+    /** @var uniOrderStatus $status */
     $status = $order->getOne('Status');
 
     #Создаем массив
     $arr = array(
       "id" => $order->get('id'),
       "date" => $order->get('date'),
-      "profile" => $profile,
-      "specialization" => $specialization,
+      "profile" => $profile->toArray(),
+      "specialization" => $specialization->toArray(),
       "photo" => $order->get('photo'),
       "description" => $order->get('description'),
-      "location" => $location,
-      "status" => $status,
+      "location" => $location->toArray(),
+      "status" => $status->toArray(),
     );
 
     $pdoTools = $modx->getService('pdoTools');
