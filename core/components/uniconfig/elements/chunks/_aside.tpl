@@ -14,13 +14,13 @@
     <div class="sidebar-panel">
         <h5 class="sidebar-panel-title">Меню</h5>
     </div>
-    <div data-pjax class="sidebar-nav">
+    <div class="sidebar-nav">
         {$_modx->runSnippet('!pdoMenu',[
         'checkPermissions' => 'list',
         'parents'          => 0,
         'level'            => 1,
         'outerClass'       => 'nav',
-        'tpl'              => '@INLINE <li{{+classes}}><a href="{{+link}}" title="{{+pagetitle}}" {{+attributes}}>{{+menutitle}}</a>{{+wrapper}}</li>'
+        'tpl'              => '@INLINE <li{$classes} {if $id != 12}data-pjax{/if}><a href="{$link}" title="{$pagetitle}" {$attributes}>{$menutitle}</a>{$wrapper}</li>'
         ])}
     </div>
 </aside>

@@ -10,6 +10,9 @@ class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
   public function initialize()
   {
     $this->uniConfig = $this->modx->getService('uniConfig');
+    if(!$this->modx->user->isMember('Users')){
+      return $this->modx->lexicon('access_denied');
+    }
     if (!$this->modx->hasPermission($this->permission)) {
       return $this->modx->lexicon('access_denied');
     }

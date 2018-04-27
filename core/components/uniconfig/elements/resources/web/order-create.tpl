@@ -1,6 +1,6 @@
 <div class="col-sm-12 col-lg-8" style="margin-left: auto; margin-right: auto; float: none;">
   <div class="panel panel-default">
-    <div class="panel-heading"><h3 class="panel-title">Создание заявки</h3></div>
+    <div class="panel-heading"><h3 class="panel-title">Создать заявку</h3></div>
     <div class="panel-body">
       <form class="uniform form-horizontal" action="" method="post">
         <input type="hidden" value="order/create" name="action"/>
@@ -47,7 +47,7 @@
           </div>
           <div class="form-group">
             <div class="col-md-10 col-md-offset-2">
-              <div class="uploader" data-name="file"><div class="dz-message">Прикрепить файлы</div></div>
+              <div class="uploader" data-name="file"><div class="dz-message">Прикрепить изображения (макс - 4 шт.)</div></div>
             </div>
           </div>
           <div id="files"></div>

@@ -98,6 +98,19 @@ return [
         'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerSpecialization',
       ],
     ],
+    'order-create' => [
+      'id' => 12,
+      'pagetitle' => 'Создать заявку',
+      'longtitle' => 'Создать заявку',
+      'template' => 2,
+      'hidemenu' => false,
+      'uri' => 'order-create',
+      'uri_override' => true,
+      'menutitle' => '<i class="fa fa-plus"></i> <span>Создать заявку</span>',
+      'groups' => [
+        'Users', 'Dispatchers', 'ManagerLocation', 'ManagerSpecialization',
+      ],
+    ],
     'orders' => [
       'id' => 11,
       'pagetitle' => 'Orders',
@@ -105,24 +118,12 @@ return [
       'hidemenu' => true,
       'published' => false,
       'resources' => [
-        'order-create' => [
-          'id' => 12,
-          'pagetitle' => 'Создание заявки',
-          'longtitle' => 'Создание заявки',
-          'template' => 2,
-          'hidemenu' => false,
-          'uri' => 'order-create',
-          'uri_override' => true,
-          'groups' => [
-            'Users', 'Dispatchers', 'ManagerLocation', 'ManagerSpecialization',
-          ],
-        ],
         'order-window' => [
           'id' => 13,
           'pagetitle' => 'Просмотр заявки',
           'longtitle' => 'Просмотр заявки',
           'template' => 2,
-          'hidemenu' => false,
+          'hidemenu' => true,
           'uri' => 'order-window',
           'uri_override' => true,
           'groups' => [

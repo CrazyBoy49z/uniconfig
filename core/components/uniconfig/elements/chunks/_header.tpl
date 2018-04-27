@@ -13,7 +13,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li>
             <a href="{$_modx->makeUrl(12)}" class="btn new-order hidden-xs">
-                <i class="fa fa-plus"></i> Новая заявка</a>
+                <i class="fa fa-plus"></i> Создать заявку</a>
         </li>
         <li>
             <a href="#" onclick="alert('Извините, но данный функционал временно не работает');">
