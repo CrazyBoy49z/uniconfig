@@ -30,7 +30,6 @@ class uniConfigMessageCreateProcessor extends modObjectCreateProcessor
     $message = trim(htmlspecialchars($this->getProperty('message')));
     $order_id = trim(htmlspecialchars($this->getProperty('order_id')));
     $files = htmlspecialchars($this->getProperty('files'));
-    //Дописать изображения
     if(!$message){
       return $out['message'] = 'Вы не написали сообщение';
     }

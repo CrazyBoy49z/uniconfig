@@ -4,7 +4,7 @@
       <li class="active"><a data-toggle="tab" href="#order">Содержимое заявки</a></li>
       <li><a data-toggle="tab" href="#order-messages">Сообщения</a></li>
       {if !$_modx->isMember('Users')}
-      <li><a data-toggle="tab" href="#order-comments">Комментарии</a></li>
+        <li><a data-toggle="tab" href="#order-comments">Комментарии</a></li>
       {/if}
     </ul>
     <div class="tab-content">
@@ -38,10 +38,10 @@
                   <td>{$specialization.name}</td>
                 </tr>
                 {if $executor}
-                <tr>
-                  <td>Исполнитель</td>
-                  <td>{$executor.fullname}</td>
-                </tr>
+                  <tr>
+                    <td>Исполнитель</td>
+                    <td>{$executor.fullname}</td>
+                  </tr>
                 {/if}
                 <tr style="word-break: break-all;">
                   <td colspan="2">
@@ -83,7 +83,8 @@
             {/if}
             <hr>
             {if $_modx->isMember('Executors')}
-              {if $status.id == 1}
+              {switch $status.id}
+              {case 1}
                 <form action="" method="post" class="uniform">
                   <input type="hidden" name="status_id" value="2">
                   <input type="hidden" name="id" value="{$id}"/>
@@ -91,7 +92,115 @@
                   <input type="hidden" name="action" value="order/update">
                   <button type="submit" class="btn btn-primary">Принять заявку</button>
                 </form>
-              {/if}
+              {case 2}
+                <div id="ex_forms">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#review">
+                      Отправить на проверку
+                    </button>
+                    <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#specialization">
+                      Изменить специализацию
+                    </button>
+                    <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#defer">
+                      Отложить
+                    </button>
+                    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#agreement">
+                      На согласование
+                    </button>
+                  </div>
+                  <div id="review" class="collapse" data-parent="#ex_forms" style="padding: 40px 0">
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <h4>Отправить на проверку</h4>
+                      </div>
+                      <form action="" method="post" class="uniform form-horizontal">
+                        <input type="hidden" name="status_id" value="3">
+                        <input type="hidden" name="id" value="{$id}"/>
+                        <input type="hidden" name="action" value="order/update">
+                        <div class="form-group">
+                          <div class="uploader" data-name="file">
+                            <div class="dz-message">Прикрепить изображения (макс - 4 шт.)</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <textarea name="description" id="description" class="form-control" rows="5"
+                                    placeholder="Сообщение"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div id="specialization" class="collapse" data-parent="#ex_forms" style="padding: 40px 0">
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <h4>Изменить специализацию</h4>
+                      </div>
+                      <form action="" method="post" class="uniform form-horizontal">
+                        <input type="hidden" name="status_id" value="1">
+                        <input type="hidden" name="id" value="{$id}"/>
+                        <input type="hidden" name="action" value="order/update">
+                        <div class="form-group">
+                          <select class="form-control" name="specialization">
+                            <option value="" selected disabled hidden>Выберите специализацию</option>
+                            {$_modx->runSnippet('!pdoResources',[
+                            'class' => 'uniSpecialization',
+                            'select' => '{"uniSpecialization":"id,name"}',
+                            'tpl' => '@INLINE <option value="{$id}">{$name}</option>',
+                            'where' => ["active" => 1,"id:!=" => $specialization.id],
+                            'sortby' => 'name',
+                            'sortdir' => 'asc',
+                            'limit' => '0',
+                            ])}
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div id="defer" class="collapse" data-parent="#ex_forms" style="padding: 40px 0">
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <h4>Отложить заявку</h4>
+                      </div>
+                      <form action="" method="post" class="uniform form-horizontal">
+                        <input type="hidden" name="status_id" value="5">
+                        <input type="hidden" name="id" value="{$id}"/>
+                        <input type="hidden" name="action" value="order/update">
+                        <div class="form-group">
+                          <textarea name="description" id="description" class="form-control" rows="5"
+                                    placeholder="Сообщение"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div id="agreement" class="collapse" data-parent="#ex_forms" style="padding: 40px 0">
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <h4>Отправить на согласование</h4>
+                      </div>
+                      <form action="" method="post" class="uniform form-horizontal">
+                        <input type="hidden" name="status_id" value="6">
+                        <input type="hidden" name="id" value="{$id}"/>
+                        <input type="hidden" name="action" value="order/update">
+                        <div class="form-group">
+                          <textarea name="description" id="description" class="form-control" rows="5"
+                                    placeholder="Сообщение"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              {/switch}
             {/if}
           </div>
         </div>
@@ -102,16 +211,12 @@
                 <h3 class="panel-title">История заявки</h3>
               </div>
               <div class="panel-body">
-                {foreach $histories as $history}
-                  {set $fullname = $_modx->runSnippet('pdoUsers', ['users'=> $history.user_id, 'tpl' => '@INLINE {$fullname}'])}
-                  <p style="border-bottom: dotted 1px #c0c0c0;">Обновлено {$fullname} {$history.date | dateago}</p>
-                  {set $messages = json_decode($history.message)}
-                  <ul>
-                    {foreach $messages as $message}
-                      <li>{$message}</li>
-                    {/foreach}
-                  </ul>
-                {/foreach}
+                {$_modx->runSnippet('pdoResources',[
+                  'class' => 'uniOrderHistory',
+                  'where' => ['order_id' => $id],
+                  'sortby' => 'date',
+                  'tpl' => '@FILE chunks/history/_history.tpl'
+                ])}
               </div>
             </div>
           </div>
@@ -135,60 +240,60 @@
         </div>
       </div>
       {if !$_modx->isMember('Users')}
-      <div class="tab-pane" id="order-comments" >
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="panel panel-default ident">
-              <div class="panel-heading">
-                <h3 class="panel-title">Комментарии</h3>
-              </div>
-              <div class="panel-body">
-                <div class="col-sm-12">
-                  <div class="row">
-                    <div id="comments">
-                      {$_modx->runSnippet('@FILE snippets/comment.php', ['order_id' => $id, 'tpl' => '@FILE chunks/comments/_comment.tpl'])}
+        <div class="tab-pane" id="order-comments">
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="panel panel-default ident">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Комментарии</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div id="comments">
+                        {$_modx->runSnippet('@FILE snippets/comment.php', ['order_id' => $id, 'tpl' => '@FILE chunks/comments/_comment.tpl'])}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="col-sm-12">
-                  <div class="row">
-                    <form class="uniformcomment form-horizontal" action="" method="post">
-                      <input type="hidden" value="comment/create" name="action"/>
-                      <input type="hidden" value="{$id}" name="order_id"/>
-                      <fieldset>
-                        <div class="hidden-xs col-sm-1">
-                          <div class="row">
-                            <div class="comment-avatar">
-                              <img src="{$_modx->runSnippet('@FILE snippets/avatar.php')}" alt="Аватарка"
-                                   class="img-circle thumb-md">
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <form class="uniformcomment form-horizontal" action="" method="post">
+                        <input type="hidden" value="comment/create" name="action"/>
+                        <input type="hidden" value="{$id}" name="order_id"/>
+                        <fieldset>
+                          <div class="hidden-xs col-sm-1">
+                            <div class="row">
+                              <div class="comment-avatar">
+                                <img src="{$_modx->runSnippet('@FILE snippets/avatar.php')}" alt="Аватарка"
+                                     class="img-circle thumb-md">
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-11">
-                          <div class="form-group">
+                          <div class="col-xs-12 col-sm-10">
+                            <div class="form-group">
                         <textarea name="comment" class="form-control" rows="3" placeholder="Написать комментарий"
                                   style="resize: none;"></textarea>
+                            </div>
                           </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-sm-12">
-                          <div class="row">
-                            <button type="submit" class="btn btn-default pull-right">
-                              <i class="fa fa-paper-plane"></i> написать
-                            </button>
+                          <div class="clearfix"></div>
+                          <div class="col-sm-11">
+                            <div class="row">
+                              <button type="submit" class="btn btn-default pull-right">
+                                <i class="fa fa-paper-plane"></i> написать
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </fieldset>
+                        </fieldset>
 
-                    </form>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       {/if}
     </div>
   </div>

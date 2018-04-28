@@ -14,6 +14,9 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
     if (!$this->modx->hasPermission($this->permission)) {
       return $this->modx->lexicon('access_denied');
     }
+    if ($this->modx->user->id < 1) {
+      return $this->modx->lexicon('access_denied');
+    }
     return parent::initialize();
   }
 
@@ -24,9 +27,6 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
       'success' => false,
       'message' => 'Неизвестная ошибка',
     );
-    if (!$this->modx->user->id) {
-      return $out['message']='Вы должны авторизоваться';
-    }
     $specialization = trim(htmlspecialchars($this->getProperty('specialization')));
 
     $description = trim(htmlspecialchars($this->getProperty('description')));

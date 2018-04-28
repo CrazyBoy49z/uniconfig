@@ -42,10 +42,9 @@ if ($order_id && $order = $modx->getObject('uniOrder', $order_id)) {
       "status" => $status->toArray(),
       "histories" => $histories,
     ];
-    if($executor_profile){
+    if($executor){
       $arr['executor'] = $executor_profile->toArray();
     }
-
     $pdoTools = $modx->getService('pdoTools');
     $output = $pdoTools->getChunk($tpl, $arr);
 

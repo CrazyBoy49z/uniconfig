@@ -6,10 +6,10 @@
         <input type="hidden" value="order/create" name="action"/>
         <fieldset>
           <div class="form-group">
-            <label class="col-md-2 control-label" for="specialization">Тема <span class="required">*</span></label>
+            <label class="col-md-2 control-label" for="specialization">Специализация <span class="required">*</span></label>
             <div class="col-md-10">
               <select class="form-control" name="specialization" id="specialization">
-                <option value="" selected disabled hidden>Выберите тему</option>
+                <option value="" selected disabled hidden>Выберите специализацию</option>
                 {$_modx->runSnippet('!pdoResources',[
                 'class' => 'uniSpecialization',
                 'select' => '{"uniSpecialization":"id,name"}',

@@ -11,7 +11,7 @@
 ]}
 {switch $order.status}
 {case 1}
-  {* Если статус Отправлен *}
+  {* Если статус новая *}
   <p style="{$style.h}{$style.p}">Ваша Заявка #{$order.id} успешно отправлена на работу.</p>
   <h2 style="{$style.h}{$style.h2}">Содержимое заявки</h2>
 {$_modx->runSnippet('@FILE snippets/orderWindow.php',[
@@ -22,23 +22,23 @@
   <tbody>
     <tr>
       <td style="{$th}">Дата создания заявки:</td>
-      <td style="{$th}">{$date}</td>
+      <td style="{$th}">{$date | date_format : "%d.%m.%Y %H:%M"}</td>
     </tr>
     <tr>
       <td style="{$th}">Заявитель:</td>
-      <td style="{$th}">{$profile->fullname}</td>
+      <td style="{$th}">{$profile.fullname}</td>
     </tr>
     <tr>
       <td style="{$th}">Email:</td>
-      <td style="{$th}">{$profile->email}</td>
+      <td style="{$th}">{$profile.email}</td>
     </tr>
     <tr>
       <td style="{$th}">Телефон:</td>
-      <td style="{$th}">{$profile->phone}</td>
+      <td style="{$th}">{$profile.phone}</td>
     </tr>
     <tr>
       <td style="{$th}">Специализация</td>
-      <td style="{$th}">{$specialization->name}</td>
+      <td style="{$th}">{$specialization.name}</td>
     </tr>
       <tr>
       <td style="{$th}" colspan="2">
@@ -48,11 +48,11 @@
     </tr>
     <tr>
       <td style="{$th}">Локация</td>
-      <td style="{$th}">{$location->name}</td>
+      <td style="{$th}">{$location.name}</td>
     </tr>
     <tr>
       <td style="{$th}">Статус</td>
-      <td style="{$th}">{$status->name}</td>
+      <td style="{$th}">{$status.name}</td>
     </tr>
   </tbody>
 </table>

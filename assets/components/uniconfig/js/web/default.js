@@ -3,6 +3,7 @@ $(document).ready(function($) {
         var form = $(this);
         var data = form.serialize();
         form.find('input,textarea,select,button').attr('disabled', true);
+        NProgress.start();
         $.ajax({
             url: '/uniConfig/assets/components/uniconfig/webconnector.php',
             type: 'POST',
@@ -10,6 +11,7 @@ $(document).ready(function($) {
             data: data,
             success: function(response) {
                 form.find('input,textarea,select,button').attr('disabled', false);
+                NProgress.done();
                 if (response.success) {
                     form[0].reset();
                     modPNotify.Message.success('',response.message);
@@ -18,7 +20,7 @@ $(document).ready(function($) {
                       dzPreview.remove();
                       $('.uploader').removeClass('dz-started');
                     }
-                  setTimeout('window.location.reload()', 2000)
+                  setTimeout('window.location.reload()', 600)
                 } else {
                     modPNotify.Message.error('',response.message);
                 }
@@ -35,6 +37,7 @@ $(document).ready(function($) {
     var form = $(this);
     var data = form.serialize();
     form.find('input,textarea,select,button').attr('disabled', true);
+    NProgress.start();
     $.ajax({
       url: '/uniConfig/assets/components/uniconfig/webconnector.php',
       type: 'POST',
@@ -42,6 +45,7 @@ $(document).ready(function($) {
       data: data,
       success: function(response) {
         form.find('input,textarea,select,button').attr('disabled', false);
+        NProgress.done();
         if (response.success) {
           form[0].reset();
           var dzPreview = $('.dz-preview');

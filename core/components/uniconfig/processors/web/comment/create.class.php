@@ -9,10 +9,7 @@ class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
   public function initialize()
   {
     $this->uniConfig = $this->modx->getService('uniConfig');
-    if(!$this->modx->user->isMember('Users')){
-      return $this->modx->lexicon('access_denied');
-    }
-    if (!$this->modx->hasPermission($this->permission)) {
+    if($this->modx->user->isMember('Users')){
       return $this->modx->lexicon('access_denied');
     }
     return parent::initialize();
@@ -24,9 +21,6 @@ class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
       'success' => false,
       'message' => 'Неизвестная ошибка',
     );
-    if ($this->modx->user->id < 1) {
-      return $out['message'] = 'Вы должны авторизоваться';
-    }
     $comment = trim(htmlspecialchars($this->getProperty('comment')));
     $order_id = trim(htmlspecialchars($this->getProperty('order_id')));
     //Дописать изображения

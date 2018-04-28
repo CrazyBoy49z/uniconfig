@@ -257,16 +257,20 @@ class uniConfig
     switch ($action) {
       case 'status':
         switch ($entry) {
-          case 'Отправлен':
-            $message[] = 'Создана заявка';
-            $message[] = 'Статус заявки ' . $entry;
+          case 'Новая':
+            if($this->modx->user->isMember('Executors')){
+              $message[] = 'Изменена специализация';
+              $message[] = 'Статус заявки ' . $entry;
+            }else {
+              $message[] = 'Создана заявка';
+              $message[] = 'Статус заявки ' . $entry;
+            }
             break;
           default:
             $message[] = 'Изменен статус заявки на ' . $entry;
         }
         break;
     }
-
     $log = $this->modx->newObject('uniOrderHistory', array(
       'order_id' => $order_id,
       'date' => time(),
@@ -396,5 +400,20 @@ class uniConfig
       $response['comment'] = $commentTpl;
     }
     return $response;
+  }
+  /** Delete Executor on Order
+   * @param int $order_id
+   * @return boolean
+   */
+  public function deleteExecutor($order_id)
+  {
+    /** @var uniOrder $order */
+    if (!$order = $this->modx->getObject('uniOrder', $order_id)) {
+      return false;
+    }
+    $order->set('executor', '');
+    if($order->save()){
+      return true;
+    }
   }
 }

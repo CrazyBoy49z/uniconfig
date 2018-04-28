@@ -27,15 +27,34 @@ class uniConfigOrdersUpdateProcessor extends modObjectUpdateProcessor
         return $out['message'] = 'Вы не можете редактировать чужие записи';
     }
     $id = (int)$this->getProperty('id');
-    $executor = trim($this->getProperty('executor'));
-    $this->unsetProperty('action');
     if (empty($id)) {
-      return $this->modx->lexicon('uniconfig_order_err_ns');
+      return $out['message'] = $this->modx->lexicon('uniconfig_order_err_ns');
     }
-      $this->setProperties([
-        'status' => '',
-        'executor' => $executor,
-      ]);
+    $status_id = $this->getProperty('status_id');
+    if($specialization = $this->getProperty('specialization')){
+      if ($this->object->get('specialization') == $specialization){
+        return $out['message'] = 'Вы меняете специализацию на такую же!';
+      }
+    }
+    switch ($status_id){
+      case 1:
+        //Нужно удалить текущего исполнителя
+        if(!$this->uniConfig->deleteExecutor($id)){
+          return $out['message'] = 'Не удалось изменить заявку';
+        }
+        break;
+      case 3:
+        //Добавляем сообщение
+        break;
+      case 5:
+        //Добавляем сообщение
+        break;
+      case 6:
+        //Добавляем сообщение
+        break;
+    }
+    $this->unsetProperty('action');
+
     return parent::beforeSet();
   }
 

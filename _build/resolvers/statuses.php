@@ -7,7 +7,7 @@ if ($transport->xpdo) {
   $statuses = [
     [
       'id' => 1,
-      'name' => 'Отправлен',
+      'name' => 'Новая',
       'active' => true,
       'email_customer' => true,
       'email_dispatcher' => false,
