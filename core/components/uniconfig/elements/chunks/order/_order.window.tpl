@@ -37,6 +37,12 @@
                   <td>Специализация</td>
                   <td>{$specialization.name}</td>
                 </tr>
+                {if $executor}
+                <tr>
+                  <td>Исполнитель</td>
+                  <td>{$executor.fullname}</td>
+                </tr>
+                {/if}
                 <tr style="word-break: break-all;">
                   <td colspan="2">
                     <p>Описание</p>
@@ -77,11 +83,15 @@
             {/if}
             <hr>
             {if $_modx->isMember('Executors')}
-              <form action="" method="post" class="uniform">
-                <input type="hidden" name="status" value="">
-                <input type="hidden" name="action" value="order/update">
-                <button type="submit" class="btn btn-primary">Принять заявку</button>
-              </form>
+              {if $status.id == 1}
+                <form action="" method="post" class="uniform">
+                  <input type="hidden" name="status_id" value="2">
+                  <input type="hidden" name="id" value="{$id}"/>
+                  <input type="hidden" name="executor" value="{$_modx->user.id}">
+                  <input type="hidden" name="action" value="order/update">
+                  <button type="submit" class="btn btn-primary">Принять заявку</button>
+                </form>
+              {/if}
             {/if}
           </div>
         </div>

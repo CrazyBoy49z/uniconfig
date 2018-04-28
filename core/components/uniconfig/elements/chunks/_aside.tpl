@@ -20,7 +20,7 @@
         'parents'          => 0,
         'level'            => 1,
         'outerClass'       => 'nav',
-        'tpl'              => '@INLINE <li{$classes} {if $id != 12}data-pjax{/if}><a href="{$link}" title="{$pagetitle}" {$attributes}>{$menutitle}</a>{$wrapper}</li>'
+        'tpl'              => '@INLINE <li{$classes}><a href="{$link}" data-original-title="{$pagetitle}" data-toggle="tooltip" data-placement="right" {$attributes}>{$menutitle}</a>{$wrapper}</li>'
         ])}
     </div>
 </aside>

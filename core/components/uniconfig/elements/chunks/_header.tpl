@@ -29,13 +29,13 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                    <a data-pjax href="{$_modx->makeUrl(9)}"><i class="fa fa-briefcase"></i> Профиль</a>
+                    <a href="{$_modx->makeUrl(9)}"><i class="fa fa-briefcase"></i> Профиль</a>
                 </li>
                 <li>
-                    <a data-pjax href="{$_modx->makeUrl(10)}"><i class="fa fa-cogs"></i> Настройки</a>
+                    <a href="{$_modx->makeUrl(10)}"><i class="fa fa-cogs"></i> Настройки</a>
                 </li>
                 <li>
-                    <a data-pjax href="/?action=auth/logout"><i class="fa fa-sign-out"></i> Выйти</a>
+                    <a href="/?action=auth/logout"><i class="fa fa-sign-out"></i> Выйти</a>
                 </li>
             </ul>
         </li>

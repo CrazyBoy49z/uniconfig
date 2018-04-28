@@ -133,11 +133,14 @@ class uniConfig
    * @param integer $order_id The id of uniOrder
    * @param integer $status_id The id of uniOrderStatus
    *
-   * @return boolean|string
+   * @return array
    */
   public function changeOrderStatus($order_id, $status_id)
   {
-    $error = '';
+    $out = [
+      'success' => false,
+      'message' => 'Неизвестная ошибка',
+    ];
     /** @var uniOrder $order */
     if (!$order = $this->modx->getObject('uniOrder', $order_id)) {
       $error = 'uniconfig_order_nf';
@@ -150,7 +153,8 @@ class uniConfig
       $error = 'uniconfig_status_err_same';
     }
     if (!empty($error)) {
-      return $this->modx->lexicon($error);
+      $out['message'] = $this->modx->lexicon($error);
+      return $out;
     }
     $order->set('status', $status_id);
 
@@ -196,10 +200,12 @@ class uniConfig
       };
 
       if (!empty($error)) {
-        return $this->modx->lexicon($error);
+        $out['message'] = $this->modx->lexicon($error);
+        return $out;
       }
+      $out['success'] = true;
     }
-    return true;
+    return $out;
   }
 
   /**

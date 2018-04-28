@@ -18,6 +18,7 @@ $(document).ready(function($) {
                       dzPreview.remove();
                       $('.uploader').removeClass('dz-started');
                     }
+                  setTimeout('window.location.reload()', 2000)
                 } else {
                     modPNotify.Message.error('',response.message);
                 }

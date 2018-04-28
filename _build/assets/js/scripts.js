@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
   $('#sidebar-sm').click(function () {
     if (window.matchMedia('(max-width: 992px)').matches) {
       $('#sidebar').toggleClass('sidebar-show').fadeIn("slow");
@@ -25,24 +25,6 @@ $(function () {
     }
     return false;
 
-
-  })
-
-//PJax
-  $(document).pjax('a[data-pjax],[data-pjax] a', '.pjax-container', {fragment: '.pjax-container'});
-
-  $('.pjax-container').on('pjax:beforeReplace', function () {
-    $.pjax({
-      url: window.location.href,
-      container: '.sidebar-nav',
-      fragment: '.sidebar-nav'
-    })
-  })
-  $(document).on('pjax:start', function () {
-    NProgress.start();
-  });
-  $(document).on('pjax:end', function () {
-    NProgress.done();
   });
 
   $('.picture').each(function () {
@@ -83,4 +65,5 @@ $(function () {
       lightBox.init();
     });
   });
+  $('.sidebar-sm [data-toggle="tooltip"]').tooltip();
 });

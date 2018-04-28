@@ -1,15 +1,15 @@
 <?php
-class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
+class uniConfigMessageCreateProcessor extends modObjectCreateProcessor
 {
-  public $objectType = 'uniComment';
-  public $classKey = 'uniComment';
+  public $objectType = 'uniMessage';
+  public $classKey = 'uniMessage';
   /** @var  uniConfig $uniConfig */
   protected $uniConfig;
 
   public function initialize()
   {
     $this->uniConfig = $this->modx->getService('uniConfig');
-    if(!$this->modx->user->isMember('Users')){
+    if($this->modx->user->id < 1){
       return $this->modx->lexicon('access_denied');
     }
     if (!$this->modx->hasPermission($this->permission)) {
@@ -27,14 +27,15 @@ class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
     if ($this->modx->user->id < 1) {
       return $out['message'] = 'Вы должны авторизоваться';
     }
-    $comment = trim(htmlspecialchars($this->getProperty('comment')));
+    $message = trim(htmlspecialchars($this->getProperty('message')));
     $order_id = trim(htmlspecialchars($this->getProperty('order_id')));
+    $files = htmlspecialchars($this->getProperty('files'));
     //Дописать изображения
-    if(!$comment){
-      return $out['message'] = 'Вы не написали комментарий';
+    if(!$message){
+      return $out['message'] = 'Вы не написали сообщение';
     }
 
-    $comment = $this->uniConfig->Jevix($comment);
+    $message = $this->uniConfig->Jevix($message);
     $order_id = $this->uniConfig->Jevix($order_id);
 
 
@@ -42,10 +43,16 @@ class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
     $this->setProperties([
       'user_id' => $this->modx->user->id,
       'order_id' => $order_id,
-      'comment' => $comment,
+      'photo' => '',
+      'message' => $message,
       'date' => time(),
     ]);
+    if ($files && is_array($files)){
+      $this->setProperties([
+        'photo' => json_encode($files),
+      ]);
+    }
     return true;
   }
 }
-return 'uniConfigCommentCreateProcessor';
+return 'uniConfigMessageCreateProcessor';

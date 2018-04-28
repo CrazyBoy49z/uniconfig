@@ -33,7 +33,7 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
 
     $location = trim(htmlspecialchars($this->getProperty('location')));
 
-    $files = $this->getProperty('files');
+    $files = htmlspecialchars($this->getProperty('files'));
 
     if(!$specialization || !$description || !$location){
       return $out['message']='Заполните все обязательные поля';
@@ -57,9 +57,10 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
     return true;
   }
   public function afterSave(){
+    /** @var array $change_status */
     $change_status = $this->uniConfig->changeOrderStatus($this->object->get('id'), 1);
-    if (!$change_status) {
-      return $this->failure('Не удалось изменить статус заказа');
+    if (!$change_status['success']) {
+      return $this->failure($change_status['message']);
     }
     return $this->success('Заявка успешно создана!');
   }

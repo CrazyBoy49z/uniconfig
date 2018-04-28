@@ -81,6 +81,21 @@
     <field key="user_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="order_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="comment" dbtype="varchar" precision="255" phptype="string" null="true"/>
+    <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP"
+           index="index"/>
+    <index alias="date" name="date" primary="false" unique="false" type="BTREE">
+      <column key="date" length="" collation="A" null="false"/>
+      <column key="user_id" length="" collation="A" null="true"/>
+    </index>
+    <aggregate alias="User" class="modUser" local="user_id" foreign="id" cardinality="many"
+               owner="foreign"/>
+    <aggregate alias="Order" class="uniOrder" local="order_id" foreign="id" cardinality="many"
+               owner="foreign"/>
+  </object>
+  <object class="uniMessage" table="uni_messages" extends="xPDOSimpleObject">
+    <field key="user_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
+    <field key="order_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
+    <field key="message" dbtype="varchar" precision="255" phptype="string" null="true"/>
     <field key="photo" dbtype="varchar" precision="255" phptype="string" null="true"/>
     <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP"
            index="index"/>
@@ -93,7 +108,6 @@
     <aggregate alias="Order" class="uniOrder" local="order_id" foreign="id" cardinality="many"
                owner="foreign"/>
   </object>
-
   <object class="uniOrder" table="uni_orders" extends="xPDOSimpleObject">
     <field key="created_by" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="executor" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
@@ -139,6 +153,8 @@
     <composite alias="History" class="uniOrderHistory" local="id" foreign="order_id" cardinality="many"
                owner="local"/>
     <composite alias="Comment" class="uniComment" local="id" foreign="order_id" cardinality="many"
+               owner="local"/>
+    <composite alias="Message" class="uniMessage" local="id" foreign="order_id" cardinality="many"
                owner="local"/>
   </object>
 
