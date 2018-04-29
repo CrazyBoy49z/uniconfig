@@ -18,43 +18,43 @@
               <table class="table req table-condensed table-hover">
                 <tbody>
                 <tr>
-                  <td>Дата создания заявки:</td>
+                  <td><b>Дата создания заявки</b></td>
                   <td>{$date | date_format : '%d.%m.%Y %H:%M'}</td>
                 </tr>
                 <tr>
-                  <td>Заявитель:</td>
+                  <td><b>Заявитель</b></td>
                   <td>{$profile.fullname}</td>
                 </tr>
                 <tr>
-                  <td>Email:</td>
+                  <td><b>Email</b></td>
                   <td>{$profile.email}</td>
                 </tr>
                 <tr>
-                  <td>Телефон:</td>
+                  <td><b>Телефон</b></td>
                   <td>{$profile.phone}</td>
                 </tr>
                 <tr>
-                  <td>Специализация</td>
+                  <td><b>Специализация</b></td>
                   <td>{$specialization.name}</td>
                 </tr>
                 {if $executor}
                   <tr>
-                    <td>Исполнитель</td>
+                    <td><b>Исполнитель</b></td>
                     <td>{$executor.fullname}</td>
                   </tr>
                 {/if}
                 <tr style="word-break: break-all;">
                   <td colspan="2">
-                    <p>Описание</p>
+                    <p><b>Описание</b></p>
                     <p>{$description}</p>
                   </td>
                 </tr>
                 <tr>
-                  <td>Локация</td>
+                  <td><b>Локация</b></td>
                   <td>{$location.name}</td>
                 </tr>
                 <tr>
-                  <td>Статус</td>
+                  <td><b>Статус</b></td>
                   <td>{$status.name}</td>
                 </tr>
                 </tbody>
@@ -123,7 +123,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <textarea name="description" id="description" class="form-control" rows="5"
+                          <textarea name="message" class="form-control" rows="5"
                                     placeholder="Сообщение"></textarea>
                         </div>
                         <div class="form-group">
@@ -171,7 +171,7 @@
                         <input type="hidden" name="id" value="{$id}"/>
                         <input type="hidden" name="action" value="order/update">
                         <div class="form-group">
-                          <textarea name="description" id="description" class="form-control" rows="5"
+                          <textarea name="message"  class="form-control" rows="5"
                                     placeholder="Сообщение"></textarea>
                         </div>
                         <div class="form-group">
@@ -190,7 +190,7 @@
                         <input type="hidden" name="id" value="{$id}"/>
                         <input type="hidden" name="action" value="order/update">
                         <div class="form-group">
-                          <textarea name="description" id="description" class="form-control" rows="5"
+                          <textarea name="message" class="form-control" rows="5"
                                     placeholder="Сообщение"></textarea>
                         </div>
                         <div class="form-group">
@@ -215,6 +215,7 @@
                   'class' => 'uniOrderHistory',
                   'where' => ['order_id' => $id],
                   'sortby' => 'date',
+                  'sortdir' => 'ASC',
                   'tpl' => '@FILE chunks/history/_history.tpl'
                 ])}
               </div>
@@ -232,6 +233,7 @@
               <div class="panel-body">
                 <div class="col-sm-12">
                   <div class="row">
+                    {$_modx->runSnippet('@FILE snippets/message.php', ['order_id' => $id, 'tpl' => '@FILE chunks/messages/_message.tpl'])}
                   </div>
                 </div>
               </div>
@@ -272,7 +274,7 @@
                           </div>
                           <div class="col-xs-12 col-sm-10">
                             <div class="form-group">
-                        <textarea name="comment" class="form-control" rows="3" placeholder="Написать комментарий"
+                        <textarea name="comment" class="form-control" rows="3" placeholder="Комментарий"
                                   style="resize: none;"></textarea>
                             </div>
                           </div>
@@ -280,7 +282,7 @@
                           <div class="col-sm-11">
                             <div class="row">
                               <button type="submit" class="btn btn-default pull-right">
-                                <i class="fa fa-paper-plane"></i> написать
+                                <i class="fa fa-paper-plane"></i> отправить
                               </button>
                             </div>
                           </div>

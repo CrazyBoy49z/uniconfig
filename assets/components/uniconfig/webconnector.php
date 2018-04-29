@@ -37,4 +37,5 @@ switch ($_POST['action']) {
 }
 
 echo $json;
+@session_write_close();
 exit();

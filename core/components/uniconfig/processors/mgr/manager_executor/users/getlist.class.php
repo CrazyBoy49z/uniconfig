@@ -22,7 +22,7 @@ class uniConfigUserGetListProcessor extends modObjectGetListProcessor {
     }
     $query = $this->getProperty('query', '');
     $c->where(array(
-      'UserGroup.name' => 'ManagerExecutor',
+      'UserGroup.name' => 'ManagerSpecialization',
     ));
     if (!empty($query)) {
       $c->where(array(

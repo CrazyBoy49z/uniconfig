@@ -11,10 +11,10 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
   public function initialize()
   {
     $this->uniConfig = $this->modx->getService('uniConfig');
-    if (!$this->modx->hasPermission($this->permission)) {
+    if (!$this->modx->user->isAuthenticated()) {
       return $this->modx->lexicon('access_denied');
     }
-    if ($this->modx->user->id < 1) {
+    if (!$this->modx->hasPermission($this->permission)) {
       return $this->modx->lexicon('access_denied');
     }
     return parent::initialize();
@@ -23,10 +23,6 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
   public function beforeSet()
   {
 
-    $out = array(
-      'success' => false,
-      'message' => 'Неизвестная ошибка',
-    );
     $specialization = trim(htmlspecialchars($this->getProperty('specialization')));
 
     $description = trim(htmlspecialchars($this->getProperty('description')));
@@ -36,7 +32,7 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
     $files = htmlspecialchars($this->getProperty('files'));
 
     if(!$specialization || !$description || !$location){
-      return $out['message']='Заполните все обязательные поля';
+      return 'Заполните все обязательные поля';
     }
     $specialization = $this->uniConfig->Jevix($specialization);
     $description = $this->uniConfig->Jevix($description);
@@ -54,7 +50,7 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
         'photo' => json_encode($files),
       ]);
     }
-    return true;
+    return parent::beforeSet();
   }
   public function afterSave(){
     /** @var array $change_status */

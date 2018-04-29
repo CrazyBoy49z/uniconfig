@@ -119,6 +119,25 @@ class uniConfig
         $this->modx->regClientScript($this->config['jsUrl'] . 'web/default.js');
         break;
       case 'OnPageNotFound':
+        $alias = $this->modx->context->getOption('request_param_alias', 'q');
+        if (!isset($_REQUEST[$alias])) {
+          return false;
+        }
+        $request = $_REQUEST[$alias];
+        $tmp = explode('/', $request);
+        if ($tmp[0] == 'order-window' && count($tmp) >= 2) {
+          if (!$section = $this->modx->findResource($tmp[0])) {
+            return false;
+          }
+          $id = str_replace('.html', '', $tmp[1]);
+          if ($tmp[1] != $id || (isset($tmp[2]) && $tmp[2] == '')) {
+            $this->modx->sendRedirect($tmp[0] . '/' . $id);
+          }
+          if ($order = $this->modx->getObject('uniOrder', $id)) {
+            $_GET['order'] = $_REQUEST['order'] = $id;
+            $this->modx->sendForward($section);
+          }
+        }
         break;
       case 'OnWebPagePrerender':
         // Compress output html for Google
@@ -179,24 +198,30 @@ class uniConfig
       };
       if ($status->get('email_dispatcher')) {
         $emails = $this->getUserEmails('Dispatchers');
-        $emails = implode(",", $emails);
-        if (!$this->sendEmail($emails, $subject, $body)) {
-          $error = 'uniconfig_send_email_err';
-        };
+        if ($emails) {
+          $emails = implode(",", $emails);
+          if (!$this->sendEmail($emails, $subject, $body)) {
+            $error = 'uniconfig_send_email_err';
+          };
+        }
       };
       if ($status->get('email_location_manager')) {
         $emails = $this->getUserEmails('ManagerLocation');
-        $emails = implode(",", $emails);
-        if (!$this->sendEmail($emails, $subject, $body)) {
-          $error = 'uniconfig_send_email_err';
-        };
+        if ($emails) {
+          $emails = implode(",", $emails);
+          if (!$this->sendEmail($emails, $subject, $body)) {
+            $error = 'uniconfig_send_email_err';
+          };
+        }
       };
       if ($status->get('email_chief')) {
         $emails = $this->getUserEmails('ManagerSpecialization');
-        $emails = implode(",", $emails);
-        if (!$this->sendEmail($emails, $subject, $body)) {
-          $error = 'uniconfig_send_email_err';
-        };
+        if ($emails) {
+          $emails = implode(",", $emails);
+          if (!$this->sendEmail($emails, $subject, $body)) {
+            $error = 'uniconfig_send_email_err';
+          };
+        }
       };
 
       if (!empty($error)) {
@@ -235,7 +260,7 @@ class uniConfig
       $this->modx->log(modX::LOG_LEVEL_ERROR, 'An error occurred while trying to send the email: ' . $this->modx->mail->mailer->ErrorInfo);
     }
     $this->modx->mail->reset();
-    return 'true';
+    return true;
   }
 
   /**
@@ -258,10 +283,10 @@ class uniConfig
       case 'status':
         switch ($entry) {
           case 'Новая':
-            if($this->modx->user->isMember('Executors')){
+            if ($this->modx->user->isMember('Executors')) {
               $message[] = 'Изменена специализация';
               $message[] = 'Статус заявки ' . $entry;
-            }else {
+            } else {
               $message[] = 'Создана заявка';
               $message[] = 'Статус заявки ' . $entry;
             }
@@ -383,6 +408,7 @@ class uniConfig
 
 
   //Comments
+
   /**
    * Create Comment
    *
@@ -394,13 +420,14 @@ class uniConfig
   {
     $response = $this->runProcessor('comment/create', $data);
     $response = $response->response;
-    if ($response['success'] == true) {
+    if ($response['success']) {
       $comment = $response['object'];
       $commentTpl = $this->pdoTools->runSnippet('@FILE snippets/comment.php', ['comment_id' => $comment['id'], 'tpl' => '@FILE chunks/comments/_comment.tpl']);
       $response['comment'] = $commentTpl;
     }
     return $response;
   }
+
   /** Delete Executor on Order
    * @param int $order_id
    * @return boolean
@@ -412,8 +439,22 @@ class uniConfig
       return false;
     }
     $order->set('executor', '');
-    if($order->save()){
+    if ($order->save()) {
       return true;
     }
+  }
+
+  /** Create Message
+   * @param $data array
+   * @return array
+   */
+  public function createMessage($data)
+  {
+    $data['user_id'] = $this->modx->user->id;
+    $data['order_id'] = $data['id'];
+    unset($data['id']);
+    $response = $this->runProcessor('message/create', $data);
+    $response = $response->response;
+    return $response;
   }
 }

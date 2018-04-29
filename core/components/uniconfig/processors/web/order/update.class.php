@@ -10,6 +10,9 @@ class uniConfigOrdersUpdateProcessor extends modObjectUpdateProcessor
   public function initialize()
   {
     $this->uniConfig = $this->modx->getService('uniConfig');
+    if (!$this->modx->user->isAuthenticated()){
+      return 'Вам нужно авторизоваться';
+    };
     if (!$this->modx->hasPermission($this->permission)) {
       return $this->modx->lexicon('access_denied');
     }
@@ -17,45 +20,54 @@ class uniConfigOrdersUpdateProcessor extends modObjectUpdateProcessor
   }
   public function beforeSet()
   {
-    $out = array(
-      'success' => false,
-      'message' => 'Неизвестная ошибка',
-    );
-    if (!$this->modx->user->id) return $out['message'] = 'Вам нужно авторизоваться';
+
     if($this->modx->user->isMember('Users')) {
       if ($this->object->get('created_by') != $this->modx->user->id)
-        return $out['message'] = 'Вы не можете редактировать чужие записи';
+        return 'Вы не можете редактировать чужие записи';
     }
     $id = (int)$this->getProperty('id');
     if (empty($id)) {
-      return $out['message'] = $this->modx->lexicon('uniconfig_order_err_ns');
+      return $this->modx->lexicon('uniconfig_order_err_ns');
     }
     $status_id = $this->getProperty('status_id');
     if($specialization = $this->getProperty('specialization')){
       if ($this->object->get('specialization') == $specialization){
-        return $out['message'] = 'Вы меняете специализацию на такую же!';
+        return 'Вы меняете специализацию на такую же!';
       }
     }
     switch ($status_id){
       case 1:
+        //Статус Новая
         //Нужно удалить текущего исполнителя
         if(!$this->uniConfig->deleteExecutor($id)){
-          return $out['message'] = 'Не удалось изменить заявку';
+          return 'Не удалось изменить заявку';
         }
         break;
       case 3:
-        //Добавляем сообщение
+        //Статус Проверка
+        $message = $this->uniConfig->createMessage($this->getProperties());
+        if(!$message['success']){
+          return $message['message'];
+        }
         break;
       case 5:
-        //Добавляем сообщение
+        //Статус Отложена
+        $message = $this->uniConfig->createMessage($this->getProperties());
+        if(!$message['success']){
+          return $message['message'];
+        }
         break;
       case 6:
-        //Добавляем сообщение
+        //Статус Согласование
+        $message = $this->uniConfig->createMessage($this->getProperties());
+        if(!$message['success']){
+          return $message['message'];
+        }
         break;
     }
     $this->unsetProperty('action');
 
-    return parent::beforeSet();
+    return true;
   }
 
   public function afterSave(){

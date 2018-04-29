@@ -102,20 +102,20 @@ $_lang['uniconfig_managerLocation_err_save'] = 'Ошибка при сохран
 
 
 
-$_lang['uniconfig_managerExecutor_items'] = 'Управяляющие исполнителями';
-$_lang['uniconfig_managerExecutor_create'] = 'Создать управяляющего исполнителями';
-$_lang['uniconfig_managerExecutor_remove_confirm'] = 'Вы уверены, что хотите удалить этого управяляющего исполнителями?';
-$_lang['uniconfig_managerExecutors_remove_confirm'] = 'Вы уверены, что хотите удалить этих управляющих исполнителями?';
-$_lang['uniconfig_managerExecutor_user'] = 'Исполнитель';
+$_lang['uniconfig_managerExecutor_items'] = 'Управляющие специализацией';
+$_lang['uniconfig_managerExecutor_create'] = 'Создать управляющего специализацией';
+$_lang['uniconfig_managerExecutor_remove_confirm'] = 'Вы уверены, что хотите удалить этого управляющего?';
+$_lang['uniconfig_managerExecutors_remove_confirm'] = 'Вы уверены, что хотите удалить этих управляющих?';
+$_lang['uniconfig_managerExecutor_user'] = 'Управляющий специализацией';
 $_lang['uniconfig_managerExecutor_location'] = 'Локация';
 $_lang['uniconfig_managerExecutor_specialization'] = 'Специализация';
 
-$_lang['uniconfig_managerExecutor_err_user'] = 'Вы должны указать управяляющего исполнителями.';
-$_lang['uniconfig_managerExecutor_err_ae'] = 'Управляющий исполнителями уже существует.';
-$_lang['uniconfig_managerExecutor_err_nf'] = 'Управляющий исполнителями не найден.';
-$_lang['uniconfig_managerExecutor_err_ns'] = 'Управляющий исполнителями не указан.';
-$_lang['uniconfig_managerExecutor_err_remove'] = 'Ошибка при удалении управяляющего исполнителями.';
-$_lang['uniconfig_managerExecutor_err_save'] = 'Ошибка при сохранении управяляющего исполнителями.';
+$_lang['uniconfig_managerExecutor_err_user'] = 'Вы должны указать управляющего специализацией.';
+$_lang['uniconfig_managerExecutor_err_ae'] = 'Управляющий специализацией уже существует.';
+$_lang['uniconfig_managerExecutor_err_nf'] = 'Управляющий специализацией не найден.';
+$_lang['uniconfig_managerExecutor_err_ns'] = 'Управляющий специализацией не указан.';
+$_lang['uniconfig_managerExecutor_err_remove'] = 'Ошибка при удалении управляющего специализацией.';
+$_lang['uniconfig_managerExecutor_err_save'] = 'Ошибка при сохранении управляющего специализацией.';
 
 
 

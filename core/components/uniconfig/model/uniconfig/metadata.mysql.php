@@ -11,6 +11,7 @@ $xpdo_meta_map = array (
     5 => 'uniManagerLocation',
     6 => 'uniManagerExecutor',
     7 => 'uniComment',
-    8 => 'uniOrder',
+    8 => 'uniMessage',
+    9 => 'uniOrder',
   ),
 );

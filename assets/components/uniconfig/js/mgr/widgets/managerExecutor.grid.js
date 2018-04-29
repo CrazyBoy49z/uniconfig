@@ -150,7 +150,7 @@ Ext.extend(uniConfig.grid.ManagerExecutor, MODx.grid.Grid, {
                 dataIndex: 'user',
                 sortable: true,
                 width: 200,
-                editor: {xtype: 'uniconfig-combo-manager-location', renderer: true}
+                editor: {xtype: 'uniconfig-combo-manager-executor', renderer: true}
             },
             {
                 header: _('uniconfig_managerExecutor_specialization'),

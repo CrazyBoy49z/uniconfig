@@ -128,3 +128,22 @@ uniConfig.combo.ManagerLocation = function (config) {
 Ext.extend(uniConfig.combo.ManagerLocation, MODx.combo.ComboBox);
 Ext.reg('uniconfig-combo-manager-location', uniConfig.combo.ManagerLocation);
 
+uniConfig.combo.ManagerExecutor = function (config) {
+  config = config || {};
+  Ext.applyIf(config, {
+    name: 'user'
+    , hiddenName: 'user'
+    , displayField: 'fullname'
+    , valueField: 'id'
+    , fields: ['id', 'fullname']
+    , pageSize: 10
+    , url: uniConfig.config.connector_url
+    , baseParams: {
+      action: 'mgr/manager_executor/users/getlist',
+      combo: true
+    }
+  });
+  uniConfig.combo.ManagerExecutor.superclass.constructor.call(this, config);
+};
+Ext.extend(uniConfig.combo.ManagerExecutor, MODx.combo.ComboBox);
+Ext.reg('uniconfig-combo-manager-executor', uniConfig.combo.ManagerExecutor);

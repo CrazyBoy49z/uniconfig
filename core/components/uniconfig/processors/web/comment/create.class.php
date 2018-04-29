@@ -16,16 +16,11 @@ class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
   }
   public function beforeSet()
   {
-
-    $out = array(
-      'success' => false,
-      'message' => 'Неизвестная ошибка',
-    );
     $comment = trim(htmlspecialchars($this->getProperty('comment')));
     $order_id = trim(htmlspecialchars($this->getProperty('order_id')));
     //Дописать изображения
     if(!$comment){
-      return $out['message'] = 'Вы не написали комментарий';
+      return 'Вы не написали комментарий';
     }
 
     $comment = $this->uniConfig->Jevix($comment);
@@ -39,7 +34,7 @@ class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
       'comment' => $comment,
       'date' => time(),
     ]);
-    return true;
+    return parent::beforeSet();
   }
 }
 return 'uniConfigCommentCreateProcessor';

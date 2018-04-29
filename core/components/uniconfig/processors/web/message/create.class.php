@@ -9,9 +9,9 @@ class uniConfigMessageCreateProcessor extends modObjectCreateProcessor
   public function initialize()
   {
     $this->uniConfig = $this->modx->getService('uniConfig');
-    if($this->modx->user->id < 1){
-      return $this->modx->lexicon('access_denied');
-    }
+    if (!$this->modx->user->isAuthenticated()){
+      return 'Вам нужно авторизоваться';
+    };
     if (!$this->modx->hasPermission($this->permission)) {
       return $this->modx->lexicon('access_denied');
     }
@@ -20,23 +20,17 @@ class uniConfigMessageCreateProcessor extends modObjectCreateProcessor
   public function beforeSet()
   {
 
-    $out = array(
-      'success' => false,
-      'message' => 'Неизвестная ошибка',
-    );
-    if ($this->modx->user->id < 1) {
-      return $out['message'] = 'Вы должны авторизоваться';
-    }
     $message = trim(htmlspecialchars($this->getProperty('message')));
     $order_id = trim(htmlspecialchars($this->getProperty('order_id')));
     $files = htmlspecialchars($this->getProperty('files'));
     if(!$message){
-      return $out['message'] = 'Вы не написали сообщение';
+      return 'Вы не написали сообщение';
+    }
+    if(!$order_id){
+      return 'Не указана заявка';
     }
 
     $message = $this->uniConfig->Jevix($message);
-    $order_id = $this->uniConfig->Jevix($order_id);
-
 
     $this->unsetProperty('action');
     $this->setProperties([
@@ -51,7 +45,7 @@ class uniConfigMessageCreateProcessor extends modObjectCreateProcessor
         'photo' => json_encode($files),
       ]);
     }
-    return true;
+    return parent::beforeSet();
   }
 }
 return 'uniConfigMessageCreateProcessor';

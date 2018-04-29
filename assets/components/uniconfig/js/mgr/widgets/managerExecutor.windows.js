@@ -22,7 +22,7 @@ Ext.extend(uniConfig.window.CreateItem, MODx.Window, {
 
     getFields: function (config) {
         return [{
-            xtype: 'uniconfig-combo-manager-location',
+            xtype: 'uniconfig-combo-manager-executor',
             fieldLabel: _('uniconfig_managerExecutor_user'),
             name: 'user',
             id: config.id + '-user',
@@ -70,23 +70,23 @@ uniConfig.window.UpdateItem = function (config) {
 Ext.extend(uniConfig.window.UpdateItem, MODx.Window, {
 
     getFields: function (config) {
-        return [{
-            xtype: 'uniconfig-combo-manager-location',
-            fieldLabel: _('uniconfig_managerExecutor_user'),
-            name: 'user',
-            id: config.id + '-user',
-            anchor: '99%',
-            allowBlank: false,
+      return [{
+        xtype: 'uniconfig-combo-manager-executor',
+        fieldLabel: _('uniconfig_managerExecutor_user'),
+        name: 'user',
+        id: config.id + '-user',
+        anchor: '99%',
+        allowBlank: false,
+      },
+        {
+          xtype: 'uniconfig-combo-specialization',
+          fieldLabel: _('uniconfig_managerExecutor_specialization'),
+          name: 'specialization',
+          id: config.id + '-specialization',
+          anchor: '99%',
+          allowBlank: false,
         },
-            {
-                xtype: 'uniconfig-combo-location',
-                fieldLabel: _('uniconfig_managerExecutor_specialization'),
-                name: 'specialization',
-                id: config.id + '-specialization',
-                anchor: '99%',
-                allowBlank: false,
-            },
-        ];
+      ];
     },
 
     loadDropZones: function () {
