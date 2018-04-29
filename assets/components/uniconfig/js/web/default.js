@@ -84,7 +84,7 @@ $(document).ready(function($) {
       });
       Dropzones[i].on('success', function(e, response) {
         response = JSON.parse(response);
-        $('#files').append('<input name="files[]" id="files" type="hidden" value="'+response.url+'">');
+        $('#files').append('<input name="files[]" type="hidden" value="'+response.url+'">');
       });
       Dropzones[i].on("error", function(e, response) {
         modPNotify.Message.error('', response);

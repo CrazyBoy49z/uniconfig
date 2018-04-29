@@ -29,17 +29,17 @@ gulp.task('js', function () {
     var src = build + 'js/*.js';
     var dst = assets + 'js/web/';
     gulp.src(src)
-        .pipe(uglify().on('error', function (e) {
-            console.log(e);
-        }))
+        //.pipe(uglify().on('error', function (e) {
+          //  console.log(e);
+        //}))
         .pipe(gulp.dest(dst));
 
     src = build + 'js/*.js';
     dst = assets + 'js/web/uniconfig/';
     gulp.src(src)
-        .pipe(uglify().on('error', function (e) {
-            console.log(e);
-        }))
+        //.pipe(uglify().on('error', function (e) {
+          //  console.log(e);
+        //}))
         .pipe(gulp.dest(dst));
 });
 gulp.task('fonts', function () {

@@ -27,6 +27,10 @@ switch ($_POST['action']) {
   case 'comment/create':
     $response = $uniConfig->createComment($_POST);
     $json = $modx->toJSON($response);
+    echo $json;
+    break;
+  case 'sidebar':
+    $uniConfig->changeCookie($_POST);
     break;
   default:
     /** @var modProcessorResponse $response */
@@ -34,8 +38,8 @@ switch ($_POST['action']) {
       'processors_path' => $path,
     ]);
     $json = $modx->toJSON($response->response);
+    echo $json;
 }
 
-echo $json;
 @session_write_close();
 exit();

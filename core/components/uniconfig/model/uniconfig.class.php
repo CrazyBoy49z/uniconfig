@@ -134,7 +134,8 @@ class uniConfig
             $this->modx->sendRedirect($tmp[0] . '/' . $id);
           }
           if ($order = $this->modx->getObject('uniOrder', $id)) {
-            $_GET['order'] = $_REQUEST['order'] = $id;
+            $this->modx->invokeEvent('OnWebPageInit');
+            $_GET['order'] = $id;
             $this->modx->sendForward($section);
           }
         }
@@ -146,6 +147,12 @@ class uniConfig
     }
   }
 
+  /** Change cookie
+   * @param $data array
+   */
+  public function changeCookie($data){
+        setcookie('sidebar_sm', $data['sidebar'], time()+60*60*24*30);
+  }
   /**
    * Switch order status
    *
@@ -381,6 +388,11 @@ class uniConfig
     return $filtered;
   }
 
+  /** Encode string
+   * @param $unencoded string
+   * @param $key string
+   * @return string
+   */
   public function encode($unencoded, $key)
   {//Шифруем
     $string = base64_encode($unencoded);//Переводим в base64
@@ -395,6 +407,11 @@ class uniConfig
     return $newstr;//Вертаем строку
   }
 
+  /** Decode string
+   * @param $encoded string
+   * @param $key string
+   * @return string
+   */
   public function decode($encoded, $key)
   {//расшифровываем
     $strofsym = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM=";//Символы, с которых состоит base64-ключ
@@ -405,9 +422,6 @@ class uniConfig
     }
     return base64_decode($encoded);//Вертаем расшифрованную строку
   }
-
-
-  //Comments
 
   /**
    * Create Comment
@@ -452,6 +466,11 @@ class uniConfig
   {
     $data['user_id'] = $this->modx->user->id;
     $data['order_id'] = $data['id'];
+    if ($data['files']) {
+      $data['photo'] = $data['files'];
+      unset($data['files']);
+    }
+    $this->modx->log(1, print_r($data, 1));
     unset($data['id']);
     $response = $this->runProcessor('message/create', $data);
     $response = $response->response;

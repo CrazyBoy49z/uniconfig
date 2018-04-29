@@ -5,7 +5,7 @@
   {block 'aside'}
     {include 'file:chunks/_aside.tpl'}
   {/block}
-    <section id="content" {$.cookie.sidebar_sm == 'true' ? 'class="content-sm"' : ''}>
+    <section id="content" {if $.cookie.sidebar_sm}class="content-sm"{/if}>
       {block 'header'}
         {include 'file:chunks/_header.tpl'}
       {/block}

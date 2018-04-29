@@ -126,6 +126,7 @@
                           <textarea name="message" class="form-control" rows="5"
                                     placeholder="Сообщение"></textarea>
                         </div>
+                        <div id="files"></div>
                         <div class="form-group">
                           <button type="submit" class="btn btn-primary pull-right">Отправить</button>
                         </div>

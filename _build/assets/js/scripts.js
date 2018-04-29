@@ -12,12 +12,14 @@ $(function() {
       $('#sidebar').toggleClass('sidebar-sm').fadeIn("slow");
       $('#content').toggleClass('content-sm').fadeIn("slow");
       if ($('#sidebar').hasClass('sidebar-sm')) {
-        $.cookie('sidebar_sm', 'true', {
+        $.cookie('sidebar_sm', 1, {
+          path: '/',
           expires: 5,
           secure: true
         });
       } else {
-        $.cookie('sidebar_sm', 'false', {
+        $.cookie('sidebar_sm', 0, {
+          path: '/',
           expires: 5,
           secure: true
         });

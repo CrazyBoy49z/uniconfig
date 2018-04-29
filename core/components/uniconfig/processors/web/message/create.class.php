@@ -22,7 +22,7 @@ class uniConfigMessageCreateProcessor extends modObjectCreateProcessor
 
     $message = trim(htmlspecialchars($this->getProperty('message')));
     $order_id = trim(htmlspecialchars($this->getProperty('order_id')));
-    $files = htmlspecialchars($this->getProperty('files'));
+    $photo = ($this->getProperty('photo'));
     if(!$message){
       return 'Вы не написали сообщение';
     }
@@ -40,9 +40,9 @@ class uniConfigMessageCreateProcessor extends modObjectCreateProcessor
       'message' => $message,
       'date' => time(),
     ]);
-    if ($files && is_array($files)){
+    if ($photo && is_array($photo)){
       $this->setProperties([
-        'photo' => json_encode($files),
+        'photo' => json_encode($photo),
       ]);
     }
     return parent::beforeSet();
