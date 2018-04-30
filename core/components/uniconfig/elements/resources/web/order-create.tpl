@@ -23,7 +23,8 @@
           </div>
           <div class="form-group">
             <div class="col-md-12">
-              <textarea name="description" id="description" class="form-control" rows="5" placeholder="Описание"></textarea>
+              <textarea name="description" id="description" class="form-control" rows="5"
+                        placeholder="Описание"></textarea>
             </div>
           </div>
           <div class="form-group">
@@ -44,14 +45,14 @@
           </div>
           <div class="form-group">
             <div class="col-md-12">
-              <div class="uploader" data-name="file"><div class="dz-message">Прикрепить изображения (макс - 4 шт.)</div></div>
+              <div class="uploader" data-name="file">
+                <div class="dz-message">Прикрепить изображения (макс - 4 шт.)</div>
+              </div>
             </div>
           </div>
           <div id="files"></div>
-          <div class="form-group">
-            <div class="col-lg-12">
-              <button type="submit" class="btn btn-primary">Создать заявку</button>
-            </div>
+          <div class="pull-right">
+            <button type="submit" class="btn btn-primary">Создать заявку</button>
           </div>
         </fieldset>
       </form>
