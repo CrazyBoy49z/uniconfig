@@ -21,7 +21,7 @@ if ($order_id && $order = $modx->getObject('uniOrder', $order_id)) {
     /** @var uniSpecialization $specialization */
     $specialization = $order->getOne('Specialization');
     /** @var uniLocation $location */
-    $location = $order->getOne('Locations');
+    $location = $order->getOne('Location');
     /** @var uniOrderStatus $status */
     $status = $order->getOne('Status');
     /** @var uniOrderHistory $history */

@@ -40,6 +40,11 @@ if ($transport->xpdo) {
           'authority' => 9999,
           'policy' => 3,
         ],
+        [
+          'name' => 'ManagerExecutor',
+          'authority' => 9999,
+          'policy' => 3,
+        ]
       ],
     ],
     'Dispatchers' => [
@@ -69,7 +74,7 @@ if ($transport->xpdo) {
           'policy' => 3,
         ],
         [
-          'name' => 'ManagerSpecialization',
+          'name' => 'ManagerExecutor',
           'authority' => 9999,
           'policy' => 3,
         ],
@@ -102,7 +107,7 @@ if ($transport->xpdo) {
           'policy' => 3,
         ],
         [
-          'name' => 'ManagerSpecialization',
+          'name' => 'ManagerExecutor',
           'authority' => 9999,
           'policy' => 3,
         ],
@@ -120,7 +125,7 @@ if ($transport->xpdo) {
           'policy' => 4,
         ],
         [
-          'name' => 'ManagerSpecialization',
+          'name' => 'ManagerExecutor',
           'authority' => 9999,
           'policy' => 3,
         ],
@@ -141,14 +146,14 @@ if ($transport->xpdo) {
         ],
       ],
     ],
-    'ManagerSpecialization' => [
+    'ManagerExecutor' => [
       'description' => 'Управляющие специализациями',
       'parent' => 0,
       'rank' => 0,
       'dashboard' => 1,
       'rgroups' => [
         [
-          'name' => 'ManagerSpecialization',
+          'name' => 'ManagerExecutor',
           'authority' => 9999,
           'policy' => 4,
         ],

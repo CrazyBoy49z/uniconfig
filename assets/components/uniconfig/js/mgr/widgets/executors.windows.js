@@ -79,6 +79,10 @@ Ext.extend(uniConfig.window.UpdateItem, MODx.Window, {
 
   getFields: function (config) {
     return [{
+      xtype: 'hidden',
+      name: 'id',
+      id: config.id + '-id',
+    },{
       xtype: 'uniconfig-combo-user',
       fieldLabel: _('uniconfig_executor_user'),
       name: 'user',

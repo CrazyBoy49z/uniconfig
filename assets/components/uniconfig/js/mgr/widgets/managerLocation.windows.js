@@ -71,6 +71,10 @@ Ext.extend(uniConfig.window.UpdateItem, MODx.Window, {
 
   getFields: function (config) {
     return [{
+      xtype: 'hidden',
+      name: 'id',
+      id: config.id + '-id',
+    }, {
       xtype: 'uniconfig-combo-manager-location',
       fieldLabel: _('uniconfig_managerLocation_user'),
       name: 'user',

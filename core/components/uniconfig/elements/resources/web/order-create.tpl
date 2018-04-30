@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-lg-8" style="margin-left: auto; margin-right: auto; float: none;">
+<div class="col-sm-12 col-lg-6" style="margin-left: auto; margin-right: auto; float: none;">
   <div class="panel panel-default">
     <div class="panel-heading"><h3 class="panel-title">Создать заявку</h3></div>
     <div class="panel-body">
@@ -6,8 +6,7 @@
         <input type="hidden" value="order/create" name="action"/>
         <fieldset>
           <div class="form-group">
-            <label class="col-md-2 control-label" for="specialization">Специализация <span class="required">*</span></label>
-            <div class="col-md-10">
+            <div class="col-md-12">
               <select class="form-control" name="specialization" id="specialization">
                 <option value="" selected disabled hidden>Выберите специализацию</option>
                 {$_modx->runSnippet('!pdoResources',[
@@ -23,14 +22,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label" for="description">Описание <span class="required">*</span></label>
-            <div class="col-md-10">
-              <textarea name="description" id="description" class="form-control" rows="5"></textarea>
+            <div class="col-md-12">
+              <textarea name="description" id="description" class="form-control" rows="5" placeholder="Описание"></textarea>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label" for="location">Локация <span class="required">*</span></label>
-            <div class="col-md-10">
+            <div class="col-md-12">
               <select id="location" name="location" class="form-control">
                 <option value="" selected disabled hidden>Выберите локацию</option>
                 {$_modx->runSnippet('!pdoResources',[
@@ -46,13 +43,13 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="col-md-10 col-md-offset-2">
+            <div class="col-md-12">
               <div class="uploader" data-name="file"><div class="dz-message">Прикрепить изображения (макс - 4 шт.)</div></div>
             </div>
           </div>
           <div id="files"></div>
           <div class="form-group">
-            <div class="col-lg-8 col-lg-offset-4">
+            <div class="col-lg-12">
               <button type="submit" class="btn btn-primary">Создать заявку</button>
             </div>
           </div>

@@ -38,7 +38,7 @@
   </object>
   <object class="uniOrderHistory" table="uni_order_history" extends="xPDOSimpleObject">
     <field key="order_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
-    <field key="message" dbtype="varchar" precision="255" phptype="string" null="true"/>
+    <field key="message" dbtype="text" phptype="json" null="true"/>
     <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP"
            index="index"/>
     <field key="action" dbtype="varchar" precision="255" phptype="string" null="true" />
@@ -80,7 +80,7 @@
   <object class="uniComment" table="uni_comments" extends="xPDOSimpleObject">
     <field key="user_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="order_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
-    <field key="comment" dbtype="varchar" precision="255" phptype="string" null="true"/>
+    <field key="comment"  dbtype="text" phptype="string" null="true"/>
     <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP"
            index="index"/>
     <index alias="date" name="date" primary="false" unique="false" type="BTREE">
@@ -95,7 +95,7 @@
   <object class="uniMessage" table="uni_messages" extends="xPDOSimpleObject">
     <field key="user_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="order_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
-    <field key="message" dbtype="varchar" precision="255" phptype="string" null="true"/>
+    <field key="message"  dbtype="text" phptype="string" null="true"/>
     <field key="photo" dbtype="varchar" precision="255" phptype="string" null="true"/>
     <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP"
            index="index"/>
@@ -115,7 +115,7 @@
     <field key="status" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="photo" dbtype="varchar" precision="255" phptype="string" null="true"/>
     <field key="specialization" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
-    <field key="description" dbtype="varchar" precision="255" phptype="string" null="true"/>
+    <field key="description"  dbtype="text" phptype="string" null="true"/>
     <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP"
            index="index"/>
 
@@ -142,10 +142,10 @@
       <column key="specialization" length="" collation="A" null="false"/>
     </index>
 
-    <aggregate alias="CreatedUser" class="modUser" local="created_by" foreign="id" cardinality="many"
+    <aggregate alias="CreatedUser" class="modUser" local="created_by" foreign="id" cardinality="one"
                owner="foreign"/>
-    <aggregate alias="Executor" class="modUser" local="executor" foreign="id" cardinality="many" owner="foreign"/>
-    <aggregate alias="Locations" class="uniLocation" local="location" foreign="id" cardinality="one"
+    <aggregate alias="Executor" class="modUser" local="executor" foreign="id" cardinality="one" owner="foreign"/>
+    <aggregate alias="Location" class="uniLocation" local="location" foreign="id" cardinality="one"
                owner="foreign"/>
     <aggregate alias="Status" class="uniOrderStatus" local="status" foreign="id" cardinality="one" owner="foreign"/>
     <aggregate alias="Specialization" class="uniSpecialization" local="specialization" foreign="id"

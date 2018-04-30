@@ -1,6 +1,5 @@
 {var $assets = ('assets_url' | config) ~ 'components/uniconfig/'}
 <aside id="sidebar" {if $.cookie.sidebar_sm}class="sidebar-sm"{/if}>
-    {$.cookie|print}
     <a href="{$_modx->makeUrl('9')}" class="navbar-brand">
         <img src="{$assets ~ 'img/logo.png'}" class="logo hidden-xs hidden-sm" alt="">
         <img src="{$assets ~ 'img/logosm.png'}" class="logo-sm hidden-md hidden-lg" alt="">

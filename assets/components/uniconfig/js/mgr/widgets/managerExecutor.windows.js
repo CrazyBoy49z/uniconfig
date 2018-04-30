@@ -21,7 +21,8 @@ uniConfig.window.CreateItem = function (config) {
 Ext.extend(uniConfig.window.CreateItem, MODx.Window, {
 
     getFields: function (config) {
-        return [{
+        return [
+          {
             xtype: 'uniconfig-combo-manager-executor',
             fieldLabel: _('uniconfig_managerExecutor_user'),
             name: 'user',
@@ -71,6 +72,10 @@ Ext.extend(uniConfig.window.UpdateItem, MODx.Window, {
 
     getFields: function (config) {
       return [{
+        xtype: 'hidden',
+        name: 'id',
+        id: config.id + '-id',
+      },{
         xtype: 'uniconfig-combo-manager-executor',
         fieldLabel: _('uniconfig_managerExecutor_user'),
         name: 'user',

@@ -189,7 +189,7 @@ class uniConfig
       $created_by = $order->getOne('CreatedUser');
       $pls = $order->toArray();
       //Add to OrderHistory
-      if (!$this->orderHistory($order_id, 'status', $status->get('name'))) {
+      if (!$this->orderHistory($order_id, 'status', $status->get('id'))) {
         $error = 'uniconfig_order_history_err_ns';
       }
       //Message
@@ -288,25 +288,33 @@ class uniConfig
     $message = [];
     switch ($action) {
       case 'status':
+        /** @var uniOrderStatus $status */
+        $status = $this->modx->getObject('uniOrderStatus', $entry);
+        $status_name = $status->get('name');
         switch ($entry) {
-          case 'Новая':
+          case 1:
+            //Новая
             if ($this->modx->user->isMember('Executors')) {
               $message[] = 'Изменена специализация';
-              $message[] = 'Статус заявки ' . $entry;
+              $message[] = 'Статус заявки ' . $status_name;
             } else {
               $message[] = 'Создана заявка';
-              $message[] = 'Статус заявки ' . $entry;
+              $message[] = 'Статус заявки ' . $status_name;
             }
             break;
+          case 2:
+            $message[] = 'Назначен исполнитель';
+            $message[] = 'Изменен статус заявки на ' . $status_name;
+              break;
           default:
-            $message[] = 'Изменен статус заявки на ' . $entry;
+            $message[] = 'Изменен статус заявки на ' . $status_name;
         }
         break;
     }
     $log = $this->modx->newObject('uniOrderHistory', array(
       'order_id' => $order_id,
       'date' => time(),
-      'message' => json_encode($message),
+      'message' => $this->modx->toJSON($message),
       'action' => $action,
       'user_id' => $this->modx->user->id,
     ));
@@ -470,7 +478,6 @@ class uniConfig
       $data['photo'] = $data['files'];
       unset($data['files']);
     }
-    $this->modx->log(1, print_r($data, 1));
     unset($data['id']);
     $response = $this->runProcessor('message/create', $data);
     $response = $response->response;

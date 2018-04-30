@@ -172,7 +172,7 @@
                         <input type="hidden" name="id" value="{$id}"/>
                         <input type="hidden" name="action" value="order/update">
                         <div class="form-group">
-                          <textarea name="message"  class="form-control" rows="5"
+                          <textarea name="message" class="form-control" rows="5"
                                     placeholder="Сообщение"></textarea>
                         </div>
                         <div class="form-group">
@@ -203,6 +203,130 @@
                 </div>
               {/switch}
             {/if}
+            {if $_modx->isMember('ManagerExecutor') || $_modx->isMember('ManagerLocation')}
+              {if $_modx->isMember('ManagerExecutor')}
+                {set $fields = $_modx->runSnippet('@FILE snippets/worker_fields.php', ['user_id' => $_modx->user.id, 'class' => 'uniManagerExecutor'])}
+                {set $where = ['uniExecutor.specialization' => $fields['specialization']]}
+              {/if}
+              {if $_modx->isMember('ManagerLocation')}
+                {set $fields = $_modx->runSnippet('@FILE snippets/worker_fields.php', ['user_id' => $_modx->user.id, 'class' => 'uniManagerLocation'])}
+                {set $where = ['uniExecutor.location' => $fields['location']]}
+              {/if}
+              {switch $status.id}
+              {case 1}
+                <div class="col-sm-4">
+                  <div class="row">
+                    <h4>Распределить</h4>
+                  </div>
+                  <form action="" method="post" class="uniform">
+                    <input type="hidden" name="status_id" value="2">
+                    <input type="hidden" name="id" value="{$id}"/>
+                    <input type="hidden" name="action" value="order/update">
+                    <div class="form-group">
+                      <select class="form-control" name="executor">
+                        <option value="" selected disabled hidden>Выберите исполнителя</option>
+                        {$_modx->runSnippet('!pdoUsers',[
+                        'groups' => 'Executors',
+                        'select' => ["modUser" => '*', "uniExecutor" => '*'],
+                        'leftJoin' => ["uniExecutor" => ['class'=> 'uniExecutor', 'on' => 'uniExecutor.user = modUser.id']],
+                        'tpl' => '@INLINE <option value="{$user}" >{$fullname}</option>',
+                        'where' => $where,
+                        'sortby' => 'fullname',
+                        'sortdir' => 'asc',
+                        'limit' => '0',
+                        ])}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                    </div>
+                  </form>
+                </div>
+              {case 5}
+                <div class="col-sm-4">
+                  <div class="row">
+                    <h4>Назначить</h4>
+                  </div>
+                  <form action="" method="post" class="uniform">
+                    <input type="hidden" name="status_id" value="2">
+                    <input type="hidden" name="id" value="{$id}"/>
+                    <input type="hidden" name="action" value="order/update">
+                    <div class="form-group">
+                      <select class="form-control" name="executor">
+                        <option value="" selected disabled hidden>Выберите исполнителя</option>
+                        {$_modx->runSnippet('!pdoUsers',[
+                        'groups' => 'Executors',
+                        'select' => ["modUser" => '*', "uniExecutor" => '*'],
+                        'leftJoin' => ["uniExecutor" => ['class'=> 'uniExecutor', 'on' => 'uniExecutor.user = modUser.id']],
+                        'tpl' => '@INLINE <option value="{$user}" >{$fullname}</option>',
+                        'where' => $where,
+                        'sortby' => 'fullname',
+                        'sortdir' => 'asc',
+                        'limit' => '0',
+                        ])}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                    </div>
+                  </form>
+                </div>
+              {/switch}
+            {/if}
+            {if $_modx->isMember('Dispatchers')}
+              {if $status.id == 6}
+                <div id="ex_forms">
+                  <div class="col-sm-3">
+                    <div class="row">
+                      <form action="" method="post" class="uniform">
+                        <input type="hidden" name="status_id" value="1">
+                        <input type="hidden" name="id" value="{$id}"/>
+                        <input type="hidden" name="action" value="order/update">
+                        <button type="submit" class="btn btn-primary">Отправить на исполнение</button>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#review">
+                      Заявителю на проверку
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <form action="" method="post" class="uniform">
+                      <input type="hidden" name="status_id" value="4">
+                      <input type="hidden" name="id" value="{$id}"/>
+                      <input type="hidden" name="action" value="order/update">
+                      <button type="submit" class="btn btn-primary">Закрыть</button>
+                    </form>
+                  </div>
+                  <div id="review" class="collapse" style="padding: 40px 0">
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <h4>Отправить Заявителю на проверку</h4>
+                      </div>
+                      <form action="" method="post" class="uniform form-horizontal">
+                        <input type="hidden" name="status_id" value="3">
+                        <input type="hidden" name="id" value="{$id}"/>
+                        <input type="hidden" name="action" value="order/update">
+                        <div class="form-group">
+                          <div class="uploader" data-name="file">
+                            <div class="dz-message">Прикрепить изображения (макс - 4 шт.)</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <textarea name="message" class="form-control" rows="5"
+                                    placeholder="Сообщение"></textarea>
+                        </div>
+                        <div id="files"></div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              {/if}
+            {/if}
           </div>
         </div>
         <div class="col-sm-12">
@@ -213,11 +337,11 @@
               </div>
               <div class="panel-body">
                 {$_modx->runSnippet('pdoResources',[
-                  'class' => 'uniOrderHistory',
-                  'where' => ['order_id' => $id],
-                  'sortby' => 'date',
-                  'sortdir' => 'ASC',
-                  'tpl' => '@FILE chunks/history/_history.tpl'
+                'class' => 'uniOrderHistory',
+                'where' => ['order_id' => $id],
+                'sortby' => 'date',
+                'sortdir' => 'ASC',
+                'tpl' => '@FILE chunks/history/_history.tpl'
                 ])}
               </div>
             </div>

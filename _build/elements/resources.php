@@ -9,7 +9,7 @@ return [
       'hidemenu' => false,
       'menutitle' => '<i class="fa fa-tachometer"></i> <span>Главная</span>',
       'groups' => [
-        'Dispatchers', 'ManagerLocation', 'ManagerSpecialization',
+        'Dispatchers', 'ManagerLocation', 'ManagerExecutor',
       ],
     ],
     'service' => [
@@ -83,7 +83,7 @@ return [
       'uri_overide' => true,
       'menutitle' => '<i class="fa fa-briefcase"></i> <span>Личный кабинет</span>',
       'groups' => [
-        'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerSpecialization',
+        'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
       ],
     ],
     'setting' => [
@@ -95,7 +95,7 @@ return [
       'uri_overide' => true,
       'menutitle' => '<i class="fa fa-cogs"></i> <span>Настройки</span>',
       'groups' => [
-        'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerSpecialization',
+        'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
       ],
     ],
     'order-create' => [
@@ -108,7 +108,7 @@ return [
       'uri_override' => true,
       'menutitle' => '<i class="fa fa-plus"></i> <span>Создать заявку</span>',
       'groups' => [
-        'Users', 'Dispatchers', 'ManagerLocation', 'ManagerSpecialization',
+        'Users', 'Dispatchers', 'ManagerLocation', 'ManagerExecutor',
       ],
     ],
     'orders' => [
@@ -127,7 +127,7 @@ return [
           'uri' => 'order-window',
           'uri_override' => true,
           'groups' => [
-            'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerSpecialization',
+            'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
           ],
         ]
       ],
