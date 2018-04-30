@@ -297,7 +297,11 @@ class uniConfig
             if ($this->modx->user->isMember('Executors')) {
               $message[] = 'Изменена специализация';
               $message[] = 'Статус заявки ' . $status_name;
-            } else {
+            } elseif($this->modx->user->isMember('Dispatchers')) {
+              $message[] = 'Повторная отправка на исполнение';
+              $message[] = 'Статус заявки ' . $status_name;
+            }
+            else{
               $message[] = 'Создана заявка';
               $message[] = 'Статус заявки ' . $status_name;
             }

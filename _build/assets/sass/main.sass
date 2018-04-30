@@ -52,7 +52,7 @@ body
     color: #cacaca
   .login-panel
     margin-top: 150px
-    background-color: rgba(255, 255, 255, 0.1)
+    background-color: rgba(118, 174, 255, 0.09)
     margin-bottom: 20px
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05)
     border-color: rgba(255, 250, 250, 0)
@@ -175,10 +175,10 @@ body
     &-title
       padding: 8px 15px 8px 17px
       margin: 0
-      background-color: #455264
+      background-color: $sidebar-active
       color: #ffffff
-      border-top: 1px solid #2e3743
-      border-bottom: 1px solid #2e3743
+      border-top: 1px solid $sidebar-active
+      border-bottom: 1px solid $sidebar-active
   .sidebar-nav
     width: 100%
     float: left
@@ -203,19 +203,38 @@ body
           i
             font-size: 20px
             margin-right: 15px
-            color: #8b929a
+            color: #3f5064
             float: left
             transition: color
             transition-duration: 0.4s
           &:hover, &:focus
-            background-color: #1c2128
             color: #ffffff
+            background: transparent
+            &:before
+              content: ""
+              width: 4px
+              height: 4px
+              bottom: -20px
+              border: 5px solid transparent
+              border-left: 5px solid $sidebar-active
+              position: absolute
+              left: 0
+              top: 13px
             i
               color: #ffffff
         &.active
           a
-            background-color: #1c2128
             color: #ffffff
+            &:before
+              content: ""
+              width: 4px
+              height: 4px
+              bottom: -20px
+              border: 5px solid transparent
+              border-left: 5px solid $sidebar-active
+              position: absolute
+              left: 0
+              top: 13px
             i
               color: #ffffff
 
@@ -273,7 +292,7 @@ body
       display: inline-block
       float: left
       a
-        color: #b3b3be
+        color: $default-color
         padding: 8px 20px
         transition: all
         transition-duration: 0.4s
@@ -300,7 +319,6 @@ body
           display: block
           padding: 4px 15px !important
           margin-top: 7px
-          border-radius: 20px
           margin-right: 10px
           i
             font-size: 14px
@@ -371,7 +389,7 @@ body
     &-heading
       background: #FFFFFF
       border-color: #DDDDDD
-      color: #797979
+      color: $default-color
       padding: 20px 15px
     &-title
       font-size: 18px
@@ -471,12 +489,12 @@ body
 
 .btn-primary
   color: #ffffff
-  background: #0bacd3
-  border-color: #0bacd3
+  background: #2871f9
+  border-color: #2871f9
   &:hover, &:focus
     color: #ffffff
-    background: #0884a3
-    border-color: #087d99
+    background: #0059ff
+    border-color: #0059ff
 
 .picture
   img
@@ -545,13 +563,41 @@ body
   border: none
   margin-left: 5px
   margin-right: 5px
+  background: #fff
   border-radius: 4px
+  position: relative
+  &:before
+    content: ""
+    border-bottom: 1px solid #ddd
+    position: absolute
+    width: 100%
+    bottom: 0
   &.nav-tabs
     &>li
+      margin-bottom: 0
+      &.active>a
+        border-color: #23527c
+        background: none
       &>a
-        border: none
+        border:
+          bottom: 1px solid
+          top: 0
+          left: 0
+          right: 0
+        border-color: #ddd
+        -o-transition: color 0.2s ease
+        transition: border-color 0.2s ease
         &:hover
-         border: none
-
+          border-color: #23527c
+          background: none
+#office-profile-form .avatar
+  border: 1px solid #ddd
+  border-radius: 5px
+  margin: 0 15px
+  padding: 10px 15px
+.pagination
+  margin: 0
+.statuses
+  margin-left: -15px
 @import "media"
 // Всегда в конце

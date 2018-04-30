@@ -17,15 +17,15 @@ class uniConfigCommentCreateProcessor extends modObjectCreateProcessor
   public function beforeSet()
   {
     $comment = trim(htmlspecialchars($this->getProperty('comment')));
-    $order_id = trim(htmlspecialchars($this->getProperty('order_id')));
-    //Дописать изображения
+    $order_id = (int)trim(htmlspecialchars($this->getProperty('order_id')));
+
     if(!$comment){
       return 'Вы не написали комментарий';
     }
-
+    if(!$order_id || $order_id < 1){
+      return 'Ошибка!';
+    }
     $comment = $this->uniConfig->Jevix($comment);
-    $order_id = $this->uniConfig->Jevix($order_id);
-
 
     $this->unsetProperty('action');
     $this->setProperties([

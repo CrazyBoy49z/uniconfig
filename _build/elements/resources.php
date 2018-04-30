@@ -4,7 +4,7 @@ return [
   'web' => [
     'index' => [
       'id' => 1,
-      'pagetitle' => 'Home',
+      'pagetitle' => 'Общая статистика заявок',
       'template' => 2,
       'hidemenu' => false,
       'menutitle' => '<i class="fa fa-tachometer"></i> <span>Главная</span>',

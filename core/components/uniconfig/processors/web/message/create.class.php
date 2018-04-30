@@ -21,12 +21,12 @@ class uniConfigMessageCreateProcessor extends modObjectCreateProcessor
   {
 
     $message = trim(htmlspecialchars($this->getProperty('message')));
-    $order_id = trim(htmlspecialchars($this->getProperty('order_id')));
+    $order_id = (int)trim(htmlspecialchars($this->getProperty('order_id')));
     $photo = ($this->getProperty('photo'));
     if(!$message){
       return 'Вы не написали сообщение';
     }
-    if(!$order_id){
+    if(!$order_id || $order_id < 1){
       return 'Не указана заявка';
     }
 

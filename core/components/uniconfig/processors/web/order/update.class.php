@@ -26,10 +26,13 @@ class uniConfigOrdersUpdateProcessor extends modObjectUpdateProcessor
         return 'Вы не можете редактировать чужие записи';
     }
     $id = (int)$this->getProperty('id');
-    if (empty($id)) {
+    if (!$id || $id < 1) {
       return $this->modx->lexicon('uniconfig_order_err_ns');
     }
-    $status_id = $this->getProperty('status_id');
+    $status_id = (int)$this->getProperty('status_id');
+    if (!$status_id || $status_id < 1) {
+      return $this->modx->lexicon('uniconfig_order_err_ns');
+    }
     if($specialization = $this->getProperty('specialization')){
       if ($this->object->get('specialization') == $specialization){
         return 'Вы меняете специализацию на такую же!';
@@ -41,6 +44,12 @@ class uniConfigOrdersUpdateProcessor extends modObjectUpdateProcessor
         //Нужно удалить текущего исполнителя
         if(!$this->uniConfig->deleteExecutor($id)){
           return 'Не удалось изменить заявку';
+        }
+        if($this->modx->user->isMember('Users')){
+          $message = $this->uniConfig->createMessage($this->getProperties());
+          if(!$message['success']){
+            return $message['message'];
+          }
         }
         break;
       case 3:
@@ -55,6 +64,10 @@ class uniConfigOrdersUpdateProcessor extends modObjectUpdateProcessor
         $message = $this->uniConfig->createMessage($this->getProperties());
         if(!$message['success']){
           return $message['message'];
+        }
+        //Нужно удалить текущего исполнителя
+        if(!$this->uniConfig->deleteExecutor($id)){
+          return 'Не удалось изменить заявку';
         }
         break;
       case 6:

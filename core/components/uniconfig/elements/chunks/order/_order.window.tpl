@@ -81,8 +81,53 @@
                 </div>
               {/foreach}
             {/if}
-            <hr>
+            {if $_modx->isMember('Users')}
+              {if $status.id == 3}
+                <div id="ex_forms">
+                  <div style="display: inline-block;">
+                    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#modification">
+                      На доработку
+                    </button>
+                  </div>
+                  <div style="display: inline-block;">
+                    <form action="" method="post" class="uniform">
+                      <input type="hidden" name="status_id" value="4">
+                      <input type="hidden" name="id" value="{$id}"/>
+                      <input type="hidden" name="action" value="order/update">
+                      <button type="submit" class="btn btn-danger">Закрыть</button>
+                    </form>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div id="modification" class="collapse" style="padding: 40px 0">
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <h4>Отправить заявку на доработку</h4>
+                      </div>
+                      <form action="" method="post" class="uniform form-horizontal">
+                        <input type="hidden" name="status_id" value="1">
+                        <input type="hidden" name="id" value="{$id}"/>
+                        <input type="hidden" name="action" value="order/update">
+                        <div class="form-group">
+                          <div class="uploader" data-name="file">
+                            <div class="dz-message">Прикрепить изображения (макс - 4 шт.)</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <textarea name="message" class="form-control" rows="5"
+                                    placeholder="Сообщение"></textarea>
+                        </div>
+                        <div id="files"></div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              {/if}
+            {/if}
             {if $_modx->isMember('Executors')}
+              <hr>
               {switch $status.id}
               {case 1}
                 <form action="" method="post" class="uniform">
@@ -204,6 +249,7 @@
               {/switch}
             {/if}
             {if $_modx->isMember('ManagerExecutor') || $_modx->isMember('ManagerLocation')}
+              <hr>
               {if $_modx->isMember('ManagerExecutor')}
                 {set $fields = $_modx->runSnippet('@FILE snippets/worker_fields.php', ['user_id' => $_modx->user.id, 'class' => 'uniManagerExecutor'])}
                 {set $where = ['uniExecutor.specialization' => $fields['specialization']]}
@@ -275,30 +321,30 @@
             {/if}
             {if $_modx->isMember('Dispatchers')}
               {if $status.id == 6}
+                <hr>
                 <div id="ex_forms">
-                  <div class="col-sm-3">
-                    <div class="row">
-                      <form action="" method="post" class="uniform">
-                        <input type="hidden" name="status_id" value="1">
-                        <input type="hidden" name="id" value="{$id}"/>
-                        <input type="hidden" name="action" value="order/update">
-                        <button type="submit" class="btn btn-primary">Отправить на исполнение</button>
-                      </form>
-                    </div>
+                  <div style="display: inline-block;">
+                    <form action="" method="post" class="uniform">
+                      <input type="hidden" name="status_id" value="1">
+                      <input type="hidden" name="id" value="{$id}"/>
+                      <input type="hidden" name="action" value="order/update">
+                      <button type="submit" class="btn btn-primary">Отправить на исполнение</button>
+                    </form>
                   </div>
-                  <div class="col-sm-3">
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#review">
+                  <div style="display: inline-block;">
+                    <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#review">
                       Заявителю на проверку
                     </button>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="pull-right">
                     <form action="" method="post" class="uniform">
                       <input type="hidden" name="status_id" value="4">
                       <input type="hidden" name="id" value="{$id}"/>
                       <input type="hidden" name="action" value="order/update">
-                      <button type="submit" class="btn btn-primary">Закрыть</button>
+                      <button type="submit" class="btn btn-danger">Закрыть</button>
                     </form>
                   </div>
+                  <div class="clearfix"></div>
                   <div id="review" class="collapse" style="padding: 40px 0">
                     <div class="col-sm-4">
                       <div class="row">
