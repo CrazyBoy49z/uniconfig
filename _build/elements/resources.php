@@ -7,6 +7,7 @@ return [
       'pagetitle' => 'Общая статистика заявок',
       'template' => 2,
       'hidemenu' => false,
+      'menuindex' => 0,
       'menutitle' => '<i class="fa fa-tachometer"></i> <span>Главная</span>',
       'groups' => [
         'Dispatchers', 'ManagerLocation', 'ManagerExecutor',
@@ -81,6 +82,7 @@ return [
       'hidemenu' => false,
       'uri' => 'lk',
       'uri_overide' => true,
+      'menuindex' => 1,
       'menutitle' => '<i class="fa fa-briefcase"></i> <span>Личный кабинет</span>',
       'groups' => [
         'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
@@ -93,6 +95,7 @@ return [
       'hidemenu' => false,
       'uri' => 'setting',
       'uri_overide' => true,
+      'menuindex' => 4,
       'menutitle' => '<i class="fa fa-cogs"></i> <span>Настройки</span>',
       'groups' => [
         'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
@@ -106,12 +109,13 @@ return [
       'hidemenu' => false,
       'uri' => 'order-create',
       'uri_override' => true,
+      'menuindex' => 2,
       'menutitle' => '<i class="fa fa-plus"></i> <span>Создать заявку</span>',
       'groups' => [
         'Users', 'Dispatchers', 'ManagerLocation', 'ManagerExecutor',
       ],
     ],
-    'orders' => [
+    'order' => [
       'id' => 11,
       'pagetitle' => 'Orders',
       'template' => 0,
@@ -129,7 +133,21 @@ return [
           'groups' => [
             'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
           ],
-        ]
+        ],
+      ],
+    ],
+    'orders' => [
+      'id' => 14,
+      'pagetitle' => 'Список заявок',
+      'longtitle' => 'Список заявок',
+      'template' => 2,
+      'hidemenu' => false,
+      'uri' => 'orders',
+      'uri_override' => true,
+      'menutitle' => '<i class="fa fa-list"></i> <span>Список заявок</span>',
+      'menuindex' => 3,
+      'groups' => [
+        'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
       ],
     ],
   ],

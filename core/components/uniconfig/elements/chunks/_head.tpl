@@ -1,4 +1,4 @@
-{var $assets = ('assets_url' | config) ~ 'components/uniconfig/'}
+{set $assets = ('assets_url' | config) ~ 'components/uniconfig/'}
 <head>
     <title>{$_modx->resource.longtitle == '' ? $_modx->resource.pagetitle : $_modx->resource.longtitle}</title>
     <meta charset="UTF-8">

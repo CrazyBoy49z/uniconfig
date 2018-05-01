@@ -20,6 +20,7 @@
         'parents'          => 0,
         'level'            => 1,
         'outerClass'       => 'nav',
+        'sortby'           => 'menuindex',
         'tpl'              => '@INLINE <li{$classes}><a href="{$link}" data-original-title="{$pagetitle}" data-toggle="tooltip" data-placement="right" {$attributes}>{$menutitle}</a>{$wrapper}</li>'
         ])}
     </div>

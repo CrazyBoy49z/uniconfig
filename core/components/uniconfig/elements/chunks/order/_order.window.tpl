@@ -375,22 +375,18 @@
             {/if}
           </div>
         </div>
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="panel panel-default ident">
-              <div class="panel-heading">
-                <h3 class="panel-title">История заявки</h3>
-              </div>
-              <div class="panel-body">
-                {$_modx->runSnippet('pdoResources',[
-                'class' => 'uniOrderHistory',
-                'where' => ['order_id' => $id],
-                'sortby' => 'date',
-                'sortdir' => 'ASC',
-                'tpl' => '@FILE chunks/history/_history.tpl'
-                ])}
-              </div>
-            </div>
+        <div class="panel panel-default ident">
+          <div class="panel-heading">
+            <h3 class="panel-title">История заявки</h3>
+          </div>
+          <div class="panel-body">
+            {$_modx->runSnippet('pdoResources',[
+            'class' => 'uniOrderHistory',
+            'where' => ['order_id' => $id],
+            'sortby' => 'date',
+            'sortdir' => 'ASC',
+            'tpl' => '@FILE chunks/history/_history.tpl'
+            ])}
           </div>
         </div>
       </div>
