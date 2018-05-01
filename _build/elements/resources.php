@@ -150,5 +150,17 @@ return [
         'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
       ],
     ],
+    'users' => [
+      'id' => 15,
+      'pagetitle' => 'Инфо / Пользователи',
+      'longtitle' => 'Инфо / Пользователи',
+      'template' => 2,
+      'hidemenu' => true,
+      'uri' => 'users',
+      'uri_override' => true,
+      'groups' => [
+        'Dispatchers', 'ManagerLocation', 'ManagerExecutor',
+      ],
+    ],
   ],
 ];
