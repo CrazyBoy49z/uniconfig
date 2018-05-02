@@ -11,10 +11,12 @@
     <!-- / top left nav -->
     <!-- top right nav -->
     <ul class="nav navbar-nav navbar-right">
+        {if !$_modx->isMember('Executors')}
         <li>
             <a href="{$_modx->makeUrl(12)}" class="btn new-order hidden-xs">
                 <i class="fa fa-plus"></i> Создать заявку</a>
         </li>
+        {/if}
         <li>
             <a href="#" onclick="alert('Извините, но данный функционал временно не работает');">
                 <i class="fa fa-bell-o"></i>

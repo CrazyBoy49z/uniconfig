@@ -250,14 +250,14 @@
             {/if}
             {if $_modx->isMember('ManagerExecutor') || $_modx->isMember('ManagerLocation')}
               <hr>
-              {if $_modx->isMember('ManagerExecutor')}
-                {set $fields = $_modx->runSnippet('@FILE snippets/worker_fields.php', ['user_id' => $_modx->user.id, 'class' => 'uniManagerExecutor'])}
-                {set $where = ['uniExecutor.specialization' => $fields['specialization']]}
-              {/if}
-              {if $_modx->isMember('ManagerLocation')}
-                {set $fields = $_modx->runSnippet('@FILE snippets/worker_fields.php', ['user_id' => $_modx->user.id, 'class' => 'uniManagerLocation'])}
-                {set $where = ['uniExecutor.location' => $fields['location']]}
-              {/if}
+                {set $fields = $_modx->runSnippet('@FILE snippets/worker_fields.php', ['user_id' => $_modx->user.id])}
+                {switch $fields['position']}
+                  {case 'Управляющий локацией'}
+                    {set $where = ['uniExecutor.location' => $fields['location']]}
+                  {case 'Управляющий специализацией'}
+                    {set $where = ['uniExecutor.specialization' => $fields['specialization']]}
+                {/switch}
+
               {switch $status.id}
               {case 1}
                 <div class="col-sm-4">
