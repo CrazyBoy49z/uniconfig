@@ -23,7 +23,11 @@
                 </tr>
                 <tr>
                   <td><b>Заявитель</b></td>
-                  <td>{$profile.fullname}</td>
+                  {if !$_modx->isMember('Users')}
+                    <td><a href="users/{$profile.id}">{$profile.fullname}</a></td>
+                  {else}
+                    <td>{$profile.fullname}</td>
+                  {/if}
                 </tr>
                 <tr>
                   <td><b>Email</b></td>
@@ -40,7 +44,11 @@
                 {if $executor}
                   <tr>
                     <td><b>Исполнитель</b></td>
-                    <td>{$executor.fullname}</td>
+                    {if !$_modx->isMember('Users')}
+                      <td><a href="users/{$executor.id}">{$executor.fullname}</a></td>
+                      {else}
+                      <td>{$executor.fullname}</td>
+                    {/if}
                   </tr>
                 {/if}
                 <tr style="word-break: break-all;">
@@ -400,7 +408,12 @@
               <div class="panel-body">
                 <div class="col-sm-12">
                   <div class="row">
-                    {$_modx->runSnippet('@FILE snippets/message.php', ['order_id' => $id, 'tpl' => '@FILE chunks/messages/_message.tpl'])}
+                    {set $messages = $_modx->runSnippet('@FILE snippets/message.php', ['order_id' => $id, 'tpl' => '@FILE chunks/messages/_message.tpl'])}
+                    {if $messages}{$messages}{else}
+                      <div class="alert alert-warning">
+                        <p class="text-center">Нет сообщений</p>
+                      </div>
+                    {/if}
                   </div>
                 </div>
               </div>
@@ -420,7 +433,12 @@
                   <div class="col-sm-12">
                     <div class="row">
                       <div id="comments">
-                        {$_modx->runSnippet('@FILE snippets/comment.php', ['order_id' => $id, 'tpl' => '@FILE chunks/comments/_comment.tpl'])}
+                        {set $comments = $_modx->runSnippet('@FILE snippets/comment.php', ['order_id' => $id, 'tpl' => '@FILE chunks/comments/_comment.tpl'])}
+                        {if $comments}{$comments}{else}
+                          <div class="alert alert-warning">
+                            <p class="text-center">Нет комментариев</p>
+                          </div>
+                        {/if}
                       </div>
                     </div>
                   </div>

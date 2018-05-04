@@ -139,6 +139,20 @@ class uniConfig
             $this->modx->sendForward($section);
           }
         }
+        if ($tmp[0] == 'users' && count($tmp) >= 2) {
+          if (!$section = $this->modx->findResource($tmp[0])) {
+            return false;
+          }
+          $id = str_replace('.html', '', $tmp[1]);
+          if ($tmp[1] != $id || (isset($tmp[2]) && $tmp[2] == '')) {
+            $this->modx->sendRedirect($tmp[0] . '/' . $id);
+          }
+          if ($user = $this->modx->getObject('modUser', $id)){
+            $this->modx->invokeEvent('OnWebPageInit');
+            $_GET['user_id'] = $id;
+            $this->modx->sendForward($section);
+          }
+        }
         break;
       case 'OnWebPagePrerender':
         // Compress output html for Google

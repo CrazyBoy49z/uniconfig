@@ -95,7 +95,7 @@ return [
       'hidemenu' => false,
       'uri' => 'setting',
       'uri_overide' => true,
-      'menuindex' => 4,
+      'menuindex' => 5,
       'menutitle' => '<i class="fa fa-cogs"></i> <span>Настройки</span>',
       'groups' => [
         'Users', 'Dispatchers', 'Executors', 'ManagerLocation', 'ManagerExecutor',
@@ -155,9 +155,11 @@ return [
       'pagetitle' => 'Инфо / Пользователи',
       'longtitle' => 'Инфо / Пользователи',
       'template' => 2,
-      'hidemenu' => true,
+      'hidemenu' => false,
       'uri' => 'users',
       'uri_override' => true,
+      'menutitle' => '<i class="fa fa-users"></i> <span>Исполнители</span>',
+      'menuindex' => 4,
       'groups' => [
         'Dispatchers', 'ManagerLocation', 'ManagerExecutor',
       ],
