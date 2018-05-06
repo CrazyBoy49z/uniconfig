@@ -1,4 +1,6 @@
 <?php
+/** @var uniConfig $uniConfig */
+$uniConfig = $modx->getService('uniConfig', 'uniConfig', MODX_CORE_PATH . 'components/uniconfig/model/');
 if ($modx->context->key != 'mgr') {
   switch ($modx->event->name) {
     // Событие перед регистрацией пользователя
@@ -7,6 +9,9 @@ if ($modx->context->key != 'mgr') {
         $surname = trim(htmlspecialchars($_POST['surname']));
         $name = trim(htmlspecialchars($_POST['name']));
         $patronymic = trim(htmlspecialchars($_POST['patronymic']));
+        $surname = $uniConfig->Jevix($surname);
+        $name = $uniConfig->Jevix($name);
+        $patronymic = $uniConfig->Jevix($patronymic);
         if (!$surname || !$name || !$_POST['phone']) {
           $modx->event->output('Не заполнено одно из обязательных полей');
           break;
@@ -28,6 +33,9 @@ if ($modx->context->key != 'mgr') {
           $modx->event->output('Не заполнено одно из обязательных полей');
           break;
         }
+        $surname = $uniConfig->Jevix($surname);
+        $name = $uniConfig->Jevix($name);
+        $patronymic = $uniConfig->Jevix($patronymic);
         $fullname = $surname .' '.$name.' '.$patronymic;
         $fullname = trim($fullname);
         $user->Profile->set('fullname', $fullname);

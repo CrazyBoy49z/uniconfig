@@ -38,9 +38,18 @@
 'sortdir' => 'ASC',
 ]))
 }
-<div class="col-sm-12 col-lg-8">
+{set $check = json_decode($_modx->runSnippet('!pdoResources',[
+'class' => 'uniOrder',
+'disableConditions' => 1,
+'where' => ["status" => 3],
+'return' => 'json',
+'sortby' => 'id',
+'sortdir' => 'ASC',
+]))
+}
+<div class="col-sm-12">
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-lg-2">
       <div class="panel panel-default statuses">
         <div class="bg-success">
           <div class="panel-body text-center text-success">
@@ -52,7 +61,19 @@
       </div>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-lg-2">
+      <div class="panel panel-default statuses">
+        <div>
+          <div class="panel-body text-center">
+            <h2><i class="fa fa-hourglass-half"></i></h2>
+            <h3>{$check | length}</h3>
+            <p class="small">Проверяются</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3 col-lg-2">
       <div class="panel panel-default statuses">
         <div class="bg-info">
           <div class="panel-body text-center text-info">
@@ -64,7 +85,7 @@
       </div>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-lg-2">
       <div class="panel panel-default statuses">
         <div class="bg-warning">
           <div class="panel-body text-center text-warning">
@@ -76,7 +97,7 @@
       </div>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-lg-2">
       <div class="panel panel-default statuses">
         <div class="bg-danger">
           <div class="panel-body text-center text-danger">
