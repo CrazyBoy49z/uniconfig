@@ -41,6 +41,7 @@ if ($order_id && $order = $modx->getObject('uniOrder', $order_id)) {
       "location" => $location->toArray(),
       "status" => $status->toArray(),
       "histories" => $histories,
+      "contact_information" => $order->get('contact_information'),
     ];
     if($executor){
       $arr['executor'] = $executor_profile->toArray();

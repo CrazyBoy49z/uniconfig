@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                   <td><b>Заявитель</b></td>
-                  {if !$_modx->isMember('Users')}
+                  {if !$_modx->isMember('Users') && !$_modx->isMember('Executors')}
                     <td><a href="users/{$profile.id}">{$profile.fullname}</a></td>
                   {else}
                     <td>{$profile.fullname}</td>
@@ -44,7 +44,7 @@
                 {if $executor}
                   <tr>
                     <td><b>Исполнитель</b></td>
-                    {if !$_modx->isMember('Users')}
+                    {if !$_modx->isMember('Users') && !$_modx->isMember('Executors')}
                       <td><a href="users/{$executor.id}">{$executor.fullname}</a></td>
                       {else}
                       <td>{$executor.fullname}</td>
@@ -57,6 +57,14 @@
                     <p>{$description}</p>
                   </td>
                 </tr>
+                {if $contact_information}
+                  <tr style="word-break: break-all;">
+                    <td colspan="2">
+                      <p><b>Контактная информация</b></p>
+                      <p>{$contact_information}</p>
+                    </td>
+                  </tr>
+                {/if}
                 <tr>
                   <td><b>Локация</b></td>
                   <td>{$location.name}</td>
@@ -67,10 +75,6 @@
                 </tr>
                 </tbody>
               </table>
-
-              <!--<div class="col-sm-6 col-sm-offset-6">
-                  <a href="[[-~15]]?order=[[-+id]]" class="btn btn-primary pull-right">Редактировать заявку</a>
-              </div>-->
             </div>
             {set $files = json_decode($photo)}
             {if $files}
@@ -88,6 +92,7 @@
                   </div>
                 </div>
               {/foreach}
+              <div class="clearfix"></div>
             {/if}
             {if $_modx->isMember('Users')}
               {if $status.id == 3}
@@ -434,10 +439,8 @@
                     <div class="row">
                       <div id="comments">
                         {set $comments = $_modx->runSnippet('@FILE snippets/comment.php', ['order_id' => $id, 'tpl' => '@FILE chunks/comments/_comment.tpl'])}
-                        {if $comments}{$comments}{else}
-                          <div class="alert alert-warning">
-                            <p class="text-center">Нет комментариев</p>
-                          </div>
+                        {if $comments}
+                          {$comments}
                         {/if}
                       </div>
                     </div>

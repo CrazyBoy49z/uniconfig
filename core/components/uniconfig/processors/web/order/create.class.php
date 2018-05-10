@@ -29,7 +29,9 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
 
     $location = trim(htmlspecialchars($this->getProperty('location')));
 
-    $files = htmlspecialchars($this->getProperty('files'));
+    $contact_information =  trim(htmlspecialchars($this->getProperty('contact_information')));
+
+    $files = $this->getProperty('files');
 
     if(!$specialization || !$description || !$location){
       return 'Заполните все обязательные поля';
@@ -44,6 +46,7 @@ class uniConfigOrdersCreateProcessor extends modObjectCreateProcessor
       'specialization' => $specialization,
       'description' => $description,
       'location' => $location,
+      'contact_information' => $contact_information,
     ]);
     if ($files && is_array($files)){
       $this->setProperties([

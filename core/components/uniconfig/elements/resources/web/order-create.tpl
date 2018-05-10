@@ -27,6 +27,14 @@
                         placeholder="Описание"></textarea>
             </div>
           </div>
+          {if $_modx->isMember('Dispatchers')}
+            <div class="form-group">
+              <div class="col-md-12">
+              <textarea name="contact_information" id="contact_information" class="form-control" rows="5"
+                        placeholder="Контактная информация"></textarea>
+              </div>
+            </div>
+          {/if}
           <div class="form-group">
             <div class="col-md-12">
               <select id="location" name="location" class="form-control">

@@ -68,15 +68,13 @@
   <p style="{$style.h}{$style.p}">Заявку #{$order.id} выполняет <b>{$executor}</b></p>
 {case 3}
   {* Если статус Проверка *}
-  <p style="{$style.h}{$style.p}">Заявка #{$order.id} ожидает проверки. Посмотреть заявку можно по
-    <a href="{$site_url}/order-window/{$order.id}">ссылке</a>  </p>
+  <p style="{$style.h}{$style.p}">Заявка #{$order.id} ожидает проверки. Посмотреть заявку можно по <a href="{$site_url}/order-window/{$order.id}">ссылке</a>  </p>
 {case 4}
     {* Если статус Закрыто *}
   <p style="{$style.h}{$style.p}">Заявка #{$order.id} закрыта.</p>
 {case 5}
     {* Если статус Отложена *}
-  <p style="{$style.h}{$style.p}">Заявка #{$order.id} отложена. Посмотреть заявку можно по  <a
-            href="{$site_url}/order-window/{$order.id}">ссылке</a>  </p>
+  <p style="{$style.h}{$style.p}">Заявка #{$order.id} отложена. Посмотреть заявку можно по <a href="{$site_url}/order-window/{$order.id}">ссылке</a>  </p>
 {case 6}
   {* Если статус Согласование *}
   <p style="{$style.h}{$style.p}">Заявка #{$order.id} на согласовании.  </p>

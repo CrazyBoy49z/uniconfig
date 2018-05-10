@@ -116,6 +116,7 @@
     <field key="photo" dbtype="varchar" precision="255" phptype="string" null="true"/>
     <field key="specialization" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true"/>
     <field key="description"  dbtype="text" phptype="string" null="true"/>
+    <field key="contact_information"  dbtype="text" phptype="string" null="true"/>
     <field key="date" dbtype="timestamp" phptype="timestamp" null="false" default="CURRENT_TIMESTAMP"
            index="index"/>
 
