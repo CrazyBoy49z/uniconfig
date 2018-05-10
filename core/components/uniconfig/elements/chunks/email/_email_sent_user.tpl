@@ -9,6 +9,7 @@
 'th' => 'font-family: Arial;text-align: left;color: #111111;',
 'td' => 'font-family: Arial;text-align: left;color: #111111;',
 ]}
+{var $site_url = ('site_url' | option) | preg_replace : '#/$#' : ''}
 {switch $order.status}
 {case 1}
   {* Если статус новая *}
@@ -67,16 +68,16 @@
   <p style="{$style.h}{$style.p}">Заявку #{$order.id} выполняет <b>{$executor}</b></p>
 {case 3}
   {* Если статус Проверка *}
-{set $executor = $_modx->runSnippet('pdoUsers',[
-'users' => $order.executor,
-'tpl'=> '@INLINE {$fullname}'
-])}
-  <p style="{$style.h}{$style.p}">Заявку #{$order.id} выполняет <b>{$executor}</b></p>
+  <p style="{$style.h}{$style.p}">Заявка #{$order.id} ожидает проверки. Посмотреть заявку можно по
+    <a href="{$site_url}/order-window/{$order.id}">ссылке</a>  </p>
 {case 4}
-  {* Если статус Закрыта *}
+    {* Если статус Закрыто *}
+  <p style="{$style.h}{$style.p}">Заявка #{$order.id} закрыта.</p>
 {case 5}
-  {* Если статус Отложена *}
+    {* Если статус Отложена *}
+  <p style="{$style.h}{$style.p}">Заявка #{$order.id} отложена. Посмотреть заявку можно по  <a
+            href="{$site_url}/order-window/{$order.id}">ссылке</a>  </p>
 {case 6}
   {* Если статус Согласование *}
-
+  <p style="{$style.h}{$style.p}">Заявка #{$order.id} на согласовании.  </p>
 {/switch}
