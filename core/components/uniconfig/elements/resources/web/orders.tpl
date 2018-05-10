@@ -1,17 +1,20 @@
 {set $fields = $_modx->runSnippet('@FILE snippets/worker_fields.php', ['user_id' => $_modx->user.id])}
 {switch $fields['position']}
-{case 'Диспетчер'}
-{set $where = ['status' => 6]}
-{set $title = 'Список заявок'}
-{case 'Управляющий локацией'}
-{set $where = ['location' => $fields['location']]}
-{set $title = 'Список заявок'}
-{case 'Управляющий специализацией'}
-{set $where = ['specialization' => $fields['specialization']]}
-{set $title = 'Список заявок'}
-{case 'Исполнитель'}
-{set $where = ['specialization' => $fields['specialization'], 'location' => $fields['location'], 'status' => 1]}
-{set $title = 'Список новых заявок'}
+  {case 'Диспетчер'}
+    {set $where = ['status' => 6]}
+    {set $form_fields = ['specialization', 'location']}
+    {set $title = 'Список заявок'}
+  {case 'Управляющий локацией'}
+    {set $where = ['location' => $fields['location']]}
+    {set $form_fields = ['status', 'specialization']}
+    {set $title = 'Список заявок'}
+  {case 'Управляющий специализацией'}
+    {set $where = ['specialization' => $fields['specialization']]}
+    {set $form_fields = ['status', 'location']}
+    {set $title = 'Список заявок'}
+  {case 'Исполнитель'}
+    {set $where = ['specialization' => $fields['specialization'], 'location' => $fields['location'], 'status' => 1]}
+    {set $title = 'Список новых заявок'}
 {/switch}
 {if $where}
   {set $orders = $_modx->runSnippet('@FILE snippets/orderFilter.php',[
@@ -25,39 +28,65 @@
         <form action="" class="form-horizontal ajax-form">
           <input type="hidden" name="sortby" value="id">
           <input type="hidden" name="sortdir" value="desc">
-          <div class="form-group">
-            <div class="col-md-12">
-              <label for="status">Статус заявки</label>
-              <select class="form-control" name="status" id="status">
-                <option value="" selected>Все</option>
-                {$_modx->runSnippet('!pdoResources',[
-                'class' => 'uniOrderStatus',
-                'select' => '{"uniOrderStatus":"id,name"}',
-                'tpl' => '@INLINE <option value="{{+id}}" >{{+name}}</option>',
-                'sortby' => 'id',
-                'sortdir' => 'asc',
-                'limit' => 0,
-                ])}
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-12">
-              <label for="specialization">Специализация</label>
-              <select class="form-control" name="specialization" id="specialization">
-                <option value="" selected>Все</option>
-                {$_modx->runSnippet('!pdoResources',[
-                'class' => 'uniSpecialization',
-                'select' => '{"uniSpecialization":"id,name"}',
-                'tpl' => '@INLINE <option value="{{+id}}" >{{+name}}</option>',
-                'where' => '{"active": "1"}',
-                'sortby' => 'name',
-                'sortdir' => 'asc',
-                'limit' => 0,
-                ])}
-              </select>
-            </div>
-          </div>
+          {if $form_fields}
+            {foreach $form_fields as $form_field}
+              {switch $form_field}
+                {case 'status'}
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <label for="status">Статус заявки</label>
+                      <select class="form-control" name="status" id="status">
+                        <option value="" selected>Все</option>
+                        {$_modx->runSnippet('!pdoResources',[
+                        'class' => 'uniOrderStatus',
+                        'select' => '{"uniOrderStatus":"id,name"}',
+                        'tpl' => '@INLINE <option value="{$id}" >{$name}</option>',
+                        'sortby' => 'id',
+                        'sortdir' => 'asc',
+                        'limit' => 0,
+                        ])}
+                      </select>
+                    </div>
+                  </div>
+                {case 'specialization'}
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <label for="specialization">Специализация</label>
+                      <select class="form-control" name="specialization" id="specialization">
+                        <option value="" selected>Все</option>
+                        {$_modx->runSnippet('!pdoResources',[
+                        'class' => 'uniSpecialization',
+                        'select' => '{"uniSpecialization":"id,name"}',
+                        'tpl' => '@INLINE <option value="{$id}" >{$name}</option>',
+                        'where' => ["active" => 1],
+                        'sortby' => 'name',
+                        'sortdir' => 'asc',
+                        'limit' => 0,
+                        ])}
+                      </select>
+                    </div>
+                  </div>
+                {case 'location'}
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <label for="location">Локация</label>
+                      <select class="form-control" name="location" id="location">
+                        <option value="" selected>Все</option>
+                        {$_modx->runSnippet('!pdoResources',[
+                        'class' => 'uniLocation',
+                        'select' => '{"uniLocation":"id,name"}',
+                        'tpl' => '@INLINE <option value="{$id}" >{$name}</option>',
+                        'where' => ["active" => 1],
+                        'sortby' => 'name',
+                        'sortdir' => 'asc',
+                        'limit' => 0,
+                        ])}
+                      </select>
+                    </div>
+                  </div>
+              {/switch}
+            {/foreach}
+          {/if}
           <hr>
           <div class="text-right">
             <button class="ajax-start btn btn-primary">Подобрать</button>
