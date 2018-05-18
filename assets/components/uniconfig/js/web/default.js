@@ -20,7 +20,7 @@ $(document).ready(function($) {
                       dzPreview.remove();
                       $('.uploader').removeClass('dz-started');
                     }
-                  //setTimeout('window.location.reload()', 600)
+                  setTimeout('window.location.reload()', 600)
                 } else {
                     modPNotify.Message.error('',response.message);
                 }

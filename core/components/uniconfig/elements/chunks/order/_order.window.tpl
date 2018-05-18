@@ -266,9 +266,9 @@
                 {set $fields = $_modx->runSnippet('@FILE snippets/worker_fields.php', ['user_id' => $_modx->user.id])}
                 {switch $fields['position']}
                   {case 'Управляющий локацией'}
-                    {set $where = ['uniExecutor.location' => $fields['location']]}
+                    {set $where = ['uniExecutor.location' => $fields['location'], 'uniExecutor.specialization' => $specialization.id]}
                   {case 'Управляющий специализацией'}
-                    {set $where = ['uniExecutor.specialization' => $fields['specialization']]}
+                    {set $where = ['uniExecutor.specialization' => $fields['specialization'], 'uniExecutor.location' => $location.id]}
                 {/switch}
 
               {switch $status.id}
